@@ -1,1 +1,10 @@
+# Jetbrains configuration file
 .idea/
+
+# GitHub file
+.github/
+
+# Firebase files
+.firebase/
+.firebaserc
+firebase.json
