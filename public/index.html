@@ -5,15 +5,21 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
 	<!-- Custom Bangla Fonts -->
 	<link rel="stylesheet" href="fonts/Kalpurush.css">
+
 	<!-- Google Icon Fonts -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
 	<!-- CSS -->
 	<link rel="stylesheet" href="css/Edited-Materialize.css">
+
 	<title>সুরম্য আর্য</title>
+
 	<!-- Custom CSS Codes -->
 	<style>
 		/* CSS for the header. */
@@ -25,15 +31,77 @@
 			-o-background-size: cover;
 			min-height: 100vh;
 		}
+
+		/* My buttons inside columns are transparent, and they deserve a border. And also some margins. And also they want to fill the whole column. */
+		.col > .btn, .btn-large {
+			margin: 0.5vh;
+			padding: 0;
+			border: 2px solid rgba(255, 255, 255, 0.8);
+			width: 100%;
+			background: rgba(255, 255, 255, 0.5);
+			color: black;
+		}
+
+		.col > .btn:hover, .btn-large:hover {
+			background-color: rgba(255, 255, 255, 0.8);
+		}
+
+		.col > .btn:active, .btn-large:active {
+			background-color: rgba(255, 255, 255, 0.25);
+		}
+
+		/* A bottom navigation bar, fixed at bottom. */
+		.nav-bottom {
+			position: absolute;
+			bottom: 0;
+		}
+
+		.nav-bottom a:hover {
+			background-color: rgba(255, 255, 255, 0.5);
+		}
+
+		.nav-bottom a:active {
+			background-color: rgba(255, 255, 255, 0.25);
+		}
+
+		/* A navigation bar which has its children at the center. */
+		nav.nav-center ul {
+			text-align: center;
+		}
+		nav.nav-center ul li {
+			display: inline;
+			float: none;
+		}
+		nav.nav-center ul li a {
+			display: inline-block;
+		}
 	</style>
 </head>
 
 <body>
 	<header>
 		<div class="navbar-fixed">
-			<nav class="transparent">
-				<div class="nav-wrapper">
+			<nav class="nav-wrapper transparent">
+				<div class="container">
 					<a href="#" class="brand-logo center">সুরম্য আর্য</a>
+				</div>
+			</nav>
+		</div>
+
+		<div class="navbar-fixed nav-bottom">
+			<nav class="nav-wrapper nav-center transparent">
+				<div class="container">
+					<div class="row no-select">
+						<div class="col s4 m4 l4">
+							<div class="btn-large">বিশদ</div>
+						</div>
+						<div class="col s4 m4 l4">
+							<div class="btn-large">গপ্পো</div>
+						</div>
+						<div class="col s4 m4 l4">
+							<div class="btn-large">গভীরে প্রবেশ</div>
+						</div>
+					</div>
 				</div>
 			</nav>
 		</div>
