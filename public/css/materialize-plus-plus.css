@@ -1,0 +1,37 @@
+/*!
+ * Custom CSS for this website.
+ */
+
+/* Fixed header. */
+header {
+	background: url("../images/Cover.png") center center no-repeat;
+	background-size: cover;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	min-height: 100vh;
+}
+
+/* Transparent button. */
+.btn-transparent {
+	padding: 0;
+	width: 100%;
+	background: rgba(255, 255, 255, 0.50);
+	color: black;
+}
+
+/* Hover effect of transparent button. */
+.btn-transparent:hover {
+	background-color: rgba(255, 255, 255, 0.75);
+}
+
+/* Active effect of transparent button. */
+.btn-transparent:active {
+	background-color: rgba(255, 255, 255, 0.25);
+}
+
+/* A bottom navigation bar, fixed at bottom. */
+.nav-bottom {
+	position: absolute;
+	bottom: 0;
+}
