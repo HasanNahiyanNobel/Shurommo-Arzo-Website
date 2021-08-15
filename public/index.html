@@ -37,13 +37,19 @@
 				<div class="container">
 					<div class="row no-select">
 						<div class="col s4 m4 l4">
-							<div class="btn-large btn-transparent">বিশদ</div>
+							<a href="#about-me" class="modal-trigger">
+								<div class="btn-large btn-transparent">বিশদ</div>
+							</a>
 						</div>
 						<div class="col s4 m4 l4">
-							<div class="btn-large btn-transparent">গপ্পো</div>
+							<a href="#stories" class="modal-trigger">
+								<div class="btn-large btn-transparent">গপ্পো</div>
+							</a>
 						</div>
 						<div class="col s4 m4 l4">
-							<div class="btn-large btn-transparent">গভীরে প্রবেশ</div>
+							<a href="#login" class="modal-trigger">
+								<div class="btn-large btn-transparent">গভীরে ডুব</div>
+							</a>
 						</div>
 					</div>
 				</div>
@@ -51,13 +57,34 @@
 		</div>
 	</header>
 
+	<!-- Modal of `About Me` -->
+	<div class="modal modal-transparent z-depth-0" id="about-me">
+		<div class="modal-content center flow-text">
+			আর্যরে এত সহজে খুঁজে পাওয়া যায় না।
+		</div>
+	</div>
+
+	<!-- Modal of `Stories` -->
+	<div class="modal modal-transparent z-depth-0" id="stories">
+		<div class="modal-content center flow-text">
+			কোনো গপ্পো নেই, এখনো।
+		</div>
+	</div>
+
+	<!-- Modal of `Login` -->
+	<div class="modal modal-transparent z-depth-0" id="login">
+		<div class="modal-content center flow-text">
+			গভীরে এখনো ডুব দেয়া যাচ্ছে না।
+		</div>
+	</div>
+
 	<!-- JavaScripts -->
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 	<script>
-	  /*$(document).ready(function () {
-
-	  });*/
+	  $(document).ready(function () {
+		  $('.modal').modal();
+	  });
 	</script>
 </body>
 

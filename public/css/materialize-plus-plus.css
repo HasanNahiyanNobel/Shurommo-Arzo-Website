@@ -35,3 +35,11 @@ header {
 	position: absolute;
 	bottom: 0;
 }
+
+/* A good transparent modal. */
+.modal-transparent {
+	background: transparent;
+	color: white;
+	width: fit-content;
+	height: fit-content;
+}
