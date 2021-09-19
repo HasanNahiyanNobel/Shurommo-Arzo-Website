@@ -2,6 +2,29 @@
  * Custom CSS for this website.
  */
 
+/**
+ * Texts and fonts
+ */
+
+/* Again, no idea why this does not exist. */
+.text-bold {
+	font-weight: bold;
+}
+
+/* Have no idea why materialize does not provide this. */
+.justify-align {
+	text-align: justify;
+}
+
+/* For rotating text. */
+.rotate {
+	transform: rotate(-90deg);
+}
+
+/*
+ * Headers, navigation bars, buttons, and others
+ */
+
 /* Fixed header. */
 header {
 	background: url("../images/Cover.png") center center no-repeat;
@@ -42,4 +65,54 @@ header {
 	color: white;
 	width: fit-content;
 	height: fit-content;
+}
+
+/*
+ * Story containers
+ */
+
+.container-story {
+	/*margin: 0 auto; !* Same as container. *!*/
+	/*max-width: 1280px; !* Same as container. *!*/
+	/*width: 90%; !* Same as container. *!*/
+}
+
+@media only screen and (min-width: 601px) {
+	.container-story {
+		width: 70%; /* In container, it is 85%. */
+	}
+}
+
+@media only screen and (min-width: 993px) {
+	.container-story {
+		width: 50%; /* In container, it is 70%. */
+	}
+}
+
+/*
+ * Transitions of backgrounds
+ */
+
+.bg-transition-500 {
+	transition: background-color 500ms linear;
+}
+
+.bg-transition-1000 {
+	transition: background-color 1000ms linear;
+}
+
+.bg-transition-2000 {
+	transition: background-color 2000ms linear;
+}
+
+.bg-transition-3000 {
+	transition: background-color 3000ms linear;
+}
+
+.bg-transition-4000 {
+	transition: background-color 4000ms linear;
+}
+
+.bg-transition-5000 {
+	transition: background-color 5000ms linear;
 }
