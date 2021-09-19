@@ -2,8 +2,31 @@
  * Custom CSS for this website.
  */
 
+
+/*
+ * Story containers
+ */
+
+.container-story {
+	/*margin: 0 auto; !* Same as container. *!*/
+	/*max-width: 1280px; !* Same as container. *!*/
+	/*width: 90%; !* Same as container. *!*/
+}
+
+@media only screen and (min-width: 601px) {
+	.container-story {
+		width: 70%; /* In container, it is 85%. */
+	}
+}
+
+@media only screen and (min-width: 993px) {
+	.container-story {
+		width: 50%; /* In container, it is 70%. */
+	}
+}
+
 /**
- * Texts and fonts
+ * Texts, fonts and images
  */
 
 /* Again, no idea why this does not exist. */
@@ -18,7 +41,38 @@
 
 /* For rotating text. */
 .rotate {
+	/*transform-origin: 0 0;*/
 	transform: rotate(-90deg);
+}
+
+.image-below-text {
+	position: relative;
+	max-width: 100vw;
+}
+
+/*.image-below-text img {
+	vertical-align: middle;
+}*/
+
+.image-below-text .text-block-above-image {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.25);
+	padding: 10% 20%;
+}
+
+@media only screen and (min-width: 601px) {
+	.text-block-above-image {
+		width: 70%; /* In container, it is 85%. */
+	}
+}
+
+@media only screen and (min-width: 993px) {
+	.text-block-above-image {
+		width: 50%; /* In container, it is 70%. */
+	}
 }
 
 /*
@@ -65,28 +119,6 @@ header {
 	color: white;
 	width: fit-content;
 	height: fit-content;
-}
-
-/*
- * Story containers
- */
-
-.container-story {
-	/*margin: 0 auto; !* Same as container. *!*/
-	/*max-width: 1280px; !* Same as container. *!*/
-	/*width: 90%; !* Same as container. *!*/
-}
-
-@media only screen and (min-width: 601px) {
-	.container-story {
-		width: 70%; /* In container, it is 85%. */
-	}
-}
-
-@media only screen and (min-width: 993px) {
-	.container-story {
-		width: 50%; /* In container, it is 70%. */
-	}
 }
 
 /*
