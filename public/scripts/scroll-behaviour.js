@@ -30,4 +30,8 @@ window.onscroll = function() {
 	}
 };
 
+window.onresize = function() {
+
+};
+
 window.onscroll(undefined);
