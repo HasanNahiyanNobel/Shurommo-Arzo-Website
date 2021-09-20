@@ -193,3 +193,7 @@ header {
 .bg-transition-5000 {
 	transition: background-color 5000ms linear;
 }
+
+.bg-transition-10000 {
+	transition: background-color 10000ms linear;
+}
