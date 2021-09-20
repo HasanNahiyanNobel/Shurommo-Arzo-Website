@@ -42,7 +42,9 @@
 /* For rotating text. */
 .rotate {
 	/*transform-origin: 0 0;*/
-	transform: rotate(-90deg);
+	writing-mode: vertical-lr;
+	text-orientation: mixed;
+	transform: rotate(180deg);
 }
 
 .parent-image {
@@ -61,12 +63,13 @@
 	left: 0;
 }
 
-.parent-image .text-box {
-	font-size: 3.5vw;
+.parent-image .row {
 	position: absolute;
-	bottom: 0.1vw;
+	top: 0.2vw;
+	left: 0;
 	width: fit-content;
 	block-size: fit-content;
+	font-size: 3.5vw;
 	border: 1px solid black;
 }
 
@@ -76,7 +79,6 @@
 
 .row .col20 {
 	float: left;
-	text-align: center;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 	padding: 0 0;
@@ -85,9 +87,9 @@
 
 .row .col20.s1 {
 	width: 5%;
-	margin-left: auto;
 	left: auto;
 	right: auto;
+	margin-left: auto;
 	border: 1px solid black;
 }
 
