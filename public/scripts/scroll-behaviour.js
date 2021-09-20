@@ -4,6 +4,12 @@ const body = document.body;
 // const pageHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight); // বিপদের দিনে এই জিনিস হয়তো সাহায্য করতে পারে। :3
 // const pageHeight = body.offsetHeight;
 
+/**
+ * These two are taken from: https://stackoverflow.com/a/8876069
+ */
+// const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+
 const navbar = document.getElementById(`main-navbar`);
 const navbarHeight = navbar.offsetHeight;
 
@@ -24,7 +30,7 @@ window.onscroll = function() {
 
 	// console.log(`Current: ${currentTop}, ${currentBottom}`);
 
-	if (currentTop < 0) {
+	if (currentTop < vh / 2) { // When the image comes halfway through the viewport, we see the colour-change
 		navWrapper.style.backgroundColor = `#fbc02d`; // yellow darken-2
 		body.style.backgroundColor = `#fff9c4`; // yellow lighten-4
 	}
