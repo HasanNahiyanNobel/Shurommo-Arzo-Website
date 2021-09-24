@@ -3,6 +3,30 @@
  */
 
 
+/**
+ * Scrolling behaviour
+ */
+
+/* width */
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: rgba(200, 200, 200, 0.5);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: rgba(50, 50, 50, 0.5);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: rgba(50, 50, 50, 0.75);
+}
+
 /*
  * Story containers
  */
@@ -124,6 +148,7 @@
 /*
  * Headers, navigation bars, buttons, and others
  */
+
 /* Fixed header. */
 header {
 	background: url("../images/Cover.png") center center no-repeat;
@@ -167,8 +192,12 @@ header {
 }
 
 /*
- * Transitions of backgrounds
+ * Transitions of texts and backgrounds
  */
+
+.text-transition-10000 {
+	transition: color 10000ms linear;
+}
 
 .bg-transition-500 {
 	transition: background-color 500ms linear;
