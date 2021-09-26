@@ -3,7 +3,7 @@ const body = document.body;
 
 const navbar = document.getElementById(`main-navbar`);
 const navWrapper = document.getElementById(`main-nav-wrapper`);
-const graphics = document.getElementById(`graphics-main`);
+const graphics = document.getElementById(`graphics-main-shahorik`);
 
 // const pageHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight); // বিপদের দিনে এই জিনিস হয়তো সাহায্য করতে পারে। :3
 // const pageHeight = body.offsetHeight;
@@ -16,6 +16,14 @@ const graphicsHeight = graphics.offsetHeight;
 console.log(`Graphics start: ${graphicsStartPos}`);
 console.log(`Graphics end: ${graphicsStartPos + graphicsHeight}`);
 console.log(`Page height: ${body.offsetHeight}`);*/
+
+/*
+TODO: Remove this test.
+alert(`Start?`);
+
+let test = new Audio(`audios/IfNotForYou.mp3`);
+test.play();
+*/
 
 window.onscroll = function() {
 	let graphicsPos = graphics.getBoundingClientRect();
