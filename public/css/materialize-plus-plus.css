@@ -119,10 +119,10 @@
 .parent-image .child-text {
 	position: absolute;
 	top: 0;
-	left: 0;
-	width: 100%;
+	left: inherit;
+	width: inherit;
 	block-size: fit-content;
-	font-size: 1.5vw;
+	/*font-size: 1.5vw;*/
 }
 
 .disabled {
