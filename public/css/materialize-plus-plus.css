@@ -108,12 +108,21 @@
 
 .parent-image .row {
 	position: absolute;
-	top: 0.2vw;
+	top: 0.2vw; /* TODO: Change this to 0, and fix Shahorik, perhaps? */
 	left: 0;
 	width: 100%;
 	block-size: fit-content;
 	font-size: 2vw;
 	/*border: 1px solid black;*/
+}
+
+.parent-image .child-text {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	block-size: fit-content;
+	font-size: 1.5vw;
 }
 
 .disabled {
