@@ -10,25 +10,35 @@ const lines = [line0, line1, line2, line3];
 const fontSizes = [1, 1.5, 2, 2.5, 3, 2.5, 2, 1.5, 1, 1.5, 2, 2.5, 3, 2.5, 2, 1.5, 1, 1.5, 2, 2.5, 3, 2.5, 2, 1.5, 1, 1.5, 2, 2.5, 3, 2.5, 2, 1.5, 1, 1.5, 2, 2.5, 3, 2.5, 2, 1.5, 1.8, 2, 1.5, 1];
 const fontSizesLength = fontSizes.length;
 
+const transitionTime = 500;
+
 const waveText = document.getElementById(`3-wave-of-text`);
 
-lines.forEach((line, indexLine) => {
-	line.forEach((char, indexChar) => {
-		let textSpan = document.createElement(`span`);
-		textSpan.id = `${indexLine}-${indexChar}`;
-		textSpan.style.transition = `font-size 500ms linear`;
-		textSpan.style.fontSize = fontSizes[indexChar] * 1.2 + `vw`;
-		textSpan.innerHTML += char;
-		waveText.append(textSpan);
+lines.forEach((line, indexOfLine) => {
+	let row = document.createElement(`div`);
+	row.className = `row`;
+	row.id = `3-row-${indexOfLine}`;
+	waveText.append(row);
+
+	line.forEach((char, indexOfChar) => {
+		/*waveText.innerHTML += `<div class="col44 s1">`;*/
+		let textCol = document.createElement(`div`);
+		textCol.id = `3-${indexOfLine}-${indexOfChar}`;
+		textCol.className = `col44 s1`;
+		textCol.style.fontSize = fontSizes[indexOfChar] + `vw`;
+		textCol.style.transition = `font-size ${transitionTime}ms linear`;
+		textCol.innerHTML += char;
+		/*waveText.append(textCol);*/
+		row.appendChild(textCol);
 
 		let spaceSpan = document.createElement(`span`);
 		spaceSpan.style.fontSize = `1vw`;
-		spaceSpan.innerHTML += ` `;
-		waveText.append(spaceSpan);
+		/*spaceSpan.innerHTML += ` `;
+		waveText.append(spaceSpan);*/
 	});
 
-	if (indexLine < lines.length - 1) {
-		waveText.innerHTML += `<br>`;
+	if (indexOfLine < lines.length - 1) {
+		/*waveText.innerHTML += `<br>`;*/
 	}
 });
 
@@ -38,9 +48,9 @@ setInterval(() => {
 	console.log(iteration);
 	lines.forEach((line, indexLine) => {
 		line.forEach((char, indexChar) => {
-			let theCharSpan = document.getElementById(`${indexLine}-${indexChar}`);
-			theCharSpan.style.fontSize = fontSizes[(indexChar + iteration) % fontSizesLength] * 1.2 + `vw`;
+			let theCharSpan = document.getElementById(`3-${indexLine}-${indexChar}`);
+			theCharSpan.style.fontSize = fontSizes[(indexChar + iteration) % fontSizesLength] + `vw`;
 		});
 	});
 	iteration++;
-}, 500);
+}, transitionTime);

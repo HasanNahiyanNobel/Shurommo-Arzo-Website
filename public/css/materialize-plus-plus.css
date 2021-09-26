@@ -197,6 +197,10 @@ header {
  * Transitions of texts and backgrounds
  */
 
+.text-size-transition-250 {
+	transition: font-size 250ms linear;
+}
+
 .text-size-transition-500 {
 	transition: font-size 500ms linear;
 }
