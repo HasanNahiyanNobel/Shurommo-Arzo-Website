@@ -197,7 +197,11 @@ header {
  * Transitions of texts and backgrounds
  */
 
-.text-transition-10000 {
+.text-size-transition-500 {
+	transition: font-size 500ms linear;
+}
+
+.text-transition-10000 { /* TODO: Change this name to color transition. */
 	transition: color 10000ms linear;
 }
 
