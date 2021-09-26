@@ -65,12 +65,14 @@
 
 /* For selection colour of firefox. */
 ::-moz-selection { /* Code for Firefox */
-	background: rgba(0, 0, 0, 0.2);
+	color: white;
+	background: rgba(0, 0, 0, 0.5);
 }
 
 /* For selection colour of others. */
 ::selection {
-	background: rgba(0, 0, 0, 0.2);
+	color: white;
+	background: rgba(0, 0, 0, 0.5);
 }
 
 .center-of-page {
