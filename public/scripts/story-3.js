@@ -7,10 +7,11 @@ const line2 = [`চে`, `ত`, `না`, `ও`, `চে`, `ত`, `না`, `র
 const line3 = [`আ`, `সে`, `যা`, `য়`, `আ`, `সে`, `যা`, `য়`, `আ`, `সে`, `যা`, `য়`, `আ`, `সে`, `যা`, `য়`, `আ`, `সে`, `যা`, `য়`, `আ`, `সে`, `যা`, `য়`, `আ`, `সে`, `যা`, `য়`, `আ`, `সে`, `যা`, `য়`, `আ`, `সে`, `যা`, `য়`, `আ`, `সে`, `যা`, `য়`, `আ`, `সে`, `যা`, `য়`];
 
 const lines = [line0, line1, line2, line3];
-const fontSizes = [1, 1.5, 2, 2.5, 3, 2.5, 2, 1.5, 1, 1.5, 2, 2.5, 3, 2.5, 2, 1.5, 1, 1.5, 2, 2.5, 3, 2.5, 2, 1.5, 1, 1.5, 2, 2.5, 3, 2.5, 2, 1.5, 1, 1.5, 2, 2.5, 3, 2.5, 2, 1.5, 1.8, 2, 1.5, 1];
+const fontSizes = [1, 1.5, 2, 2.5, 3, 2.5, 2, 1.5, 1, 1.5, 2, 2.5, 3, 2.5, 2, 1.5, 1, 1.5, 2, 2.5, 3, 2.5, 2, 1.5, 1, 1.5, 2, 2.5, 3, 2.5, 2, 1.5, 1, 1.5, 2, 2.5, 3, 2.5, 2, 1.5, 1.8, 2, 1.5, 1.2];
 const fontSizesLength = fontSizes.length;
+const fontSizeFactor = 0.8;
 
-const transitionTime = 500;
+const transitionTime = 625;
 
 const waveText = document.getElementById(`3-wave-of-text`);
 
@@ -25,7 +26,7 @@ lines.forEach((line, indexOfLine) => {
 		let textCol = document.createElement(`div`);
 		textCol.id = `3-${indexOfLine}-${indexOfChar}`;
 		textCol.className = `col44 s1`;
-		textCol.style.fontSize = fontSizes[indexOfChar] + `vw`;
+		textCol.style.fontSize = fontSizes[indexOfChar] * fontSizeFactor + `vw`;
 		textCol.style.transition = `font-size ${transitionTime}ms linear`;
 		textCol.innerHTML += char;
 		/*waveText.append(textCol);*/
@@ -49,7 +50,7 @@ setInterval(() => {
 	lines.forEach((line, indexLine) => {
 		line.forEach((char, indexChar) => {
 			let theCharSpan = document.getElementById(`3-${indexLine}-${indexChar}`);
-			theCharSpan.style.fontSize = fontSizes[(indexChar + iteration) % fontSizesLength] + `vw`;
+			theCharSpan.style.fontSize = fontSizes[(indexChar + iteration) % fontSizesLength] * fontSizeFactor + `vw`;
 		});
 	});
 	iteration++;
