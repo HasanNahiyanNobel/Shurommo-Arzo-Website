@@ -22,36 +22,27 @@ lines.forEach((line, indexOfLine) => {
 	waveText.append(row);
 
 	line.forEach((char, indexOfChar) => {
-		/*waveText.innerHTML += `<div class="col44 s1">`;*/
 		let textCol = document.createElement(`div`);
 		textCol.id = `3-${indexOfLine}-${indexOfChar}`;
-		textCol.className = `col44 s1`;
 		textCol.style.fontSize = fontSizes[indexOfChar] * fontSizeFactor + `vw`;
+		textCol.className = `col44 s1 center`;
 		textCol.style.transition = `font-size ${transitionTime}ms linear`;
 		textCol.innerHTML += char;
-		/*waveText.append(textCol);*/
 		row.appendChild(textCol);
 
-		let spaceSpan = document.createElement(`span`);
-		spaceSpan.style.fontSize = `1vw`;
-		/*spaceSpan.innerHTML += ` `;
-		waveText.append(spaceSpan);*/
+		/*let spaceSpan = document.createElement(`span`);
+		spaceSpan.style.fontSize = `1vw`;*/
 	});
-
-	if (indexOfLine < lines.length - 1) {
-		/*waveText.innerHTML += `<br>`;*/
-	}
 });
 
-let iteration = 1;
+let phase = 0;
 
 setInterval(() => {
-	console.log(iteration);
-	lines.forEach((line, indexLine) => {
-		line.forEach((char, indexChar) => {
-			let theCharSpan = document.getElementById(`3-${indexLine}-${indexChar}`);
-			theCharSpan.style.fontSize = fontSizes[(indexChar + iteration) % fontSizesLength] * fontSizeFactor + `vw`;
+	lines.forEach((line, indexOfLine) => {
+		line.forEach((char, indexOfChar) => {
+			let currentChars = document.getElementById(`3-${indexOfLine}-${indexOfChar}`); // A plural "chars", as the kars and juktobornos are animated with the main borno (character).
+			currentChars.style.fontSize = fontSizes[(indexOfChar + phase) % fontSizesLength] * fontSizeFactor + `vw`;
 		});
 	});
-	iteration++;
+	phase++;
 }, transitionTime);
