@@ -35,6 +35,7 @@
 	/*margin: 0 auto; !* Same as container. *!*/
 	/*max-width: 1280px; !* Same as container. *!*/
 	/*width: 90%; !* Same as container. *!*/
+	padding-bottom: 2vw; /* For a bit extra spacing at the end of page. */
 }
 
 @media only screen and (min-width: 601px) {
