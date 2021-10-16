@@ -1,3 +1,4 @@
+/* TODO: Perhaps change name of this to `story-1`. */
 const body = document.body;
 // const html = document.documentElement;
 

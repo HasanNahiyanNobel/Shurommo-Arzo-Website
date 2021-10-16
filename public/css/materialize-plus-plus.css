@@ -35,6 +35,7 @@
 	/*margin: 0 auto; !* Same as container. *!*/
 	/*max-width: 1280px; !* Same as container. *!*/
 	/*width: 90%; !* Same as container. *!*/
+	padding-bottom: 2vw; /* For a bit extra spacing at the end of page. */
 }
 
 @media only screen and (min-width: 601px) {
@@ -197,7 +198,28 @@ header {
  * Transitions of texts and backgrounds
  */
 
-.text-transition-10000 {
+.text-size-transition-250 {
+	transition: font-size 250ms linear;
+}
+
+.text-size-transition-500 {
+	transition: font-size 500ms linear;
+}
+
+/* TODO: Perhaps move this to custom CSS of story 3. */
+.text-size-transition-625 {
+	transition: font-size 625ms linear;
+}
+
+.text-size-transition-750 {
+	transition: font-size 750ms linear;
+}
+
+.text-size-transition-1000 {
+	transition: font-size 1000ms linear;
+}
+
+.text-transition-10000 { /* TODO: Change this name to color transition. */
 	transition: color 10000ms linear;
 }
 
