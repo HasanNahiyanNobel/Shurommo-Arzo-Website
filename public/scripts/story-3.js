@@ -45,12 +45,3 @@ setInterval(() => {
 	});
 	phase++;
 }, transitionTimeMs);
-
-
-// TODO: Remove this debug function
-window.onscroll = function() {
-	let vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
-	console.log(`${Math.round(window.pageYOffset)}: ${vh}`);
-};
-
-window.onscroll(undefined);
