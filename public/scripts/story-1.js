@@ -1,4 +1,3 @@
-/* TODO: Perhaps change name of this to `story-1`. */
 const body = document.body;
 // const html = document.documentElement;
 
@@ -12,28 +11,20 @@ const graphics = document.getElementById(`graphics-main-shahorik`);
 const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0); // Also from: https://stackoverflow.com/a/8876069
 const navbarHeight = navbar.offsetHeight;
 
-/*const graphicsStartPos = graphics.offsetTop - navbarHeight;
+const graphicsStartPos = graphics.offsetTop - navbarHeight;
 const graphicsHeight = graphics.offsetHeight;
 console.log(`Graphics start: ${graphicsStartPos}`);
 console.log(`Graphics end: ${graphicsStartPos + graphicsHeight}`);
-console.log(`Page height: ${body.offsetHeight}`);*/
-
-/*
-TODO: Remove this test.
-alert(`Start?`);
-
-let test = new Audio(`audios/IfNotForYou.mp3`);
-test.play();
-*/
+console.log(`Page height: ${body.offsetHeight}`);
 
 window.onscroll = function() {
 	let graphicsPos = graphics.getBoundingClientRect();
 	let currentTop = Math.round(graphicsPos.top) - navbarHeight;
-	// let currentBottom = Math.round(graphicsPos.bottom) - navbarHeight;
-	// console.log(`Current: ${currentTop}, ${currentBottom}`);
+	let currentBottom = Math.round(graphicsPos.bottom) - navbarHeight;
+	console.log(`Current: ${currentTop}, ${currentBottom}`);
 
 	if (currentTop < vh / 2) { // When the image comes halfway through the viewport, we see the colour-change
-		navWrapper.style.backgroundColor = `#fbc02d`; // yellow darken-2
+		navbar.style.backgroundColor = `#fbc02d`; // yellow darken-2
 		body.style.backgroundColor = `#fff9c4`; // yellow lighten-4
 	}
 };
