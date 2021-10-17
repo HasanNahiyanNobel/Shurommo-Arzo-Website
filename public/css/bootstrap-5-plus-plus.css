@@ -1,0 +1,158 @@
+/*
+ *
+ * Custom CSS for this website.
+ *
+ */
+
+
+/*
+ * Scrollbar
+ */
+
+/* width */
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: rgba(200, 200, 200, 0.5);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: rgba(50, 50, 50, 0.5);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: rgba(50, 50, 50, 0.75);
+}
+
+
+/*
+ * Background, navbar and container
+ */
+
+.home-bg {
+	background: url("../images/Cover.png") center center no-repeat;
+	background-size: cover;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	min-height: 100vh;
+}
+
+.navbar, .container {
+	font-family: 'Noto Serif Bengali', 'Kalpurush', Lora, serif;
+}
+
+.container {
+	padding-top: 85px;
+	padding-bottom: 25px;
+}
+
+@media (min-width: 576px) {
+	.container-padded-se {
+		/* Inherited. */
+	}
+}
+
+@media (min-width: 768px) {
+	.container-padded-se {
+		/* Inherited. */
+	}
+}
+
+@media (min-width: 992px) {
+	.container-padded-se {
+		padding-left: 20%;
+		padding-right: 20%;
+	}
+}
+
+@media (min-width: 1200px) {
+	.container-padded-se {
+		/* Inherited from 992px */
+	}
+}
+
+@media (min-width: 1400px) {
+	.container-padded-se {
+		/* Inherited from 992px */
+	}
+}
+
+
+/*
+ * Orientations
+ */
+
+.center-of-page {
+	margin: 0;
+	position: absolute;
+	top: 50vh;
+	left: 50vw;
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+.bottom-of-page {
+	margin: 0;
+	position: absolute;
+	bottom: 0;
+	left: 50vw;
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+
+/**
+ * Texts, fonts and images
+ */
+
+.justify-align {
+	text-align: justify;
+}
+
+.text-bold {
+	font-weight: bold;
+}
+
+.text-shadowed {
+	text-shadow: 1px 1px 1px black;
+}
+
+/* For the selection colour of firefox. */
+::-moz-selection { /* Code for Firefox */
+	color: white;
+	background: rgba(0, 0, 0, 0.5);
+}
+
+/* For the selection colour of others. */
+::selection {
+	color: white;
+	background: rgba(0, 0, 0, 0.5);
+}
+
+.disabled {
+	/*user-drag: none;*/ /* Commenting out due to unknown property warning. */
+	-webkit-user-drag: none;
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+
+
+/*
+ * Transitions
+ */
+
+.transition-opacity-1000 {
+	transition: opacity 1000ms;
+}
+
+.transition-opacity-2000 {
+	transition: opacity 2000ms;
+}

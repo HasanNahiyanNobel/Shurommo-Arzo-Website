@@ -1,91 +1,136 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html lang="bn">
 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>সুরম্য আর্য</title>
 
-	<!-- Font Awesome -->
-	<!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">-->
-
-	<!-- Custom Bangla Fonts -->
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="fonts/Kalpurush.css">
 
-	<!-- Google Icon Fonts -->
-	<!--<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">-->
+	<!-- Bootstrap 5 CSS -->
+	<link rel="stylesheet" href="css/bootstrap-5/bootstrap.min.css">
 
-	<!-- CSS -->
-	<link rel="stylesheet" href="css/materialize-edited.css">
-	<link rel="stylesheet" href="css/materialize-plus-plus.css">
+	<!-- Custom CSS for this Site -->
+	<link rel="stylesheet" href="css/bootstrap-5-plus-plus.css">
 
-	<title>সুরম্য আর্য</title>
+	<!-- Custom Styles for this Page -->
+	<style>
+		a {
+			text-decoration: none;
+			color: inherit;
+		}
+
+		a:hover {
+			color: dimgrey;
+		}
+	</style>
 </head>
 
 <body>
-	<header>
-		<div class="navbar-fixed">
-			<nav class="nav-wrapper transparent">
-				<div class="container">
-					<a href="#" class="brand-logo center">সুরম্য আর্য</a>
-				</div>
-			</nav>
-		</div>
-
-		<div class="navbar-fixed nav-bottom">
-			<nav class="nav-wrapper transparent z-depth-0">
-				<div class="container">
-					<div class="row no-select">
-						<div class="col s4 m4 l4">
-							<a href="#about-me" class="modal-trigger">
-								<div class="btn-large btn-transparent">বিশদ</div>
-							</a>
-						</div>
-						<div class="col s4 m4 l4">
-							<a href="#stories" class="modal-trigger">
-								<div class="btn-large btn-transparent">গপ্পো</div>
-							</a>
-						</div>
-						<div class="col s4 m4 l4">
-							<a href="#login" class="modal-trigger">
-								<div class="btn-large btn-transparent">গভীরে ডুব</div>
-							</a>
-						</div>
-					</div>
-				</div>
-			</nav>
-		</div>
+	<header class="home-bg">
+		<nav class="navbar navbar-dark bg-transparent">
+			<div class="container-fluid justify-content-center">
+				<a class="navbar-brand" href="#">সুরম্য আর্য</a>
+			</div>
+		</nav>
 	</header>
 
-	<!-- Modal of `About Me` -->
-	<div class="modal modal-transparent z-depth-0" id="about-me">
-		<div class="modal-content center flow-text">
-			আর্যরে এত সহজে খুঁজে পাওয়া যায় না।
+
+	<div class="container container-padded-se pt-5"> <!-- The default padding for container (set by me) is a bit larger. In this case I needed a smaller one. -->
+		<div id="stories">
+			<div class="h1">গপ্পো</div>
+
+			<div class="card">
+				<div class="card-header">
+					এপ্রিল, ২০২১
+				</div>
+				<div class="card-body">
+					<h4 class="card-title">শাহরিক</h4>
+					<p class="card-text">
+						শত বিপত্তি সত্ত্বেও আমি শান্তার কথা লিখবো, কারণ এই কথাগুলা লিখে রাখা জরুরি। একটা সময় আসবে, যখন এইসব কথা পুনরাবৃত্ত করতে শত শত মৃতদেহ ভীড় করবে, তারা হাত বাড়ায়ে দিবে, কান ছড়ায়ে দিবে, তারা উন্মত্ত হয়ে চিৎকার করবে। তারা মাটির ওপর দাঁড়ায়ে মাটিকে কাদায় পরিণত করবে, এবং...
+					</p>
+					<a href="1-shahorik.html" class="btn btn-sm btn-outline-dark">বিশদ</a>
+				</div>
+			</div>
+
+			<br>
+
+			<div class="card">
+				<div class="card-header">
+					মে, ২০২১
+				</div>
+				<div class="card-body">
+					<h4 class="card-title">ব্যাখ্যাতীত</h4>
+					<p class="card-text">
+						এইরকম দিন আসে, এইরকমই একেকটা দিন আসে…<br>
+						যেই ভোরে অমলের মৃত্যু ঘটবে, সেই ভোরটা হবে গ্লুমি<br>
+						কেমন একটা আবছা আলো চারদিকে<br>
+						কেমন একটা আবছা অন্ধকারে ডুবে থাকবে...
+					</p>
+					<a href="2-byakhyateeto.pdf" class="btn btn-sm btn-outline-dark">বিশদ</a> <!-- TODO: Disable download of this pdf. -->
+				</div>
+			</div>
+
+			<br>
+
+			<div class="card">
+				<div class="card-header">
+					মে, ২০২১
+				</div>
+				<div class="card-body">
+					<h4 class="card-title">ধানমন্ডি আড়াইয়ের মধ্যসন্ধ্যায় যেমন করে বিষণ্নতা নামে</h4>
+					<p class="card-text">
+						এবং এভাবেই এটা ঘটবে—<br>
+						মিতু একইসঙ্গে জন-অরণ্যে ও শব্দহীন সলিচুডে মাথা চেপে বসে থাকবে<br>
+						তাকে দেখা যাবে<br>
+						তাকে দেখা যাবে না<br>
+						প্রতি মুহূর্তে একটা মিতু অদৃশ্য হয়ে আরেকটা মিতু দৃশ্যমান হবে...
+					</p>
+					<a href="3-dhanmondi-arhaiyer-modhyoshondhay-jemon-kore-bishonnota-name.html" class="btn btn-sm btn-outline-dark">বিশদ</a> <!-- TODO: Disable download of this pdf. -->
+				</div>
+			</div>
+
+			<br>
+
+			<div class="card">
+				<div class="card-header">
+					জুলাই, ২০২১
+				</div>
+				<div class="card-body">
+					<h5 class="card-title">উপত্যকা, সেন্ট্রাল রোড</h5>
+					<p class="card-text">
+						সেন্ট্রাল রোডের উপত্যকায় এক্স্যাক্ট এমন একটা সন্ধ্যা নামবে...
+					</p>
+					<a href="4-upotyoka-central-road.pdf" class="btn btn-sm btn-outline-dark">বিশদ</a> <!-- TODO: Disable download of this pdf. -->
+				</div>
+			</div>
+
 		</div>
 	</div>
 
-	<!-- Modal of `Stories` -->
-	<div class="modal modal-transparent z-depth-0" id="stories">
-		<div class="modal-content center flow-text">
-			গপ্পেরা এখনো প্রকাশ্যে আসেনি।
+
+	<div id="footer" class="small text-light bg-dark">
+		<div class="container text-center p-3">
+			&copy; ২০২১, সুরম্য আর্য<br>
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-slash" viewBox="0 0 16 16">
+				<path d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294l4-13zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0zm6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0z"/>
+			</svg>
+			<!--<a href="#" target="_blank" class="text-light">ঔদ্ধত্য</a>-->
+			ঔদ্ধত্য
+			<!-- TODO: Add the correct hyperlink here. -->
 		</div>
 	</div>
 
-	<!-- Modal of `Login` -->
-	<div class="modal modal-transparent z-depth-0" id="login">
-		<div class="modal-content center flow-text">
-			গভীরে আপাতত ডুব দেয়া যাচ্ছে না।
-		</div>
-	</div>
-
-	<!-- JavaScripts -->
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
-	<script>
-		$(document).ready(function() {
-			$('.modal').modal();
-		});
-	</script>
+	<!-- Bootstrap 5 JS -->
+	<script crossorigin="anonymous" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
