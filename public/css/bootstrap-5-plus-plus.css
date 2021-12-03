@@ -35,7 +35,7 @@
  */
 
 .navbar, .container, .container-fluid {
-	font-family: 'Noto Serif Bengali', 'Kalpurush', Lora, serif;
+	font-family: 'Noto Serif Bengali', Lora, serif;
 }
 
 @media (min-width: 576px) {
