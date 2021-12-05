@@ -1,0 +1,160 @@
+<!--
+---- এখানে কী চাই? 🤨
+---- এই ফাইলটা পাইথন ফ্রেমওয়ার্ক দিয়ে নির্মিত, এবং এইচটিএমএল মিনিফায়ার (এনপিএম) দিয়ে ক্ষুদ্রীকৃত।
+---- অধিকার ২০২১, সুরম্য আর্য।
+--->
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="সুরম্য আর্য"> <!-- TODO: Generate this dynamically with title -->
+
+    <!-- Bootstrap 5 CSS -->
+    <link rel="stylesheet" href="css/bootstrap-5-customized.min.css">
+    <!-- Custom CSS for this site -->
+    <link rel="stylesheet" href="css/bootstrap-5-plus-plus.min.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico"/>
+
+    <!-- Title -->
+    <title>সুরম্য আর্য</title> <!-- TODO: Generate this dynamically -->
+</head>
+
+<body>
+    <!-- TODO: Implement this noscript -->
+    <!--<noscript>
+        <style>
+			.container {
+				display: none;
+			}
+        </style>
+        <div class="center-of-page center disabled">
+            <h1>দুর্বুদ্ধির একশেষ</h1>
+            <div class="flow-text">জাভাস্ক্রিপ্ট ছাড়া এইসব পৃষ্ঠার দর্শন পাওয়া যাবে না—</div>
+        </div>
+    </noscript>-->
+
+    <!-- Navbar -->
+    <nav class="navbar sticky-top navbar-dark bg-dark mb-3">
+        <div class="container-fluid justify-content-center">
+            <a href="index.html" class="navbar-brand h1 mb-0">সুরম্য আর্য</a>
+        </div>
+    </nav>
+
+    <!-- Spinner until all the images are loaded -->
+    <div id="oteeddho-spinner" class="center-of-page">
+        <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status"><span class="visually-hidden">Loading...</span></div>
+    </div>
+
+    <!-- Main block -->
+
+<!-- Cover Image -->
+<div class="container container-fluid p-5">
+    <div class="row justify-content-center">
+        <div class="col col-sm-10 col-md-8 col-lg-6 col-xl-4">
+            <img src="images/cover.svg" alt="Cover">
+        </div>
+    </div>
+</div>
+
+<!-- Links of Stories -->
+<div class="container"> <!-- The default padding for container (set by me) is a bit larger. In this case I needed a smaller one. -->
+    <div class="row justify-content-center">
+        <div class="col col-md-10 col-lg-8 col-xl-7">
+            <div id="stories">
+                <div class="h1">গপ্পো</div>
+
+                <div class="card">
+                    <div class="card-header">
+                        এপ্রিল, ২০২১
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">শাহরিক</h4>
+                        <p class="card-text">
+                            শত বিপত্তি সত্ত্বেও আমি শান্তার কথা লিখবো, কারণ এই কথাগুলা লিখে রাখা জরুরি। একটা সময় আসবে, যখন এইসব কথা পুনরাবৃত্ত করতে শত শত মৃতদেহ ভীড় করবে, তারা হাত বাড়ায়ে দিবে, কান ছড়ায়ে দিবে, তারা উন্মত্ত হয়ে চিৎকার করবে। তারা মাটির ওপর দাঁড়ায়ে মাটিকে কাদায় পরিণত করবে, এবং...
+                        </p>
+                        <a href="1-shahorik.html" class="btn btn-sm btn-outline-dark stretched-link">বিশদ</a>
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="card">
+                    <div class="card-header">
+                        মে, ২০২১
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">ব্যাখ্যাতীত</h4>
+                        <p class="card-text">
+                            এইরকম দিন আসে, এইরকমই একেকটা দিন আসে…<br>
+                            যেই ভোরে অমলের মৃত্যু ঘটবে, সেই ভোরটা হবে গ্লুমি<br>
+                            কেমন একটা আবছা আলো চারদিকে<br>
+                            কেমন একটা আবছা অন্ধকারে ডুবে থাকবে...
+                        </p>
+                        <a href="2-byakhyateeto.html" class="btn btn-sm btn-outline-dark stretched-link">বিশদ</a>
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="card">
+                    <div class="card-header">
+                        মে, ২০২১
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">ধানমন্ডি আড়াইয়ের মধ্যসন্ধ্যায় যেমন করে বিষণ্নতা নামে</h4>
+                        <p class="card-text">
+                            এবং এভাবেই এটা ঘটবে—<br>
+                            মিতু একইসঙ্গে জন-অরণ্যে ও শব্দহীন সলিচুডে মাথা চেপে বসে থাকবে<br>
+                            তাকে দেখা যাবে<br>
+                            তাকে দেখা যাবে না<br>
+                            প্রতি মুহূর্তে একটা মিতু অদৃশ্য হয়ে আরেকটা মিতু দৃশ্যমান হবে...
+                        </p>
+                        <a href="3-dhanmondi-arhaiyer-modhyoshondhay-jemon-kore-bishonnota-name.html" class="btn btn-sm btn-outline-dark stretched-link">বিশদ</a>
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="card">
+                    <div class="card-header">
+                        জুলাই, ২০২১
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">উপত্যকা, সেন্ট্রাল রোড</h5>
+                        <p class="card-text">
+                            সেন্ট্রাল রোডের উপত্যকায় এক্স্যাক্ট এমন একটা সন্ধ্যা নামবে...
+                        </p>
+                        <a href="4-upotyoka-central-road.html" class="btn btn-sm btn-outline-dark stretched-link">বিশদ</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<div id="footer" class="bg-dark text-light mt-5">
+    <div class="container small text-center p-3">
+        &copy; ২০২১, সুরম্য আর্য<br>
+    </div>
+</div>
+
+
+    <!-- Bootstrap 5 JS -->
+    <script crossorigin="anonymous" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

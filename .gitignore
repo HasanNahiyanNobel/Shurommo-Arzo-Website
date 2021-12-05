@@ -4,6 +4,9 @@
 # Python virtual environment
 venv/
 
+# NPM Modules
+src_html/node_modules/
+
 # GitHub file
 .github/
 
