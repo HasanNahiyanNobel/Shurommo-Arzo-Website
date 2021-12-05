@@ -10,6 +10,8 @@ import os.path
 import glob
 
 # Variables
+pre_title = []
+title = []
 pre_content = []
 content = []
 post_content = []
@@ -21,6 +23,11 @@ for py_file in py_files:
 
 # Read pre- and post-contents from base file
 with open(BASE_FILE, encoding='utf-8') as f:
+    for line in f:
+        if line.strip() == TITLE_BLOCK_MARKER:
+            break
+        pre_title.append(line)
+
     for line in f:
         if line.strip() == CONTENT_BLOCK_MARKER:
             break
@@ -41,25 +48,21 @@ for source_file in source_files:
     with open(source_path, encoding='utf-8') as f:
         for line in f:
             current_line = line.strip()
+            if current_line == START_OF_TITLE_BLOCK_MARKER:
+                title = read_block(f)[0].strip()
+                if not title:
+                    title = ['<title>সুরম্য আর্য</title>']
+                else:
+                    title = ['<title>', title, ' – সুরম্য আর্য</title>']
             if current_line == START_OF_CONTENT_BLOCK_MARKER:
                 content = read_block(f)
-
-    # Create modified pre- and post-contents (to give the current page an `active` class in navbar)
-    modified_pre_content = [
-        sub.replace('{{ ' + source_file + ' }}', REPLACED_ACTIVE_CLASS)
-        for sub in pre_content
-    ]
-    modified_post_content = [
-        sub.replace('{{ ' + source_file + ' }}', REPLACED_ACTIVE_CLASS)
-        for sub in post_content
-    ]
 
     # Write the contents in respective output files
     output_path = OUTPUT_DIR + '\\' + source_file
     with open(
             output_path, 'w+', encoding='utf-8'
     ) as f:  # The 'w+' option creates the file if it does not exist already
-        f.writelines(modified_pre_content + content + modified_post_content)
+        f.writelines(pre_title + title + pre_content + content + post_content)
 
     # Clean the arrays
     fluid_content = []

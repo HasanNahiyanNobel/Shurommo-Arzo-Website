@@ -9,11 +9,11 @@ OUTPUT_DIR = 'public'
 BASE_FILE = SOURCE_DIR + '\\_base.html'
 
 DATA_BLOCK_MARKER = '{% block data %}'
+TITLE_BLOCK_MARKER = '{% block title %}{% endblock %}'
+START_OF_TITLE_BLOCK_MARKER = '{% block title %}'
 CONTENT_BLOCK_MARKER = '{% block content %}{% endblock %}'
 START_OF_CONTENT_BLOCK_MARKER = '{% block content %}'
 END_OF_BLOCK_MARKER = '{% endblock %}'
-
-REPLACED_ACTIVE_CLASS = 'fw-bold active'
 
 COPYRIGHT_LINE = '<!--\n---- এখানে কী চাই? 🤨\n---- এই ফাইলটা পাইথন ফ্রেমওয়ার্ক দিয়ে নির্মিত, এবং এইচটিএমএল মিনিফায়ার (এনপিএম) দিয়ে ক্ষুদ্রীকৃত।\n---- অধিকার ২০২১, সুরম্য আর্য।\n--->'
 
