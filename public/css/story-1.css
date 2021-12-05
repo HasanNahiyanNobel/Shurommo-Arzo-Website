@@ -1,6 +1,4 @@
-/* For rotating text. */
 .rotate {
-	/*transform-origin: 0 0;*/
 	writing-mode: vertical-lr;
 	text-orientation: mixed;
 	transform: rotate(180deg);
@@ -29,7 +27,6 @@
 	width: 100%;
 	block-size: fit-content;
 	font-size: 2vw;
-	/*border: 1px solid black;*/
 }
 
 /**
@@ -49,18 +46,4 @@
 	left: auto;
 	right: auto;
 	margin-left: auto;
-	/*border: 1px solid black;*/
-}
-
-
-/*
- * Transitions
- */
-
-.bg-transition-1000 {
-	transition: background-color 1000ms linear;
-}
-
-.bg-transition-5000 {
-	transition: background-color 5000ms linear;
 }

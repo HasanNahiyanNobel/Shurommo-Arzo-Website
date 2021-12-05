@@ -38,35 +38,8 @@
 	font-family: 'Noto Serif Bengali', Lora, serif;
 }
 
-@media (min-width: 576px) {
-	.container-padded-se {
-		/* Inherited. */
-	}
-}
-
-@media (min-width: 768px) {
-	.container-padded-se {
-		/* Inherited. */
-	}
-}
-
-@media (min-width: 992px) {
-	.container-padded-se {
-		padding-left: 20%;
-		padding-right: 20%;
-	}
-}
-
-@media (min-width: 1200px) {
-	.container-padded-se {
-		/* Inherited from 992px */
-	}
-}
-
-@media (min-width: 1400px) {
-	.container-padded-se {
-		/* Inherited from 992px */
-	}
+.oteeddho-unloaded-div {
+	display: none !important;
 }
 
 

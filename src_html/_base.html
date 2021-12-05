@@ -40,12 +40,19 @@
         </div>
     </noscript>-->
 
+    <!-- Navbar -->
     <nav class="navbar sticky-top navbar-dark bg-dark mb-3">
         <div class="container-fluid justify-content-center">
             <h1 class="navbar-brand mb-0">সুরম্য আর্য</h1>
         </div>
     </nav>
 
+    <!-- Spinner until all the images are loaded -->
+    <div id="oteeddho-spinner" class="center-of-page">
+        <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status"><span class="visually-hidden">Loading...</span></div>
+    </div>
+
+    <!-- Main block -->
     {% block content %}{% endblock %}
 
     <!-- Bootstrap 5 JS -->
