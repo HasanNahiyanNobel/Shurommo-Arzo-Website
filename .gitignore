@@ -1,6 +1,9 @@
 # Jetbrains configuration file
 .idea/
 
+# Python virtual environment
+venv/
+
 # GitHub file
 .github/
 
