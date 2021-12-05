@@ -31,9 +31,9 @@ with open(BASE_FILE, encoding='utf-8') as f:
 
 # Make a list of the source files. Concept from: https://stackoverflow.com/a/3207973.
 source_files = [
-    f for f in listdir(SOURCE_DIR)
-    if isfile(join(SOURCE_DIR, f)) and f[0] != '_'
-]  # Files starting with an underscore are template files, so they are not included in this list.
+    f for f in listdir(SOURCE_DIR) if isfile(join(SOURCE_DIR, f)) and
+    f[0] != '_' and os.path.splitext(f)[1] == '.html'
+]  # Files starting with an underscore are template files, so they are not included in this list. Also, we are processing only html files.
 
 for source_file in source_files:
     # Read the source file
@@ -81,8 +81,8 @@ for output_file in output_files:
 
 # Minify the script using html-minifier (https://www.npmjs.com/package/html-minifier)
 os.system(
-    'html-minifier --collapse-whitespace --minify-js true --no-html5 --remove-comments --remove-empty-attributes --remove-optional-tags --remove-redundant-attributes --input-dir public_beta --output-dir public_beta --file-ext html'
-)  # TODO: Change input and output dir here
+    'html-minifier --collapse-whitespace --minify-js true --no-html5 --remove-comments --remove-empty-attributes --remove-optional-tags --remove-redundant-attributes --input-dir public --output-dir public --file-ext html'
+)
 
 # Add copyright lines to the minified files
 for output_file in output_files:
