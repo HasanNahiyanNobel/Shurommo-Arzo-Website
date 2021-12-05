@@ -2,15 +2,22 @@
 # This converter generates static html files from a base template and source files (a bit like Django!)
 #
 
-import os.path
+# Imports
 from os import listdir
 from os.path import isfile, join
 from utilities import *
+import os.path
+import glob
 
 # Variables
 pre_content = []
 content = []
 post_content = []
+
+# Format every .py file using yapf Google style
+py_files = glob.glob('*.py')
+for py_file in py_files:
+    os.system('yapf ' + py_file + ' -i --style google --no-local-style')
 
 # Read pre- and post-contents from base file
 with open(BASE_FILE, encoding='utf-8') as f:

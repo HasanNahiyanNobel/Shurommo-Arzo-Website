@@ -3,9 +3,7 @@ This script contains some constants and functions used by the other scripts.
 Copyright © 2021 by Oteeddho.
 """
 
-#
 # Constants
-#
 SOURCE_DIR = 'src_html'
 OUTPUT_DIR = 'public_beta'
 BASE_FILE = SOURCE_DIR + '\\_base.html'
@@ -20,8 +18,8 @@ REPLACED_ACTIVE_CLASS = 'fw-bold active'
 COPYRIGHT_LINE = '<!--\n---- এখানে কী চাই? 🤨\n---- এই ফাইলটা পাইথন ফ্রেমওয়ার্ক দিয়ে নির্মিত, এবং এইচটিএমএল মিনিফায়ার দিয়ে ক্ষুদ্রীকৃত।\n---- © ২০২১, সুরম্য আর্য।\n--->'
 
 
-
-def prepend_line (filepath, line_to_prepend):
+# Functions
+def prepend_line(filepath, line_to_prepend):
     """
     Prepend lines at the beginning of a file. Concept from https://stackoverflow.com/a/5917395.
 
@@ -35,9 +33,7 @@ def prepend_line (filepath, line_to_prepend):
         a_file.write(line_to_prepend.rstrip('\r\n') + '\n' + content)
 
 
-
-# Read content block
-def read_block (file):
+def read_block(file):
     """
     Read lines from a file until the end of block marker is read.
 
@@ -52,8 +48,7 @@ def read_block (file):
     return block
 
 
-
-def english_to_bangla_number (number=None):
+def english_to_bangla_number(number=None):
     """
     A slowww, but effective function to convert English numbers to Bangla, as a string.
 
