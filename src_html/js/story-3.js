@@ -13,35 +13,36 @@ const transitionTimeMs = 625;
 
 const waveText = document.getElementById(`3-wave-of-text`);
 
-
 // Create the initial layout
 lines.forEach((line, indexOfLine) => {
-    let row = document.createElement(`div`);
-    row.className = `row`;
-    row.id = `3-row-${indexOfLine}`;
-    waveText.append(row);
+  let row = document.createElement(`div`);
+  row.className = `row`;
+  row.id = `3-row-${indexOfLine}`;
+  waveText.append(row);
 
-    line.forEach((char, indexOfChar) => {
-        let textCol = document.createElement(`div`);
-        textCol.id = `3-${indexOfLine}-${indexOfChar}`;
-        textCol.className = `col44 s1`;
-        textCol.style.fontSize = fontSizes[fontSizesLength - indexOfChar] * fontSizeFactor + `vw`;
-        textCol.style.transition = `font-size ${transitionTimeMs}ms linear`;
-        textCol.innerHTML += char;
-        row.appendChild(textCol);
-    });
+  line.forEach((char, indexOfChar) => {
+    let textCol = document.createElement(`div`);
+    textCol.id = `3-${indexOfLine}-${indexOfChar}`;
+    textCol.className = `col44 s1`;
+    textCol.style.fontSize = fontSizes[fontSizesLength - indexOfChar] *
+        fontSizeFactor + `vw`;
+    textCol.style.transition = `font-size ${transitionTimeMs}ms linear`;
+    textCol.innerHTML += char;
+    row.appendChild(textCol);
+  });
 });
-
 
 // Add the wave effect with regular time interval
 let phase = 0;
 setInterval(() => {
-    // TODO: Figure out why this makes the window shake.
-    lines.forEach((line, indexOfLine) => {
-        line.forEach((char, indexOfChar) => {
-            let currentChars = document.getElementById(`3-${indexOfLine}-${indexOfChar}`); // A plural "chars", as the kars and juktobornos are animated with the main borno (character).
-            currentChars.style.fontSize = fontSizes[(fontSizesLength - indexOfChar + phase) % fontSizesLength] * fontSizeFactor + `vw`; // Traversing in reverse order, to make the wave move in the reading direction.
-        });
+  // TODO: Figure out why this makes the window shake.
+  lines.forEach((line, indexOfLine) => {
+    line.forEach((char, indexOfChar) => {
+      let currentChars = document.getElementById(
+          `3-${indexOfLine}-${indexOfChar}`); // A plural "chars", as the kars and juktobornos are animated with the main borno (character).
+      currentChars.style.fontSize = fontSizes[(fontSizesLength - indexOfChar +
+          phase) % fontSizesLength] * fontSizeFactor + `vw`; // Traversing in reverse order, to make the wave move in the reading direction.
     });
-    phase++;
+  });
+  phase++;
 }, transitionTimeMs);
