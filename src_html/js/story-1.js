@@ -1,23 +1,11 @@
-// JS to show spinner until the image is loaded.
-let theImage = document.getElementById(`graphics-main-shahorik`);
-let theDiv = document.getElementById(`oteeddho-unloaded-div`);
-let theSpinner = document.getElementById(`oteeddho-spinner`);
-
-let interval = setInterval(() => {
-  if (theImage.complete) {
-    theSpinner.classList.add(`d-none`);
-    theDiv.classList.remove(`d-none`);
-    clearInterval(interval);
-    handler();
-  }
-}, 100);
-
 // The handler function after the image is loaded.
-function handler() {
+start();
+
+function start() {
   const body = document.body;
   // const html = document.documentElement;
 
-  const navbar = document.getElementById(`main-navbar`);
+  const navbar = document.getElementsByTagName(`nav`)[0];
   // const navWrapper = document.getElementById(`main-nav-wrapper`);
   const graphics = document.getElementById(`graphics-main-shahorik`);
 
