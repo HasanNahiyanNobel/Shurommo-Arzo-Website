@@ -13,10 +13,15 @@ function startStory4() {
   navbar.style.transition = `background-color ${navbarTransitionTime} ${transitionSpeedCurve}`;
   body.style.transition = `background-color ${bodyTransitionTime} ${transitionSpeedCurve}, color ${bodyTransitionTime} ${transitionSpeedCurve}`;
 
-  window.onscroll = function() {
+  // Add scroll listener
+  document.addEventListener(`scroll`, scrollListener);
+
+  // Implement scroll listener
+  function scrollListener() {
     navbar.classList.remove(`bg-dark`);
     navbar.style.backgroundColor = changedBackgroundColour;
     body.style.backgroundColor = changedBackgroundColour;
     body.style.color = `#fff`;
-  };
+    document.removeEventListener(`scroll`, scrollListener);
+  }
 }
