@@ -3,12 +3,13 @@
 {% endblock %}
 
 {% block content %}
-<div class="oteeddho-unloaded-div">
+<!-- Main Div -->
+<div>
   <!-- Cover Image -->
   <div class="container container-fluid p-5">
     <div class="row justify-content-center">
       <div class="col col-sm-10 col-md-8 col-lg-6 col-xl-4">
-        <img src="images/cover.svg" alt="Cover">
+        <img src="images/cover.svg" alt="সুরম্য আর্য">
       </div>
     </div>
   </div>
@@ -91,7 +92,12 @@
   </div>
 
   <!-- Footer -->
-  <div id="footer" class="bg-dark text-light mt-5">
+  <div id="footer" class="bg-dark text-light" style="transform: translate(0,1.5rem)">
+    <!--
+      On the transformation of this footer:
+      The footer is actually **inside** the main div—which has a mb-4 class (meaning an 1.5rem margin at the bottom).
+      This is why a translation was needed—to cover the 1.5rem blank gap under the footer.
+    -->
     <div class="container small text-center p-3">
       &copy; ২০২১, সুরম্য আর্য<br>
     </div>

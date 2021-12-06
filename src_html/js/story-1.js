@@ -7,16 +7,19 @@ function startStory1() {
   let navbarHeight = navbar.offsetHeight;
   let vh = Math.max(document.documentElement.clientHeight || 0,
       window.innerHeight || 0); // Taken from: https://stackoverflow.com/a/8876069
+  let navbarTransitionTime = `1000ms`;
+  let bodyTransitionTime = `5000ms`;
+  let currentGraphicsPos = undefined;
+  let currentTop = undefined;
 
-  window.onscroll = function() {
-    let graphicsPos = graphics.getBoundingClientRect();
-    let currentTop = Math.round(graphicsPos.top) - navbarHeight;
-    let navbarTransitionTime = `1000ms`;
-    let bodyTransitionTime = `5000ms`;
+  // Add transitions
+  navbar.style.transition = `background-color ${navbarTransitionTime} linear`;
+  body.style.transition = `background-color ${bodyTransitionTime} linear`;
 
-    // Add transitions
-    navbar.style.transition = `background-color ${navbarTransitionTime} linear`;
-    body.style.transition = `background-color ${bodyTransitionTime} linear`;
+  document.addEventListener(`scroll`, () => {
+    // Get current graphics position and current top
+    currentGraphicsPos = graphics.getBoundingClientRect();
+    currentTop = Math.round(currentGraphicsPos.top) - navbarHeight;
 
     // When the image comes halfway through the viewport, we see the change of colour
     if (currentTop < vh / 2) {
@@ -28,6 +31,5 @@ function startStory1() {
       navbar.style.backgroundColor = ``;
       navbar.classList.add(`bg-dark`);
     }
-  };
-
+  });
 }

@@ -2,17 +2,9 @@
 উপত্যকা, সেন্ট্রাল রোড
 {% endblock %}
 
-<!--
-TODO: Simplify onscroll function of story-1.js
-TODO: Perhaps use the event listener in story 1 like story 4. :3
-TODO: Move oteeddho-unloaded-div to base html
-TODO: Replace oteeddho-unloaded-div with id `md` (main div) and a class `d-none`
-TODO: Replace oteeddho-spinner with is `ms` (main spinner)
-TODO: Fix JS according to the changes
--->
-
 {% block content %}
-<div class="oteeddho-unloaded-div">
+<!-- Main Div -->
+<div>
   <div class="container">
     <div class="row justify-content-center">
       <div class="col col-md-10 col-lg-8 col-xl-7 justify-align">
@@ -23,7 +15,7 @@ TODO: Fix JS according to the changes
   </div>
 
   <div class="container-fluid">
-    <img src="images/4-upotyoka-central-road.png" oncontextmenu="return false;" alt="" width="100%">
+    <img alt="" src="images/4-upotyoka-central-road.png" width="100%">
   </div>
 
   <div class="container">
@@ -118,5 +110,6 @@ TODO: Fix JS according to the changes
   </div>
 </div>
 
+<!-- Additional JS -->
 <script src="js/story-4.min.js"></script>
 {% endblock %}
