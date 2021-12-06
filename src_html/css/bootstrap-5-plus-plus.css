@@ -70,12 +70,3 @@
   color: white;
   background: rgba(0, 0, 0, 0.5);
 }
-
-.disabled {
-  /*user-drag: none;*/ /* Commenting out due to an unknown property warning. */
-  -webkit-user-drag: none;
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-}
