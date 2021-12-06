@@ -2,15 +2,13 @@ startMain();
 
 function startMain() {
   let images = document.getElementsByTagName(`img`);
-  let unloadedDivs = document.getElementsByClassName(`oteeddho-unloaded-div`);
-  let spinner = document.getElementById(`oteeddho-spinner`);
+  let mainDiv = document.getElementById(`md`);
+  let spinner = document.getElementById(`ms`);
 
   let interval = setInterval(() => {
     if (hasAllTheImagesBeenLoaded()) {
-      for (let div of unloadedDivs) {
-        div.classList.remove(`oteeddho-unloaded-div`);
-      }
-      spinner.classList.add(`oteeddho-unloaded-div`);
+      spinner.classList.add(`d-none`);
+      mainDiv.classList.remove(`d-none`);
       clearInterval(interval);
     }
   }, 100);
