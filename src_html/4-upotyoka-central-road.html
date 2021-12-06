@@ -3,6 +3,7 @@
 {% endblock %}
 
 <!--
+TODO: Attach em dashes to preceding words
 TODO: Simplify onscroll function of story-1.js
 TODO: Perhaps use the event listener in story 1 like story 4. :3
 TODO: Move oteeddho-unloaded-div to base html
@@ -14,7 +15,7 @@ TODO: Change তোমার ক্ষয়ে যাওয়া চিন্তা�
 
 {% block content %}
 <div class="oteeddho-unloaded-div">
-  <div class="container">
+  <div class="container d-none">
     <div class="row justify-content-center">
       <div class="col col-md-10 col-lg-8 col-xl-7 justify-align">
         <h1>উপত্যকা, সেন্ট্রাল রোড</h1>
@@ -23,7 +24,7 @@ TODO: Change তোমার ক্ষয়ে যাওয়া চিন্তা�
     </div>
   </div>
 
-  <div class="container-fluid">
+  <div class="container-fluid d-none">
     <img src="images/4-upotyoka-central-road.png" oncontextmenu="return false;" alt="" width="100%">
   </div>
 
@@ -31,21 +32,52 @@ TODO: Change তোমার ক্ষয়ে যাওয়া চিন্তা�
     <div class="row justify-content-center">
       <div class="col col-md-10 col-lg-8 col-xl-7 justify-align">
         <p>আর উপত্যকাজুড়ে প্রবাহিত ঝোড়ো বাতাসের বিপরীতে নদী দাঁড়িয়ে থাকবে একা, ঋজু—</p>
-        <p>তার দৃষ্টি আকাশের দিকে নিবদ্ধ</p>
-        <p>প্রবাহিত ঝোড়ো বাতাসের উপত্যকায় নদী ঋজু ও একা দাঁড়িয়ে থাকবে—</p>
-        <p>তার আঙুল নিবদ্ধ আকাশের দিকে</p>
+        <p style="margin-left: 7.5%">তার দৃষ্টি আকাশের দিকে নিবদ্ধ</p>
+        <p style="margin-left: 15%">প্রবাহিত ঝোড়ো বাতাসের উপত্যকায় নদী ঋজু ও একা দাঁড়িয়ে থাকবে—</p>
+        <p style="margin-left: 7.5%">তার আঙুল নিবদ্ধ আকাশের দিকে</p>
         <p>আজন্ম অনুপলব্ধ একটা বোধ থেকে উত্তরিত হয়ে ভাষাটুকু আবিষ্কার করামাত্র সে উচ্চারণ করবে—মৃদু এবং স্পষ্ট স্বরে,</p>
-        <p>“একটা বিস্তৃত সময়কাল তারা বিস্মৃত হয়ে ছিলো, সুতরাং এই সন্ধ্যার আপতন ঘটে বিস্ময়ের মধ্য দিয়ে। শরীরে মাখা আলোটুকু উধাও হওয়ামাত্র তাদের রন্ধ্রে রন্ধ্রে জমে থাকা অন্ধকারের গন্ধ প্রকাশিত হয়ে যায় এবং দিনের অনুবর্তী যেই অস্পষ্টতা রাতের প্রতিবর্তী—তাকে স্পষ্ট রাখার প্রচেষ্টা</p>
-        <p>ঝুরমুরঝুরমুরকরেএকলহমায়ভেঙেপড়ে</p>
+        <div>“একটা বিস্তৃত সময়কাল তারা বিস্মৃত হয়ে ছিলো, সুতরাং এই সন্ধ্যার আপতন ঘটে বিস্ময়ের মধ্য দিয়ে। শরীরে মাখা আলোটুকু উধাও হওয়ামাত্র তাদের রন্ধ্রে রন্ধ্রে জমে থাকা অন্ধকারের গন্ধ প্রকাশিত হয়ে যায় এবং দিনের অনুবর্তী যেই অস্পষ্টতা রাতের প্রতিবর্তী—তাকে স্পষ্ট রাখার প্রচেষ্টা</div>
+
+        <!--<div class="mt-5 mb-5 border border-dark border-1" style="margin-left: 40%">
+          <div style="margin-left: -10vw;">
+            <div class="border border-danger border-1" style="display: inline-block; transform: rotate(70deg);">
+              ঞ
+            </div>
+          </div>
+        </div>-->
+
+        <div style="display: inline-block; margin-left: 30%;">
+          <div style="transform-origin: top left; transform: rotate(+14deg); margin-left: 0;">ঝু</div>
+          <div style="transform-origin: top left; transform: rotate(+08deg); margin-left: 1.5vw;">র</div>
+          <div style="transform-origin: top left; transform: rotate(-03deg); margin-left: -.5vw;">মু</div>
+          <div style="transform-origin: top left; transform: rotate(-06deg); margin-left: -2vw;">র</div>
+          <div style="transform-origin: top left; transform: rotate(-03deg); margin-left: -10vw;">ঝু</div>
+          <div style="transform-origin: top left; transform: rotate(-40deg); margin-left: -13vw;">র</div>
+          <div style="transform-origin: top left; transform: rotate(-80deg); margin-left: -15.5vw;">মু</div>
+          <div style="transform-origin: top left; transform: rotate(70deg); margin: 0 0 20vw -20vw;">র</div>
+          <div style="transform-origin: top left; transform: rotate(0deg); margin-left: 0;">ক</div>
+          <div style="transform-origin: top left; transform: rotate(0deg); margin-left: 0;">রে</div>
+          <div style="transform-origin: top left; transform: rotate(0deg); margin-left: 0;">এ</div>
+          <div style="transform-origin: top left; transform: rotate(0deg); margin-left: 0;">ক</div>
+          <div style="transform-origin: top left; transform: rotate(0deg); margin-left: 0;">ল</div>
+          <div style="transform-origin: top left; transform: rotate(0deg); margin-left: 0;">হ</div>
+          <div style="transform-origin: top left; transform: rotate(0deg); margin-left: 0;">মা</div>
+          <div style="transform-origin: top left; transform: rotate(0deg); margin-left: 0;">য়</div>
+          <div style="transform-origin: top left; transform: rotate(0deg); margin-left: 0;">ভে</div>
+          <div style="transform-origin: top left; transform: rotate(0deg); margin-left: 0;">ঙে</div>
+          <div style="transform-origin: top left; transform: rotate(0deg); margin-left: 0;">প</div>
+          <div style="transform-origin: top left; transform: rotate(0deg); margin-left: 0;">ড়ে</div>
+        </div>
+
         <p>কারণ অতর্কিতে শহরে প্রবেশ করে বিদ্যুৎহীনতা</p>
         <p>রাস্তার শিরায় উপশিরায় ছড়ায়ে যায় নীল</p>
-        <p>শেডের পর শেড শরীরে মেখে</p>
-        <p>অর্থাৎ</p>
-        <p>খিলগাঁ রেলগেটের সশব্দ নীল</p>
-        <p>শংকরের মানুষমাখা ধুলার নীল</p>
-        <p>নীলক্ষেত মোড়ের এলোমেলো নীল</p>
-        <p>তাজমহল রোডের প্রশস্ত নীল</p>
-        <p>সকল নীল ঘুরে ঘুরে ফিরে শেষে কেন্দ্রীভূত হয়ে আসে, আমারই চারপাশে।</p>
+        <p style="margin-left: 7.5%">শেডের পর শেড শরীরে মেখে</p>
+        <p style="margin-left: 15%">অর্থাৎ</p>
+        <p style="margin-left: 22.5%">খিলগাঁ রেলগেটের সশব্দ নীল</p>
+        <p style="margin-left: 22.5%">শংকরের মানুষমাখা ধুলার নীল</p>
+        <p style="margin-left: 22.5%">নীলক্ষেত মোড়ের এলোমেলো নীল</p>
+        <p style="margin-left: 22.5%">তাজমহল রোডের প্রশস্ত নীল</p>
+        <p style="margin-left: 30%">সকল নীল ঘুরে ঘুরে ফিরে শেষে কেন্দ্রীভূত হয়ে আসে, আমারই চারপাশে।</p>
 
         <br>
 
@@ -56,5 +88,5 @@ TODO: Change তোমার ক্ষয়ে যাওয়া চিন্তা�
   </div>
 </div>
 
-<script src="js/story-4.min.js"></script>
+<!--<script src="js/story-4.min.js"></script>-->
 {% endblock %}
