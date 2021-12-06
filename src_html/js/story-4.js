@@ -7,7 +7,7 @@ function startStory4() {
   let navbarTransitionTime = `4000ms`;
   let bodyTransitionTime = navbarTransitionTime;
   let transitionSpeedCurve = ``; // `ease` by default
-  let changedBackgroundColour = `#19222c`;
+  let changedBackgroundColour = `#1f2a33`;
 
   // Add transitions
   navbar.style.transition = `background-color ${navbarTransitionTime} ${transitionSpeedCurve}`;
