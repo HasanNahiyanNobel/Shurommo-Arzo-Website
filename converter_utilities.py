@@ -1,6 +1,6 @@
 """
 This script contains some constants and functions used by the other scripts.
-Copyright © 2021 by Oteeddho.
+Copyright © 2021 by Hasan Nahiyan Nobel and Oteeddho.
 """
 
 # Constants
