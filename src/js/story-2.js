@@ -77,6 +77,7 @@ function startStory2() {
     let preGraphicsDiv2 = document.getElementById(`2-prg-2`);
     let graphicsDiv = document.getElementById(`2-g`);
     let postGraphicsDiv1 = document.getElementById(`2-psg-1`);
+    let postGraphicsDiv2 = document.getElementById(`2-psg-2`);
 
     // Wait for the image to load, and after loaded, translate it
     let interval = setInterval(() => {
@@ -99,6 +100,8 @@ function startStory2() {
           graphicsDiv.offsetWidth; // Same calculation as the previous one
       let whatIWantToBeTheVerticalMiddleOfGraphics = 0.5 *
           graphicsDiv.offsetHeight;
+      let whatIWantToBeTheBottomOfGraphics = 1450 / 1920 *
+          graphicsDiv.offsetHeight;
 
       // Get bounding rectangles
       let preGraphicsDiv1Top = preGraphicsDiv1.getBoundingClientRect().top;
@@ -107,6 +110,7 @@ function startStory2() {
       let graphicsDivFirstTop = graphicsDivTop +
           whatIWantToBeTheFirstTopOfGraphics;
       let postGraphicsDiv1Top = postGraphicsDiv1.getBoundingClientRect().top;
+      let postGraphicsDiv2Top = postGraphicsDiv2.getBoundingClientRect().top;
 
       // Calculate the translation distance of graphics, in pixel
       let translationOfGraphics = graphicsDivFirstTop - preGraphicsDiv1Top;
@@ -120,20 +124,16 @@ function startStory2() {
           whatIWantToBeTheVerticalMiddleOfGraphics;
       let translationOfPostDiv1 = postGraphicsDiv1Top -
           graphicsDivVerticalMiddle + translationOfGraphics;
-
-      // TODO: Remove the following block-comment
-      /*console.log(preGraphicsDiv1Top);
-      console.log(preGraphicsDiv2Top);
-      console.log(graphicsDivTop);
-      console.log(graphicsDivFirstTop);
-      console.log(graphicsDivSecondTop);
-      console.log(translationOfGraphics);
-      console.log(translationOfPreDiv2);*/
+      let graphicsDivBottom = graphicsDivTop + whatIWantToBeTheBottomOfGraphics;
+      let translationOfPostDiv2 = postGraphicsDiv2Top - graphicsDivBottom +
+          translationOfGraphics;
 
       // And do the translations!
       graphicsDiv.style.transform = `translate(0,${-translationOfGraphics}px)`;
       preGraphicsDiv2.style.transform = `translate(0,${-translationOfPreDiv2}px)`;
       postGraphicsDiv1.style.transform = `translate(0,${-translationOfPostDiv1}px)`;
+      postGraphicsDiv2.style.transform = `translate(0,${-translationOfPostDiv2}px)`;
+
     }
   }
 }
