@@ -3,6 +3,7 @@ startStory2();
 function startStory2() {
   processPreDeathParagraphs();
   createPreAndPostDeathShunyota();
+  processGraphics();
 
   function processPreDeathParagraphs() {
     // Get pre-death paragraphs and convert to an array
@@ -61,11 +62,46 @@ function startStory2() {
     let deathDiv = document.getElementById(`2-dd`);
     // Get the viewport height minus navbar height
     let navbar = document.getElementById(`mn`);
-    let vhMinusNavbarHeight = Math.max(document.documentElement.clientHeight || 0,
+    let vhMinusNavbarHeight = Math.max(
+        document.documentElement.clientHeight || 0,
         window.innerHeight || 0) - navbar.offsetHeight; // Taken from: https://stackoverflow.com/a/8876069
 
     // Create pre- and post-death shunyota
     preDeathShunyota.style.minHeight = `${vhMinusNavbarHeight * 3 / 2}px`;
     deathDiv.style.minHeight = `${vhMinusNavbarHeight / 2}px`;
+  }
+
+  function processGraphics() {
+    // Get elements
+    let preGraphicsDiv1 = document.getElementById(`2-prg-1`);
+    let preGraphicsDiv2 = document.getElementById(`2-prg-2`);
+    let graphicsDiv = document.getElementById(`2-g`);
+
+    let whatIWantToBeTheTopOfGraphics;
+    let preDiv1Top;
+    let graphicsDivTop;
+    let translationDistanceInPixel;
+
+    // Wait for the image to load, and after loaded, translate it
+    let interval = setInterval(() => {
+      if (graphicsDiv.offsetWidth > 0) {
+        translateImage();
+        clearInterval(interval);
+      }
+    }, 100);
+
+    window.addEventListener(`resize`, () => {
+      window.location.reload();
+    });
+
+    function translateImage() {
+      whatIWantToBeTheTopOfGraphics = 180 / 1920 * graphicsDiv.offsetWidth;
+      preDiv1Top = preGraphicsDiv1.getBoundingClientRect().top;
+      graphicsDivTop = graphicsDiv.getBoundingClientRect().top +
+          whatIWantToBeTheTopOfGraphics;
+      translationDistanceInPixel = preDiv1Top - graphicsDivTop;
+
+      graphicsDiv.style.transform = `translate(0,${translationDistanceInPixel}px)`;
+    }
   }
 }
