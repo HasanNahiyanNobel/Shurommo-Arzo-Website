@@ -5,7 +5,7 @@
 venv/
 
 # NPM Modules
-src_html/node_modules/
+src/node_modules/
 
 # GitHub file
 .github/
