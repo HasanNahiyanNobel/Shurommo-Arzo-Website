@@ -76,11 +76,12 @@ function startStory2() {
     let preGraphicsDiv1 = document.getElementById(`2-prg-1`);
     let preGraphicsDiv2 = document.getElementById(`2-prg-2`);
     let graphicsDiv = document.getElementById(`2-g`);
+    let postGraphicsDiv1 = document.getElementById(`2-psg-1`);
 
     // Wait for the image to load, and after loaded, translate it
     let interval = setInterval(() => {
       if (graphicsDiv.offsetWidth > 0) {
-        translateImage();
+        translateImageAndText();
         clearInterval(interval);
       }
     }, 100);
@@ -90,25 +91,35 @@ function startStory2() {
       window.location.reload();
     });
 
-    function translateImage() {
-      // Get bounding rectangles
+    function translateImageAndText() {
+      // Calculate the necessary positions inside graphics
       let whatIWantToBeTheFirstTopOfGraphics = 180 / 1920 *
           graphicsDiv.offsetWidth; // 180 px from top is the position what I want to be the top. The image is 1920 px wide, so the factor will be 180/1920
       let whatIWantToBeTheSecondTopOfGraphics = 550 / 1920 *
           graphicsDiv.offsetWidth; // Same calculation as the previous one
+      let whatIWantToBeTheVerticalMiddleOfGraphics = 0.5 *
+          graphicsDiv.offsetHeight;
 
+      // Get bounding rectangles
+      let preGraphicsDiv1Top = preGraphicsDiv1.getBoundingClientRect().top;
+      let preGraphicsDiv2Top = preGraphicsDiv2.getBoundingClientRect().top;
       let graphicsDivTop = graphicsDiv.getBoundingClientRect().top;
       let graphicsDivFirstTop = graphicsDivTop +
           whatIWantToBeTheFirstTopOfGraphics;
-      let preGraphicsDiv1Top = preGraphicsDiv1.getBoundingClientRect().top;
-      let preGraphicsDiv2Top = preGraphicsDiv2.getBoundingClientRect().top;
+      let postGraphicsDiv1Top = postGraphicsDiv1.getBoundingClientRect().top;
 
-      // Calculate translation distances, in pixel
+      // Calculate the translation distance of graphics, in pixel
       let translationOfGraphics = graphicsDivFirstTop - preGraphicsDiv1Top;
+
+      // And calculate the translation distances of others, also in pixel
       let graphicsDivSecondTop = graphicsDivTop +
           whatIWantToBeTheSecondTopOfGraphics;
       let translationOfPreDiv2 = preGraphicsDiv2Top - graphicsDivSecondTop +
           translationOfGraphics;
+      let graphicsDivVerticalMiddle = graphicsDivTop +
+          whatIWantToBeTheVerticalMiddleOfGraphics;
+      let translationOfPostDiv1 = postGraphicsDiv1Top -
+          graphicsDivVerticalMiddle + translationOfGraphics;
 
       // TODO: Remove the following block-comment
       /*console.log(preGraphicsDiv1Top);
@@ -122,6 +133,7 @@ function startStory2() {
       // And do the translations!
       graphicsDiv.style.transform = `translate(0,${-translationOfGraphics}px)`;
       preGraphicsDiv2.style.transform = `translate(0,${-translationOfPreDiv2}px)`;
+      postGraphicsDiv1.style.transform = `translate(0,${-translationOfPostDiv1}px)`;
     }
   }
 }
