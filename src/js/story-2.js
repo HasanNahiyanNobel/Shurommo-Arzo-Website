@@ -1,6 +1,10 @@
 startStory2();
 
 function startStory2() {
+  // At the very beginning, get window width
+  let currentWindowWidth = window.innerWidth;
+
+  // Fire functions
   processPreDeathParagraphs();
   createPreAndPostDeathShunyota();
   processGraphics();
@@ -88,8 +92,13 @@ function startStory2() {
     }, 100);
 
     window.addEventListener(`resize`, () => {
-      // Implementing the easy and bound to work solution—with an assumption that people do not resize windows frequently, and if someone does, they deserve multiple reloads! 🐸
-      window.location.reload();
+      /**
+       * Implementing the easy and bound to work solution—with an assumption that people do not resize windows frequently, and if someone does, they deserve multiple reloads! 🐸
+       * However, in mobile devices, the window size also changes as the search bar collapses on scroll down. So I have to ensure that only the width of the window was changed. (And change of height has no effect on the graphics and text anyway!)
+       */
+      if (window.innerWidth !== currentWindowWidth) {
+        window.location.reload();
+      }
     });
 
     function translateImageAndText() {

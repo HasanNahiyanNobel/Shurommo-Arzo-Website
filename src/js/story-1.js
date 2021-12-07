@@ -2,8 +2,8 @@ startStory1();
 
 function startStory1() {
   let body = document.body;
-  let navbar = document.getElementsByTagName(`nav`)[0];
-  let graphics = document.getElementById(`1-graphics`);
+  let navbar = document.getElementById(`mn`);
+  let graphics = document.getElementById(`1-g`);
   let navbarHeight = navbar.offsetHeight;
   let vh = Math.max(document.documentElement.clientHeight || 0,
       window.innerHeight || 0); // Taken from: https://stackoverflow.com/a/8876069
