@@ -4,7 +4,7 @@ Copyright © 2021 by Hasan Nahiyan Nobel and Oteeddho.
 """
 
 # Constants
-SOURCE_DIR = 'src_html'
+SOURCE_DIR = 'src'
 OUTPUT_DIR = 'public'
 BASE_FILE = SOURCE_DIR + '\\_base.html'
 
