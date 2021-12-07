@@ -26,5 +26,6 @@ function startMain() {
   // As the interval works, make all the images disabled :3
   for (let image of images) {
     image.style.pointerEvents = `none`;
+    image.classList.add(`noselect`);
   }
 }
