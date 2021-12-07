@@ -2,7 +2,7 @@ startStory4();
 
 function startStory4() {
   // Define variables
-  let navbar = document.getElementsByTagName(`nav`)[0];
+  let navbar = document.getElementById(`mn`);
   let body = document.body;
   let navbarTransitionTime = `4000ms`;
   let bodyTransitionTime = navbarTransitionTime;
