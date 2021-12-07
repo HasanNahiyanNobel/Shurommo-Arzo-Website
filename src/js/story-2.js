@@ -139,18 +139,32 @@ function startStory2() {
     }
 
     function translateElomelo() {
-      let elomeloDiv = Array.from(
-          document.getElementById(`2-elo`).children,
-      );
-      let e__ = elomeloDiv[0];
-      let lo1 = elomeloDiv[1];
-      let me_ = elomeloDiv[2];
-      let lo2 = elomeloDiv[3];
+      // Get divs
+      let elomeloDiv = document.getElementById(`2-elo`);
+      let postElomeloDiv = document.getElementById(`2-pe`);
 
-      e__.style.transform = `translate(00%,00vw)`;
-      lo1.style.transform = `translate(25%,05vw)`;
-      me_.style.transform = `translate(50%,40vw)`;
-      lo2.style.transform = `translate(80%,80vw)`;
+      // Get positions
+      let bottomOfElomelo = elomeloDiv.getBoundingClientRect().bottom;
+      let topOfPostElomelo = postElomeloDiv.getBoundingClientRect().top;
+      let gapBetweenEloAndPostElo = topOfPostElomelo - bottomOfElomelo;
+
+      // Create array and get elements
+      let elomelo = Array.from(elomeloDiv.children);
+      let e__ = elomelo[0];
+      let lo1 = elomelo[1];
+      let me_ = elomelo[2];
+      let lo2 = elomelo[3];
+
+      // Add margins and translate
+      e__.style.marginLeft = `00%`;
+      lo1.style.marginLeft = `25%`;
+      me_.style.marginLeft = `70%`;
+      lo2.style.marginLeft = `90%`;
+
+      e__.style.transform = `translate(0,${gapBetweenEloAndPostElo * .10}px)`;
+      lo1.style.transform = `translate(0,${gapBetweenEloAndPostElo * .35}px)`;
+      me_.style.transform = `translate(0,${gapBetweenEloAndPostElo * .50}px)`;
+      lo2.style.transform = `translate(0,${gapBetweenEloAndPostElo}px)`;
     }
   }
 }
