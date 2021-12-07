@@ -134,6 +134,23 @@ function startStory2() {
       postGraphicsDiv1.style.transform = `translate(0,${-translationOfPostDiv1}px)`;
       postGraphicsDiv2.style.transform = `translate(0,${-translationOfPostDiv2}px)`;
 
+      // Translate E-Lo-Me-Lo
+      translateElomelo();
+    }
+
+    function translateElomelo() {
+      let elomeloDiv = Array.from(
+          document.getElementById(`2-elo`).children,
+      );
+      let e__ = elomeloDiv[0];
+      let lo1 = elomeloDiv[1];
+      let me_ = elomeloDiv[2];
+      let lo2 = elomeloDiv[3];
+
+      e__.style.transform = `translate(00%,00vw)`;
+      lo1.style.transform = `translate(25%,05vw)`;
+      me_.style.transform = `translate(50%,40vw)`;
+      lo2.style.transform = `translate(80%,80vw)`;
     }
   }
 }
