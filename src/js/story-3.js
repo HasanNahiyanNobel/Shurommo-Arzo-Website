@@ -234,7 +234,7 @@ function startStory3() {
 
   let transitionTimeMs = 625;
 
-  let waveText = document.getElementById(`3-wave-of-text`);
+  let waveText = document.getElementById(`3-wot`);
 
 // Create the initial layout
   lines.forEach((line, indexOfLine) => {
