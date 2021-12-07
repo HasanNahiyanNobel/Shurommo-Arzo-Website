@@ -57,14 +57,15 @@ function startStory2() {
   function createPreAndPostDeathShunyota() {
     // Get the pre-death div
     let preDeathShunyota = document.getElementById(`2-pds`);
-    //Get the death div
+    // Get the death div
     let deathDiv = document.getElementById(`2-dd`);
-    // Get the viewport height
-    let vh = Math.max(document.documentElement.clientHeight || 0,
-        window.innerHeight || 0); // Taken from: https://stackoverflow.com/a/8876069
+    // Get the viewport height minus navbar height
+    let navbar = document.getElementById(`mn`);
+    let vhMinusNavbarHeight = Math.max(document.documentElement.clientHeight || 0,
+        window.innerHeight || 0) - navbar.offsetHeight; // Taken from: https://stackoverflow.com/a/8876069
 
     // Create pre- and post-death shunyota
-    preDeathShunyota.style.minHeight = `${vh * 3 / 2}px`;
-    deathDiv.style.minHeight = `${vh / 2.5}px`;
+    preDeathShunyota.style.minHeight = `${vhMinusNavbarHeight * 3 / 2}px`;
+    deathDiv.style.minHeight = `${vhMinusNavbarHeight / 2}px`;
   }
 }
