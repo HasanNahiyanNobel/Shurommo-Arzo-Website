@@ -77,11 +77,6 @@ function startStory2() {
     let preGraphicsDiv2 = document.getElementById(`2-prg-2`);
     let graphicsDiv = document.getElementById(`2-g`);
 
-    let whatIWantToBeTheTopOfGraphics;
-    let preDiv1Top;
-    let graphicsDivTop;
-    let translationDistanceInPixel;
-
     // Wait for the image to load, and after loaded, translate it
     let interval = setInterval(() => {
       if (graphicsDiv.offsetWidth > 0) {
@@ -91,17 +86,42 @@ function startStory2() {
     }, 100);
 
     window.addEventListener(`resize`, () => {
+      // Implementing the easy and bound to work solution—with an assumption that people do not resize windows frequently, and if someone does, they deserve multiple reloads! 🐸
       window.location.reload();
     });
 
     function translateImage() {
-      whatIWantToBeTheTopOfGraphics = 180 / 1920 * graphicsDiv.offsetWidth;
-      preDiv1Top = preGraphicsDiv1.getBoundingClientRect().top;
-      graphicsDivTop = graphicsDiv.getBoundingClientRect().top +
-          whatIWantToBeTheTopOfGraphics;
-      translationDistanceInPixel = preDiv1Top - graphicsDivTop;
+      // Get bounding rectangles
+      let whatIWantToBeTheFirstTopOfGraphics = 180 / 1920 *
+          graphicsDiv.offsetWidth; // 180 px from top is the position what I want to be the top. The image is 1920 px wide, so the factor will be 180/1920
+      let whatIWantToBeTheSecondTopOfGraphics = 550 / 1920 *
+          graphicsDiv.offsetWidth; // Same calculation as the previous one
 
-      graphicsDiv.style.transform = `translate(0,${translationDistanceInPixel}px)`;
+      let graphicsDivTop = graphicsDiv.getBoundingClientRect().top;
+      let graphicsDivFirstTop = graphicsDivTop +
+          whatIWantToBeTheFirstTopOfGraphics;
+      let preGraphicsDiv1Top = preGraphicsDiv1.getBoundingClientRect().top;
+      let preGraphicsDiv2Top = preGraphicsDiv2.getBoundingClientRect().top;
+
+      // Calculate translation distances, in pixel
+      let translationOfGraphics = graphicsDivFirstTop - preGraphicsDiv1Top;
+      let graphicsDivSecondTop = graphicsDivTop +
+          whatIWantToBeTheSecondTopOfGraphics;
+      let translationOfPreDiv2 = preGraphicsDiv2Top - graphicsDivSecondTop +
+          translationOfGraphics;
+
+      // TODO: Remove the following block-comment
+      /*console.log(preGraphicsDiv1Top);
+      console.log(preGraphicsDiv2Top);
+      console.log(graphicsDivTop);
+      console.log(graphicsDivFirstTop);
+      console.log(graphicsDivSecondTop);
+      console.log(translationOfGraphics);
+      console.log(translationOfPreDiv2);*/
+
+      // And do the translations!
+      graphicsDiv.style.transform = `translate(0,${-translationOfGraphics}px)`;
+      preGraphicsDiv2.style.transform = `translate(0,${-translationOfPreDiv2}px)`;
     }
   }
 }
