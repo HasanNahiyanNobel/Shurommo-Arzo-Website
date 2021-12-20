@@ -30,7 +30,7 @@ function startStory5() {
   };
 
   // Listen to the scroll, and play audio
-  // document.addEventListener(`scroll`, scrollListener);
+  document.addEventListener(`scroll`, scrollListener);
 
   // Set the interval for tube-light effect
   setInterval(() => {
