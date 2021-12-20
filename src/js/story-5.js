@@ -5,10 +5,15 @@ function startStory5() {
   let ecenStyle = document.getElementById(`5-ecen`).style;
 
   setTimeout(() => {
-    ecenStyle.visibility = `hidden`;
+    switchVisibilityOfEcen();
   }, 2000);
 
   setTimeout(() => {
-    ecenStyle.visibility = ``;
-  }, 3000);
+    switchVisibilityOfEcen();
+  }, 3100);
+
+  function switchVisibilityOfEcen() {
+    let currentVisibility = ecenStyle.visibility;
+    ecenStyle.visibility = currentVisibility === `` ? `hidden` : ``;
+  }
 }
