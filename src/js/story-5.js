@@ -18,10 +18,16 @@ function startStory5() {
   // Get the document elements
   let ecenStyle = document.getElementById(`5-ecen`).style; // Style of the paragraph reading `এই ছিলো, এই নাই`
   let divOfScream = document.getElementById(`5-s`); // The div of scream
+  let buttonToTriggerTheModal = document.getElementById(`5-mt`);
 
   // Create the space for scream
   divOfScream.style.minHeight = `${vhMinusNavbarHeight}px`;
   divOfScream.style.backgroundColor = `#ffdc92`;
+
+  // Trigger the modal
+  window.onload = function() {
+    buttonToTriggerTheModal.click();
+  }
 
   // Listen for scroll, and play audio
   document.addEventListener(`scroll`, () => {
