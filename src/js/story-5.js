@@ -4,6 +4,7 @@ function startStory5() {
   // Define pseudo-constants
   let probabilityOfVisibilitySwitch = 0.2;
   let intervalTimeout = 200;
+  let transitionTime = 3000;
 
   // Process the audio
   let audioSource = `audios/story-5.mp3`;
@@ -26,7 +27,15 @@ function startStory5() {
 
   // Trigger the modal
   window.onload = function() {
-    document.getElementById(`omt`).click();
+    // Pre-process the div of post-scream
+    divOfPostScream.style.color = `#FFF`;
+
+    divOfScream.classList.add(`d-none`);
+    divOfPostScream.classList.remove(`d-none`);
+    divOfPostScream.style.transition = `color ${transitionTime}ms linear`;
+    divOfPostScream.style.color = `#202020`; // `text-dark` in bootstrap
+
+    // document.getElementById(`omt`).click();
   };
 
   // Listen to the scroll, and play audio
@@ -51,19 +60,19 @@ function startStory5() {
     let topOfScreamDiv = divOfScream.getBoundingClientRect().top -
         navbar.offsetHeight;
     if (topOfScreamDiv < 0) {
-      removeEventListener(`scroll`, scrollListener); // FixMe: Remove multiple listening
-      scream.play().then(() => {
+      document.removeEventListener(`scroll`, scrollListener);
+      /*scream.play().then(() => {
+        console.log(`Playing audio.`); // TODO: Remove this console log
         // Wait for the audio to finish
         scream.addEventListener(`ended`, () => {
-          console.log(`Completed!`); // TODO: Remove this console log
           // Set the current time to zero
           scream.currentTime = 0;
-          // Make the next section visible and scroll there
-          divOfPostScream.classList.remove(`d-none`);
+          // Make the next section visible
+
         });
       }).catch(error => {
         console.log(error);
-      });
+      });*/
     }
   }
 }
