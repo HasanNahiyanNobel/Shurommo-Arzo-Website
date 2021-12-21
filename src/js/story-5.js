@@ -71,16 +71,10 @@ function startStory5() {
   function startAudioAnimation() {
     let footWidth = 80;
 
-    let footRight = createAFoot(`right`);
-    let footLeft = createAFoot(`left`);
-
     let leftFootLagTime = 350;
     let footDisappearanceTime = 1000;
 
     let timeCount = 0;
-
-    divOfScream.appendChild(footRight);
-    divOfScream.appendChild(footLeft);
 
     function createAFoot(typeOfFoot) {
       let foot = document.createElement(`img`);
@@ -92,15 +86,11 @@ function startStory5() {
       return foot;
     }
 
-    let intervalOfFootSet = setInterval(() => {
-      timeCount += 2; // In seconds!
-
-      if (timeCount >= 60) {
-        clearInterval(intervalOfFootSet);
-        // Make the next section visible
-        divOfPostScream.classList.remove(`d-none`);
-        linkOfPostScream.click();
-      }
+    function drawFeet() {
+      let footRight = createAFoot(`right`);
+      let footLeft = createAFoot(`left`);
+      divOfScream.appendChild(footRight);
+      divOfScream.appendChild(footLeft);
 
       let randomTop = Math.random() * (vhMinusNavbarHeight - footWidth); // As the width is equal to height in this case
       let randomLeft = Math.random() * (vw - footWidth);
@@ -121,17 +111,22 @@ function startStory5() {
         footLeft.style.marginLeft = `${randomLeft}px`;
         footLeft.style.transform = `rotate(${randomRotationOfLeft}deg)`;
       }, leftFootLagTime);
+    }
 
-      // Clear the right foot
-      setTimeout(() => {
-        footRight.style.marginLeft = `-${footWidth * 2}px`;
-      }, footDisappearanceTime);
+    let intervalOfFootSet = setInterval(() => {
 
-      // And clear the left one!
-      setTimeout(() => {
-        footLeft.style.marginLeft = `-${footWidth * 2}px`;
-      }, footDisappearanceTime + leftFootLagTime);
+      timeCount += 1; // In seconds!
 
-    }, 2000);
+      if (timeCount >= 60) {
+        clearInterval(intervalOfFootSet);
+        // Make the next section visible
+        divOfPostScream.classList.remove(`d-none`);
+        linkOfPostScream.click();
+      }
+
+      drawFeet();
+
+    }, 1000);
+
   }
 }
