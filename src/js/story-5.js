@@ -70,6 +70,8 @@ function startStory5() {
   // Animations for the audio
   function startAudioAnimation() {
     let footWidth = 80;
+    let footWidthSquare = Math.pow(footWidth, 2);
+    let footDiagonal = Math.sqrt(2 * footWidthSquare);
 
     let leftFootLagTime = 350;
     let footDisappearanceTime = 1000;
@@ -92,8 +94,8 @@ function startStory5() {
       divOfScream.appendChild(footRight);
       divOfScream.appendChild(footLeft);
 
-      let randomTop = Math.random() * (vhMinusNavbarHeight - footWidth); // As the width is equal to height in this case
-      let randomLeft = Math.random() * (vw - footWidth);
+      let randomTop = Math.random() * (vhMinusNavbarHeight - footDiagonal);
+      let randomLeft = Math.random() * (vw - footDiagonal);
       let randomRotationDeviation = Math.random() * 60 *
           (Math.random() < 0.5 ? -1 : 1); // Deviation of random rotation will be from -60 to +60
       let randomRotationOfRight = Math.random() * 360;
