@@ -4,7 +4,6 @@ function startStory5() {
   // Define pseudo-constants
   let probabilityOfVisibilitySwitchOfTubeLight = 0.2;
   let intervalTimeoutOfTubeLight = 200;
-  let transitionTime = 2000;
 
   // Process the audio
   let audioSource = `audios/story-5.mp3`; // TODO: Separate the string for a better ambiguity!
@@ -22,15 +21,14 @@ function startStory5() {
   let ecenStyle = document.getElementById(`5-ecen`).style; // Style of the paragraph reading `এই ছিলো, এই নাই`
   let divOfScream = document.getElementById(`5-s`); // The div of scream
   let divOfPostScream = document.getElementById(`5-ps`); // The div after the scream
+  let linkOfPostScream = document.getElementById(`5-jtps`); // Link to the post-scream section
 
   // Create the space for scream
   divOfScream.style.minHeight = `${vhMinusNavbarHeight}px`;
-  divOfScream.style.backgroundColor = `#ffdc92`; // TODO: Remove this debug-colouring
 
   // Trigger the modal
   window.onload = function() {
-    // TODO: Uncomment the following line
-    // document.getElementById(`omt`).click();
+    document.getElementById(`omt`).click();
   };
 
   // Listen to the scroll, and when the threshold reached, play audio
@@ -62,8 +60,6 @@ function startStory5() {
         scream.addEventListener(`ended`, () => {
           // Set the current time to zero
           scream.currentTime = 0;
-          // Make the next section visible
-
         });
       }).catch(error => {
         console.log(error);
@@ -101,6 +97,9 @@ function startStory5() {
 
       if (timeCount >= 60) {
         clearInterval(intervalOfFootSet);
+        // Make the next section visible
+        divOfPostScream.classList.remove(`d-none`);
+        linkOfPostScream.click();
       }
 
       let randomTop = Math.random() * (vhMinusNavbarHeight - footWidth); // As the width is equal to height in this case
