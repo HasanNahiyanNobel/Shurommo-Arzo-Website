@@ -79,10 +79,13 @@ function startStory5() {
     let footRight = createAFoot(`right`);
     let footLeft = createAFoot(`left`);
 
+    let leftFootLagTime = 350;
+    let footDisappearanceTime = 1000;
+
     divOfScream.appendChild(footRight);
     divOfScream.appendChild(footLeft);
 
-    setInterval(() => {
+    let intervalOfFootSet = setInterval(() => {
       let randomTop = Math.random() * (vhMinusNavbarHeight - footWidth); // As the width is equal to height in this case
       let randomLeft = Math.random() * (vw - footWidth);
 
@@ -94,15 +97,19 @@ function startStory5() {
       setTimeout(() => {
         footLeft.style.marginTop = `${randomTop}px`;
         footLeft.style.marginLeft = `${randomLeft}px`;
-      }, 350);
+      }, leftFootLagTime);
 
-      // And clear both feet!
+      // Clear the right foot
       setTimeout(() => {
         footRight.style.marginLeft = `-${footWidth * 2}px`;
-        footLeft.style.marginLeft = `-${footWidth * 2}px`;
-      }, 750);
+      }, footDisappearanceTime);
 
-    }, 1000);
+      // And clear the left one!
+      setTimeout(() => {
+        footLeft.style.marginLeft = `-${footWidth * 2}px`;
+      }, footDisappearanceTime + leftFootLagTime);
+
+    }, 2000);
 
     function createAFoot(typeOfFoot) {
       let foot = document.createElement(`img`);
