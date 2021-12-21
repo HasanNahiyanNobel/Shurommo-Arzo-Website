@@ -75,8 +75,8 @@ function startStory5() {
   // Animations for the audio
   function startAudioAnimation() {
     let footWidth = 80;
-    let randomTop = Math.random() * vhMinusNavbarHeight;
-    let randomLeft = Math.random() * vw - footWidth;
+    let randomTop = Math.random() * (vhMinusNavbarHeight - footWidth); // As the width is equal to height in this case
+    let randomLeft = Math.random() * (vw - footWidth);
 
     divOfScream.appendChild(createAFoot(`right`));
     divOfScream.appendChild(createAFoot(`left`));
