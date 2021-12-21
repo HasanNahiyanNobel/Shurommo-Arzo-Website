@@ -88,15 +88,18 @@ function startStory5() {
     let intervalOfFootSet = setInterval(() => {
       let randomTop = Math.random() * (vhMinusNavbarHeight - footWidth); // As the width is equal to height in this case
       let randomLeft = Math.random() * (vw - footWidth);
+      let randomRotation = Math.random() * 360;
 
       // Draw the right foot
       footRight.style.marginTop = `${randomTop}px`;
       footRight.style.marginLeft = `${randomLeft}px`;
+      footRight.style.transform = `rotate(${randomRotation}deg)`;
 
       // Draw the left one a bit later
       setTimeout(() => {
         footLeft.style.marginTop = `${randomTop}px`;
         footLeft.style.marginLeft = `${randomLeft}px`;
+        footLeft.style.transform = `rotate(${randomRotation}deg)`;
       }, leftFootLagTime);
 
       // Clear the right foot
