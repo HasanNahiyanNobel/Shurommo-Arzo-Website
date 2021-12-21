@@ -2,12 +2,12 @@ startStory5();
 
 function startStory5() {
   // Define pseudo-constants
-  let probabilityOfVisibilitySwitch = 0.2;
-  let intervalTimeout = 200;
-  let transitionTime = 3000;
+  let probabilityOfVisibilitySwitchOfTubeLight = 0.2;
+  let intervalTimeoutOfTubeLight = 200;
+  let transitionTime = 2000;
 
   // Process the audio
-  let audioSource = `audios/story-5.mp3`;
+  let audioSource = `audios/story-5.mp3`; // TODO: Separate the string for a better ambiguity!
   let scream = new Audio(audioSource);
 
   // Get the viewport height minus navbar height
@@ -23,31 +23,24 @@ function startStory5() {
 
   // Create the space for scream
   divOfScream.style.minHeight = `${vhMinusNavbarHeight}px`;
-  divOfScream.style.backgroundColor = `#ffdc92`;
+  divOfScream.style.backgroundColor = `#ffdc92`; // TODO: Remove this debug-colouring
 
   // Trigger the modal
   window.onload = function() {
-    // Pre-process the div of post-scream
-    divOfPostScream.style.color = `#FFF`;
-
-    divOfScream.classList.add(`d-none`);
-    divOfPostScream.classList.remove(`d-none`);
-    divOfPostScream.style.transition = `color ${transitionTime}ms linear`;
-    divOfPostScream.style.color = `#202020`; // `text-dark` in bootstrap
-
+    // TODO: Uncomment the following line
     // document.getElementById(`omt`).click();
   };
 
-  // Listen to the scroll, and play audio
+  // Listen to the scroll, and when the threshold reached, play audio
   document.addEventListener(`scroll`, scrollListener);
 
-  // Set the interval for tube-light effect
+  // Set the interval for the tube-light effect
   setInterval(() => {
     let theRandom = Math.random();
-    if (theRandom < probabilityOfVisibilitySwitch) {
+    if (theRandom < probabilityOfVisibilitySwitchOfTubeLight) {
       switchVisibilityOfEcen();
     }
-  }, intervalTimeout);
+  }, intervalTimeoutOfTubeLight);
 
   // Function for switching the visibility of the desired paragraph
   function switchVisibilityOfEcen() {
