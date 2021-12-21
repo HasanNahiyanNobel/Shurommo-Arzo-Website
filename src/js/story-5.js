@@ -10,11 +10,13 @@ function startStory5() {
   let audioSource = `audios/story-5.mp3`; // TODO: Separate the string for a better ambiguity!
   let scream = new Audio(audioSource);
 
-  // Get the viewport height minus navbar height
+  // Get the viewport height minus navbar height and viewport width
   let navbar = document.getElementById(`mn`);
   let vhMinusNavbarHeight = Math.max(
       document.documentElement.clientHeight || 0,
       window.innerHeight || 0) - navbar.offsetHeight; // Taken from: https://stackoverflow.com/a/8876069
+  let vw = Math.max(document.documentElement.clientWidth || 0,
+      window.innerWidth || 0);
 
   // Get the document elements
   let ecenStyle = document.getElementById(`5-ecen`).style; // Style of the paragraph reading `এই ছিলো, এই নাই`
@@ -27,6 +29,7 @@ function startStory5() {
 
   // Trigger the modal
   window.onload = function() {
+    startAudioAnimation();
     // TODO: Uncomment the following line
     // document.getElementById(`omt`).click();
   };
@@ -67,5 +70,19 @@ function startStory5() {
         console.log(error);
       });*/
     }
+  }
+
+  // Animations for the audio
+  function startAudioAnimation() {
+    let footWidth = 80;
+    let randomTop = Math.random() * vhMinusNavbarHeight;
+    let randomLeft = Math.random() * vw - footWidth;
+
+    let feet = document.createElement(`img`);
+    feet.src = `images/5-right-foot.svg`;
+    feet.width = footWidth;
+    feet.style.marginTop = `${randomTop}px`;
+    feet.style.marginLeft = `${randomLeft}px`;
+    divOfScream.appendChild(feet);
   }
 }
