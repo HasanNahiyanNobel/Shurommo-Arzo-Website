@@ -29,7 +29,6 @@ function startStory5() {
 
   // Trigger the modal
   window.onload = function() {
-    startAudioAnimation();
     // TODO: Uncomment the following line
     // document.getElementById(`omt`).click();
   };
@@ -57,7 +56,8 @@ function startStory5() {
         navbar.offsetHeight;
     if (topOfScreamDiv < 0) {
       document.removeEventListener(`scroll`, scrollListener);
-      /*scream.play().then(() => {
+      scream.play().then(() => {
+        startAudioAnimation();
         console.log(`Playing audio.`); // TODO: Remove this console log
         // Wait for the audio to finish
         scream.addEventListener(`ended`, () => {
@@ -68,7 +68,7 @@ function startStory5() {
         });
       }).catch(error => {
         console.log(error);
-      });*/
+      });
     }
   }
 
