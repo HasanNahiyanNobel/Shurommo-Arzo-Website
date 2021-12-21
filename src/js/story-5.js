@@ -75,19 +75,42 @@ function startStory5() {
   // Animations for the audio
   function startAudioAnimation() {
     let footWidth = 80;
-    let randomTop = Math.random() * (vhMinusNavbarHeight - footWidth); // As the width is equal to height in this case
-    let randomLeft = Math.random() * (vw - footWidth);
 
-    divOfScream.appendChild(createAFoot(`right`));
-    divOfScream.appendChild(createAFoot(`left`));
+    let footRight = createAFoot(`right`);
+    let footLeft = createAFoot(`left`);
+
+    divOfScream.appendChild(footRight);
+    divOfScream.appendChild(footLeft);
+
+    setInterval(() => {
+      let randomTop = Math.random() * (vhMinusNavbarHeight - footWidth); // As the width is equal to height in this case
+      let randomLeft = Math.random() * (vw - footWidth);
+
+      // Draw the right foot
+      footRight.style.marginTop = `${randomTop}px`;
+      footRight.style.marginLeft = `${randomLeft}px`;
+
+      // Draw the left one a bit later
+      setTimeout(() => {
+        footLeft.style.marginTop = `${randomTop}px`;
+        footLeft.style.marginLeft = `${randomLeft}px`;
+      }, 350);
+
+      // And clear both feet!
+      setTimeout(() => {
+        footRight.style.marginLeft = `-${footWidth * 2}px`;
+        footLeft.style.marginLeft = `-${footWidth * 2}px`;
+      }, 750);
+
+    }, 1000);
 
     function createAFoot(typeOfFoot) {
       let foot = document.createElement(`img`);
       foot.src = `images/5-foot-` + typeOfFoot + `.svg`;
       foot.width = footWidth;
       foot.style.position = `absolute`;
-      foot.style.marginTop = `${randomTop}px`;
-      foot.style.marginLeft = `${randomLeft}px`;
+      foot.style.marginTop = `-${footWidth}px`;
+      foot.style.marginLeft = `-${footWidth}px`;
       return foot;
     }
   }
