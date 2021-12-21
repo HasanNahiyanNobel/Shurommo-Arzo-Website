@@ -78,11 +78,17 @@ function startStory5() {
     let randomTop = Math.random() * vhMinusNavbarHeight;
     let randomLeft = Math.random() * vw - footWidth;
 
-    let feet = document.createElement(`img`);
-    feet.src = `images/5-right-foot.svg`;
-    feet.width = footWidth;
-    feet.style.marginTop = `${randomTop}px`;
-    feet.style.marginLeft = `${randomLeft}px`;
-    divOfScream.appendChild(feet);
+    divOfScream.appendChild(createAFoot(`right`));
+    divOfScream.appendChild(createAFoot(`left`));
+
+    function createAFoot(typeOfFoot) {
+      let foot = document.createElement(`img`);
+      foot.src = `images/5-foot-` + typeOfFoot + `.svg`;
+      foot.width = footWidth;
+      foot.style.position = `absolute`;
+      foot.style.marginTop = `${randomTop}px`;
+      foot.style.marginLeft = `${randomLeft}px`;
+      return foot;
+    }
   }
 }
