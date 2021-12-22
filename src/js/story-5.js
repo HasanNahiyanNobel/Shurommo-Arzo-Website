@@ -72,7 +72,7 @@ function startStory5() {
 
     // Create the space for scream
     // TODO: Perhaps extending the div to the next section will feel better!
-    divOfScream.style.minHeight = `${vhMinusNavbarHeight}px`;
+    divOfScream.style.minHeight = `${vh}px`;
     divMain.classList.remove(`mb-4`); // To ensure that div of scream has no margin at the bottom when animating
 
     // Listen to the scroll, and when the div of scream reaches close to the top, play audio
