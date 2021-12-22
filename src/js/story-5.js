@@ -1,9 +1,15 @@
 startStory5();
 
 function startStory5() {
+  // Define extensions as variable
+  let mp3Extension = `.mp3`;
+  let svgExtension = `.svg`;
+
   // Define pseudo-constants
   let probabilityOfVisibilitySwitchOfTubeLight = 0.2;
   let intervalTimeoutOfTubeLight = 200;
+  let imageSrc = `images/`;
+  let lyricsImagePrefix = `5-text-`;
 
   // Process the audio
   let audioSource = `audios/story-5.mp3`; // TODO: Separate the string for a better ambiguity!
@@ -121,7 +127,17 @@ function startStory5() {
       }, leftFootLagTime);
     }
 
-    function drawLyrics(src) {
+    function drawLyrics(src, ...pos) {
+      let posX = 0;
+      let posY = 0;
+
+      if (pos.length === 1) {
+        posX = pos[0];
+      } else if (pos.length >= 2) {
+        posX = pos[0];
+        posY = pos[1];
+      }
+
       let lyricsWidth = footWidth * 5;
       if (lyricsWidth > vw) {
         lyricsWidth = vw * .8;
@@ -129,6 +145,8 @@ function startStory5() {
 
       let lyrics = document.createElement(`img`);
       lyrics.style.position = `absolute`;
+      lyrics.style.marginLeft = `${posX}px`;
+      lyrics.style.marginTop = `${posY}px`;
       lyrics.src = src;
       lyrics.width = lyricsWidth;
       divOfScream.appendChild(lyrics);
@@ -139,8 +157,11 @@ function startStory5() {
       timeCount += 1000;
 
       if (timeCount === 5e3) { // TODO: Make this 26e3
-        // Write `I've been mad for fucking years`
-        drawLyrics(`images/5-text-1.svg`); // TODO: Separate this
+        drawLyrics(imageSrc + lyricsImagePrefix + 1 + svgExtension);
+      }
+
+      if (timeCount === 10e3) { // TODO: Make this 34e3, perhaps
+        drawLyrics(imageSrc + lyricsImagePrefix + 2 + svgExtension, 500, 350);
       }
 
       if (timeCount > 60e3) {
