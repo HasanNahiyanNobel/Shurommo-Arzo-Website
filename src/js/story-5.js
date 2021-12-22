@@ -59,7 +59,15 @@ function startStory5() {
   spinner.classList.remove(`d-none`);
 
   // When the audio has been loaded, do the rest
-  scream.oncanplay = function() {
+  let screamLoadedInterval = setInterval(() => {
+    console.log(scream.readyState);
+    if (scream.readyState) {
+      clearInterval(screamLoadedInterval);
+      postScreamLoadRoutine();
+    }
+  }, 1500);
+
+  function postScreamLoadRoutine() {
     // Remove the spinner again!
     spinner.classList.add(`d-none`);
 
@@ -235,5 +243,5 @@ function startStory5() {
       }, 1000);
 
     }
-  };
+  }
 }
