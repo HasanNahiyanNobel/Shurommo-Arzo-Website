@@ -35,8 +35,8 @@ function startStory5() {
 
   // Trigger the modal
   window.onload = function() {
-    // document.getElementById(`omt`).click(); // TODO: Uncomment this
-    startAudioAnimation(); // TODO: Remove this debug line
+    document.getElementById(`omt`).click(); // TODO: Uncomment this
+    // startAudioAnimation(); // TODO: Remove this debug line
   };
 
   // Listen to the scroll, and when the threshold reached, play audio
@@ -63,7 +63,7 @@ function startStory5() {
     if (topOfScreamDiv < 0) { // FixMe: This may not reach 0 in some devices. Perhaps Checking bottom would work properly.
       document.removeEventListener(`scroll`, scrollListener);
       scream.play().then(() => {
-        // startAudioAnimation(); // TODO: Uncomment this
+        startAudioAnimation(); // TODO: Uncomment this
         // Wait for the audio to finish
         scream.addEventListener(`ended`, () => {
           // Set the current time to zero
@@ -138,13 +138,14 @@ function startStory5() {
       lyricsAsSvg.src = src;
       lyricsAsSvg.width = lyricsWidth;
       lyricsAsSvg.style.position = `absolute`;
-      lyricsAsSvg.classList.add(`d-none`);
+      lyricsAsSvg.style.opacity = `0`;
+      lyricsAsSvg.style.transition = `opacity 1000ms`;
       divOfScream.appendChild(lyricsAsSvg);
 
       lyricsAsSvg.onload = function() {
         setHorizontalPos();
         setVerticalPos();
-        lyricsAsSvg.classList.remove(`d-none`);
+        lyricsAsSvg.style.opacity = `1`;
       };
 
       function setHorizontalPos() {
@@ -176,17 +177,17 @@ function startStory5() {
 
       timeCount += 1000;
 
-      if (timeCount === 5e3) { // TODO: Make this 26e3
+      if (timeCount === 26e3) {
         let pathOfImage = imageSrc + lyricsImagePrefix + 1 + svgExtension;
         drawLyrics(pathOfImage);
       }
 
-      if (timeCount === 2e3) { // TODO: Make this 34e3, perhaps
+      if (timeCount === 34e3) {
         let pathOfImage = imageSrc + lyricsImagePrefix + `2-1` + svgExtension;
         drawLyrics(pathOfImage, -12, -10);
       }
 
-      if (timeCount === 3e3) { // TODO: Make this 35e3, perhaps
+      if (timeCount === 35e3) {
         let pathOfImage = imageSrc + lyricsImagePrefix + `2-2` + svgExtension;
         drawLyrics(pathOfImage, -2, -5);
       }
@@ -195,12 +196,12 @@ function startStory5() {
         clearInterval(intervalOfFootSet);
         // Make the next section visible
         divOfPostScream.classList.remove(`d-none`);
-        // linkOfPostScream.click(); // TODO: Uncomment this
+        linkOfPostScream.click(); // TODO: Uncomment this
       }
 
       drawFeet(); // TODO: Perhaps do this twice or more as the time increases
 
-    }, 100);
+    }, 1000);
 
   }
 }
