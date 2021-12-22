@@ -43,6 +43,7 @@ function startStory5() {
   let suffixOfLyrics2Line2 = `2-2`;
 
   // Get the document elements
+  let divMain = document.getElementById(`md`); // Main div from the base template
   let ecenStyle = document.getElementById(`5-ecen`).style; // Style of the paragraph reading `এই ছিলো, এই নাই`
   let divOfScream = document.getElementById(`5-s`); // The div of scream
   let divOfPostScream = document.getElementById(`5-ps`); // The div after the scream
@@ -55,6 +56,7 @@ function startStory5() {
   // Create the space for scream
   // TODO: Perhaps extending the div to the next section will feel better!
   divOfScream.style.minHeight = `${vhMinusNavbarHeight}px`;
+  divMain.classList.remove(`mb-4`); // To ensure that div of scream has no margin at the bottom when animating
 
   // Trigger the modal which requests reader to use headphones
   window.onload = function() {
@@ -208,6 +210,8 @@ function startStory5() {
         // Make the next section visible
         divOfPostScream.classList.remove(`d-none`);
         linkOfPostScream.click();
+        // And give the main div its margin again!
+        divMain.classList.add(`mb-4`);
       }
 
       drawFeet();
