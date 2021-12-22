@@ -15,13 +15,13 @@ function startStory5() {
   let audioSource = `audios/story-5.mp3`; // TODO: Separate the string for a better ambiguity!
   let scream = new Audio(audioSource);
 
-  // Get the viewport height minus navbar height and viewport width
+  // Get viewport height and width
   let navbar = document.getElementById(`mn`);
-  let vhMinusNavbarHeight = Math.max(
-      document.documentElement.clientHeight || 0,
-      window.innerHeight || 0) - navbar.offsetHeight; // Taken from: https://stackoverflow.com/a/8876069
   let vw = Math.max(document.documentElement.clientWidth || 0,
-      window.innerWidth || 0);
+      window.innerWidth || 0); // Taken from: https://stackoverflow.com/a/8876069
+  let vh = Math.max(document.documentElement.clientHeight || 0,
+      window.innerHeight || 0); // Also from: https://stackoverflow.com/a/8876069
+  let vhMinusNavbarHeight = vh - navbar.offsetHeight;
 
   // Get the document elements
   let ecenStyle = document.getElementById(`5-ecen`).style; // Style of the paragraph reading `এই ছিলো, এই নাই`
@@ -81,7 +81,6 @@ function startStory5() {
     let footWidthSquare = Math.pow(footWidth, 2);
     let footDiagonal = Math.sqrt(2 * footWidthSquare);
     let footGraphicsSafetyMarginInPixel = vw / 400;
-    let lyricsGraphicsSafetyMarginInVw = 2;
 
     let leftFootLagTime = 350;
     let footDisappearanceTime = 1000;
@@ -138,28 +137,38 @@ function startStory5() {
       lyricsAsSvg.src = src;
       lyricsAsSvg.width = lyricsWidth;
       lyricsAsSvg.style.position = `absolute`;
-      setHorizontalPos();
-      setVerticalPos();
-
+      lyricsAsSvg.classList.add(`d-none`);
       divOfScream.appendChild(lyricsAsSvg);
+
+      lyricsAsSvg.onload = function() {
+        setHorizontalPos();
+        setVerticalPos();
+        lyricsAsSvg.classList.remove(`d-none`);
+      };
 
       function setHorizontalPos() {
         if (pos[0] === undefined) { // When not given, `pos[0]` is `undefined`
-          lyricsAsSvg.style.marginLeft = `${lyricsGraphicsSafetyMarginInVw}vw`;
-        } else if (pos[0] === -1) {
-          lyricsAsSvg.style.right = `${lyricsGraphicsSafetyMarginInVw}vw`;
+          lyricsAsSvg.style.marginLeft = `0`;
+        } else if (pos[0] > 0) {
+          lyricsAsSvg.style.left = `${pos[0]}vw`;
         } else {
-          lyricsAsSvg.style.marginLeft = `${pos[0]}px`;
+          lyricsAsSvg.style.right = `${-pos[0]}vw`;
         }
       }
 
       function setVerticalPos() {
         if (pos[1] === undefined) { // When not given, `pos[1]` is `undefined`
-          lyricsAsSvg.style.marginTop = `${lyricsGraphicsSafetyMarginInVw}vw`;
-        } else if (pos[1] === -1) {
-          lyricsAsSvg.style.bottom = `${lyricsGraphicsSafetyMarginInVw}vw`;
+          lyricsAsSvg.style.marginTop = `0`;
+        } else if (pos[1] > 0) {
+          lyricsAsSvg.style.marginTop = `${pos[1]}vh`;
         } else {
-          lyricsAsSvg.style.marginTop = `${pos[1]}px`;
+          let marginTop = (divOfScream.offsetHeight - lyricsAsSvg.height) / vh *
+              100;
+          console.log(vh);
+          console.log(divOfScream.offsetHeight);
+          console.log(document.getElementById(src).offsetWidth);
+          console.log(marginTop / 100 * vh);
+          lyricsAsSvg.style.marginTop = `${marginTop}vh`;
         }
       }
     }
@@ -173,7 +182,7 @@ function startStory5() {
       }
 
       if (timeCount === 2e3) { // TODO: Make this 34e3, perhaps
-        drawLyrics(imageSrc + lyricsImagePrefix + 2 + svgExtension, -1, -1);
+        drawLyrics(imageSrc + lyricsImagePrefix + 2 + svgExtension, -5, -1);
       }
 
       if (timeCount > 60e3) {
