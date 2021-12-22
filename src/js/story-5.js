@@ -166,7 +166,7 @@ function startStory5() {
           let lyricsHeight = lyricsAsSvg.naturalHeight /
               lyricsAsSvg.naturalWidth * lyricsAsSvg.width;
           let marginTop = (divOfScream.offsetHeight - lyricsHeight) / vh *
-              100;
+              100 + pos[1];
           lyricsAsSvg.style.marginTop = `${marginTop}vh`;
         }
       }
@@ -177,11 +177,18 @@ function startStory5() {
       timeCount += 1000;
 
       if (timeCount === 5e3) { // TODO: Make this 26e3
-        drawLyrics(imageSrc + lyricsImagePrefix + 1 + svgExtension);
+        let pathOfImage = imageSrc + lyricsImagePrefix + 1 + svgExtension;
+        drawLyrics(pathOfImage);
       }
 
       if (timeCount === 2e3) { // TODO: Make this 34e3, perhaps
-        drawLyrics(imageSrc + lyricsImagePrefix + 2 + svgExtension, -5, -1);
+        let pathOfImage = imageSrc + lyricsImagePrefix + `2-1` + svgExtension;
+        drawLyrics(pathOfImage, -12, -10);
+      }
+
+      if (timeCount === 3e3) { // TODO: Make this 35e3, perhaps
+        let pathOfImage = imageSrc + lyricsImagePrefix + `2-2` + svgExtension;
+        drawLyrics(pathOfImage, -2, -5);
       }
 
       if (timeCount > 60e3) {
