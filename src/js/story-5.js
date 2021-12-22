@@ -29,7 +29,8 @@ function startStory5() {
 
   // Trigger the modal
   window.onload = function() {
-    document.getElementById(`omt`).click();
+    // document.getElementById(`omt`).click(); // TODO: Uncomment this
+    startAudioAnimation(); // TODO: Remove this debug line
   };
 
   // Listen to the scroll, and when the threshold reached, play audio
@@ -56,7 +57,7 @@ function startStory5() {
     if (topOfScreamDiv < 0) { // FixMe: This may not reach 0 in some devices. Perhaps Checking bottom would work properly.
       document.removeEventListener(`scroll`, scrollListener);
       scream.play().then(() => {
-        startAudioAnimation();
+        // startAudioAnimation(); // TODO: Uncomment this
         // Wait for the audio to finish
         scream.addEventListener(`ended`, () => {
           // Set the current time to zero
@@ -137,7 +138,7 @@ function startStory5() {
 
       timeCount += 1000;
 
-      if (timeCount === 26e3) {
+      if (timeCount === 5e3) { // TODO: Make this 26e3
         // Write `I've been mad for fucking years`
         drawLyrics(`images/5-text-1.svg`); // TODO: Separate this
       }
@@ -146,12 +147,12 @@ function startStory5() {
         clearInterval(intervalOfFootSet);
         // Make the next section visible
         divOfPostScream.classList.remove(`d-none`);
-        linkOfPostScream.click();
+        // linkOfPostScream.click(); // TODO: Uncomment this
       }
 
       drawFeet(); // TODO: Perhaps do this twice or more as the time increases
 
-    }, 1000);
+    }, 100);
 
   }
 }
