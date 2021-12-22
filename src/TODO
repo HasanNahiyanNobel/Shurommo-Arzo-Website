@@ -1,1 +1,5 @@
 This is a To-do list for general purposes.
+
+TODO: Parse modal closing with keyboard as an "document interaction"!
+TODO: Perhaps make the svg of story 5 opaque
+TODO: Minify all the svg more (upto 2 decimal places)
