@@ -5,16 +5,6 @@ function startStory5() {
   let mp3Extension = `.mp3`;
   let svgExtension = `.svg`;
 
-  // Define pseudo-constants
-  let probabilityOfVisibilitySwitchOfTubeLight = 0.2;
-  let intervalTimeoutOfTubeLight = 200;
-  let imageSrc = `images/`;
-  let lyricsImagePrefix = `5-text-`;
-
-  // Process the audio
-  let audioSource = `audios/story-5.mp3`; // TODO: Separate the string for a better ambiguity!
-  let scream = new Audio(audioSource);
-
   // Get viewport height and width
   let navbar = document.getElementById(`mn`);
   let vw = Math.max(document.documentElement.clientWidth || 0,
@@ -23,26 +13,58 @@ function startStory5() {
       window.innerHeight || 0); // Also from: https://stackoverflow.com/a/8876069
   let vhMinusNavbarHeight = vh - navbar.offsetHeight;
 
+  // Define pseudo-constants
+  let audioSrc = `audios/`;
+  let imageSrc = `images/`;
+  let footImagePrefix = `5-foot-`;
+  let lyricsImagePrefix = `5-text-`;
+
+  let probabilityOfVisibilitySwitchOfTubeLight = 0.2;
+  let intervalTimeoutOfTubeLight = 200;
+
+  let footWidth = 60; // In pixel; some other values are also derived from this value
+  let footWidthSquare = Math.pow(footWidth, 2);
+  let footDiagonal = Math.sqrt(2 * footWidthSquare);
+  let footRotationDeviation = 60; // Measured in degree
+  let footGraphicsSafetyMarginInPixel = vw / 400;
+
+  let leftFootLagTime = 340;
+
+  let lyricsWidth = footWidth * 7 < vw ? footWidth * 7 : vw * .75; // Width of lyrics will be a multiple of footWidth in larger screens and a factor of vw in smaller screens
+  let transitionTimeOfLyricsOpacity = 2000;
+
+  let startOfLyrics1Line1 = 26e3; // Reads `I've been mad for fucking years`
+  let startOfLyrics2Line1 = 34e3; // Reads `I've always been mad`
+  let startOfLyrics2Line2 = 35e3; // Reads `I know I've been mad`
+  let startOfScreamPeak = 63e3;
+
+  let suffixOfLyrics1Line1 = `1`;
+  let suffixOfLyrics2Line1 = `2-1`;
+  let suffixOfLyrics2Line2 = `2-2`;
+
   // Get the document elements
   let ecenStyle = document.getElementById(`5-ecen`).style; // Style of the paragraph reading `এই ছিলো, এই নাই`
   let divOfScream = document.getElementById(`5-s`); // The div of scream
   let divOfPostScream = document.getElementById(`5-ps`); // The div after the scream
   let linkOfPostScream = document.getElementById(`5-jtps`); // Link to the post-scream section
 
+  // Process the audio
+  let audioSource = audioSrc + `story-5` + mp3Extension;
+  let scream = new Audio(audioSource);
+
   // Create the space for scream
   // TODO: Perhaps extending the div to the next section will feel better!
   divOfScream.style.minHeight = `${vhMinusNavbarHeight}px`;
 
-  // Trigger the modal
+  // Trigger the modal which requests reader to use headphones
   window.onload = function() {
-    document.getElementById(`omt`).click(); // TODO: Uncomment this
-    // startAudioAnimation(); // TODO: Remove this debug line
+    document.getElementById(`omt`).click();
   };
 
-  // Listen to the scroll, and when the threshold reached, play audio
+  // Listen to the scroll, and when the div of scream reaches close to the top, play audio
   document.addEventListener(`scroll`, scrollListener);
 
-  // Set the interval for the tube-light effect
+  // Start the continuous tube-light effect for `এই ছিলো, এই নাই`
   setInterval(() => {
     let theRandom = Math.random();
     if (theRandom < probabilityOfVisibilitySwitchOfTubeLight) {
@@ -63,7 +85,8 @@ function startStory5() {
     if (topOfScreamDiv < 0) { // FixMe: This may not reach 0 in some devices. Perhaps Checking bottom would work properly.
       document.removeEventListener(`scroll`, scrollListener);
       scream.play().then(() => {
-        startAudioAnimation(); // TODO: Uncomment this
+        // Start animation
+        startAudioAnimation();
         // Wait for the audio to finish
         scream.addEventListener(`ended`, () => {
           // Set the current time to zero
@@ -77,25 +100,7 @@ function startStory5() {
 
   // Animations for the audio
   function startAudioAnimation() {
-    let footWidth = 80; // TODO: A number of dimensions are derived from this value, so think about it in detail
-    let footWidthSquare = Math.pow(footWidth, 2);
-    let footDiagonal = Math.sqrt(2 * footWidthSquare);
-    let footGraphicsSafetyMarginInPixel = vw / 400;
-
-    let leftFootLagTime = 340;
-
     let timeCount = 0;
-
-    // TODO: Move this function inside drawFeet()
-    function createAFoot(typeOfFoot) {
-      let foot = document.createElement(`img`);
-      foot.src = `images/5-foot-` + typeOfFoot + `.svg`;
-      foot.width = footWidth;
-      foot.style.position = `absolute`;
-      foot.style.marginTop = `-${footWidth}px`;
-      foot.style.marginLeft = `-${footWidth}px`;
-      return foot;
-    }
 
     function drawFeet() {
       let footRight = createAFoot(`right`);
@@ -107,8 +112,8 @@ function startStory5() {
           footGraphicsSafetyMarginInPixel);
       let randomLeft = Math.random() *
           (vw - footDiagonal - footGraphicsSafetyMarginInPixel);
-      let randomRotationDeviation = Math.random() * 60 *
-          (Math.random() < 0.5 ? -1 : 1); // Deviation of random rotation will be from -60 to +60
+      let randomRotationDeviation = Math.random() * footRotationDeviation *
+          (Math.random() < 0.5 ? -1 : 1);
       let randomRotationOfRight = Math.random() * 360;
       let randomRotationOfLeft = randomRotationOfRight +
           randomRotationDeviation;
@@ -124,21 +129,25 @@ function startStory5() {
         footLeft.style.marginLeft = `${randomLeft}px`;
         footLeft.style.transform = `rotate(${randomRotationOfLeft}deg)`;
       }, leftFootLagTime);
+
+      function createAFoot(typeOfFoot) {
+        let foot = document.createElement(`img`);
+        foot.src = imageSrc + footImagePrefix + typeOfFoot + svgExtension;
+        foot.width = footWidth;
+        foot.style.position = `absolute`;
+        foot.style.marginTop = `-${footWidth}px`;
+        foot.style.marginLeft = `-${footWidth}px`;
+        return foot;
+      }
     }
 
     function drawLyrics(src, ...pos) {
-      let lyricsWidth = footWidth * 5;
-      if (lyricsWidth > vw) {
-        lyricsWidth = vw * .8;
-      }
-
-      // let lyricsAsSvg = document.createElement(`img`);
       let lyricsAsSvg = new Image();
       lyricsAsSvg.src = src;
       lyricsAsSvg.width = lyricsWidth;
       lyricsAsSvg.style.position = `absolute`;
       lyricsAsSvg.style.opacity = `0`;
-      lyricsAsSvg.style.transition = `opacity 2000ms`;
+      lyricsAsSvg.style.transition = `opacity ${transitionTimeOfLyricsOpacity}ms`;
       divOfScream.appendChild(lyricsAsSvg);
 
       lyricsAsSvg.onload = function() {
@@ -176,29 +185,33 @@ function startStory5() {
 
       timeCount += 1000;
 
-      if (timeCount === 26e3) {
-        let pathOfImage = imageSrc + lyricsImagePrefix + 1 + svgExtension;
+      if (timeCount === startOfLyrics1Line1) {
+        let pathOfImage = imageSrc + lyricsImagePrefix + suffixOfLyrics1Line1 +
+            svgExtension;
         drawLyrics(pathOfImage);
       }
 
-      if (timeCount === 34e3) {
-        let pathOfImage = imageSrc + lyricsImagePrefix + `2-1` + svgExtension;
+      if (timeCount === startOfLyrics2Line1) {
+        let pathOfImage = imageSrc + lyricsImagePrefix + suffixOfLyrics2Line1 +
+            svgExtension;
         drawLyrics(pathOfImage, -12, -10);
       }
 
-      if (timeCount === 35e3) {
-        let pathOfImage = imageSrc + lyricsImagePrefix + `2-2` + svgExtension;
+      if (timeCount === startOfLyrics2Line2) {
+        let pathOfImage = imageSrc + lyricsImagePrefix + suffixOfLyrics2Line2 +
+            svgExtension;
         drawLyrics(pathOfImage, -2, -5);
       }
 
-      if (timeCount === 63e3) {
+      if (timeCount === startOfScreamPeak) {
+        // Clear the interval
         clearInterval(intervalOfFootSet);
         // Make the next section visible
         divOfPostScream.classList.remove(`d-none`);
-        linkOfPostScream.click(); // TODO: Uncomment this
+        linkOfPostScream.click();
       }
 
-      drawFeet(); // TODO: Perhaps do this twice or more as the time increases
+      drawFeet();
 
     }, 1000);
 
