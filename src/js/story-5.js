@@ -133,7 +133,8 @@ function startStory5() {
         lyricsWidth = vw * .8;
       }
 
-      let lyricsAsSvg = document.createElement(`img`);
+      // let lyricsAsSvg = document.createElement(`img`);
+      let lyricsAsSvg = new Image();
       lyricsAsSvg.src = src;
       lyricsAsSvg.width = lyricsWidth;
       lyricsAsSvg.style.position = `absolute`;
@@ -162,12 +163,10 @@ function startStory5() {
         } else if (pos[1] > 0) {
           lyricsAsSvg.style.marginTop = `${pos[1]}vh`;
         } else {
-          let marginTop = (divOfScream.offsetHeight - lyricsAsSvg.height) / vh *
+          let lyricsHeight = lyricsAsSvg.naturalHeight /
+              lyricsAsSvg.naturalWidth * lyricsAsSvg.width;
+          let marginTop = (divOfScream.offsetHeight - lyricsHeight) / vh *
               100;
-          console.log(vh);
-          console.log(divOfScream.offsetHeight);
-          console.log(document.getElementById(src).offsetWidth);
-          console.log(marginTop / 100 * vh);
           lyricsAsSvg.style.marginTop = `${marginTop}vh`;
         }
       }
