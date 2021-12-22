@@ -72,6 +72,7 @@ function startStory5() {
     let footWidth = 80;
     let footWidthSquare = Math.pow(footWidth, 2);
     let footDiagonal = Math.sqrt(2 * footWidthSquare);
+    let footGraphicsSafetyMarginInPixel = vw / 400;
 
     let leftFootLagTime = 350;
     let footDisappearanceTime = 1000;
@@ -94,8 +95,10 @@ function startStory5() {
       divOfScream.appendChild(footRight);
       divOfScream.appendChild(footLeft);
 
-      let randomTop = Math.random() * (vhMinusNavbarHeight - footDiagonal);
-      let randomLeft = Math.random() * (vw - footDiagonal);
+      let randomTop = Math.random() * (vhMinusNavbarHeight - footDiagonal -
+          footGraphicsSafetyMarginInPixel);
+      let randomLeft = Math.random() *
+          (vw - footDiagonal - footGraphicsSafetyMarginInPixel);
       let randomRotationDeviation = Math.random() * 60 *
           (Math.random() < 0.5 ? -1 : 1); // Deviation of random rotation will be from -60 to +60
       let randomRotationOfRight = Math.random() * 360;
@@ -119,16 +122,16 @@ function startStory5() {
 
       timeCount += 1; // In seconds!
 
-      if (timeCount >= 60) {
+      if (timeCount > 200) {
         clearInterval(intervalOfFootSet);
         // Make the next section visible
         divOfPostScream.classList.remove(`d-none`);
         linkOfPostScream.click();
       }
 
-      drawFeet();
+      drawFeet(); // TODO: Perhaps do this twice or more as the time increases
 
-    }, 1000);
+    }, 100);
 
   }
 }
