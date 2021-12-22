@@ -43,7 +43,9 @@ function startStory5() {
   let suffixOfLyrics2Line2 = `2-2`;
 
   // Get the document elements
+  let spinner = document.getElementById(`ms`); // Main spinner from the base template
   let divMain = document.getElementById(`md`); // Main div from the base template
+  let divFirst = document.getElementById(`5-prs`); // The pre-scream div
   let ecenStyle = document.getElementById(`5-ecen`).style; // Style of the paragraph reading `এই ছিলো, এই নাই`
   let divOfScream = document.getElementById(`5-s`); // The div of scream
   let divOfPostScream = document.getElementById(`5-ps`); // The div after the scream
@@ -53,170 +55,185 @@ function startStory5() {
   let audioSource = audioSrc + `story-5` + mp3Extension;
   let scream = new Audio(audioSource);
 
-  // Create the space for scream
-  // TODO: Perhaps extending the div to the next section will feel better!
-  divOfScream.style.minHeight = `${vhMinusNavbarHeight}px`;
-  divMain.classList.remove(`mb-4`); // To ensure that div of scream has no margin at the bottom when animating
+  // Show the spinner until the audio has been loaded
+  spinner.classList.remove(`d-none`);
 
-  // Trigger the modal which requests reader to use headphones
-  window.onload = function() {
+  // When the audio has been loaded, do the rest
+  scream.oncanplay = function() {
+    // Remove the spinner again!
+    spinner.classList.remove(`d-none`);
+
+    // Trigger the modal which requests reader to use headphones
     document.getElementById(`omt`).click();
-  };
 
-  // Listen to the scroll, and when the div of scream reaches close to the top, play audio
-  document.addEventListener(`scroll`, scrollListener);
+    // Show the first section and the canvas div
+    divFirst.classList.remove(`d-none`);
+    divOfScream.classList.remove(`d-none`);
 
-  // Start the continuous tube-light effect for `এই ছিলো, এই নাই`
-  setInterval(() => {
-    let theRandom = Math.random();
-    if (theRandom < probabilityOfVisibilitySwitchOfTubeLight) {
-      switchVisibilityOfEcen();
+    // Create the space for scream
+    // TODO: Perhaps extending the div to the next section will feel better!
+    divOfScream.style.minHeight = `${vhMinusNavbarHeight}px`;
+    divMain.classList.remove(`mb-4`); // To ensure that div of scream has no margin at the bottom when animating
+
+    // Listen to the scroll, and when the div of scream reaches close to the top, play audio
+    document.addEventListener(`scroll`, scrollListener);
+
+    // Start the continuous tube-light effect for `এই ছিলো, এই নাই`
+    setInterval(() => {
+      let theRandom = Math.random();
+      if (theRandom < probabilityOfVisibilitySwitchOfTubeLight) {
+        switchVisibilityOfEcen();
+      }
+    }, intervalTimeoutOfTubeLight);
+
+    // Function for switching the visibility of the desired paragraph
+    function switchVisibilityOfEcen() {
+      let currentVisibility = ecenStyle.visibility;
+      ecenStyle.visibility = currentVisibility === `` ? `hidden` : ``;
     }
-  }, intervalTimeoutOfTubeLight);
 
-  // Function for switching the visibility of the desired paragraph
-  function switchVisibilityOfEcen() {
-    let currentVisibility = ecenStyle.visibility;
-    ecenStyle.visibility = currentVisibility === `` ? `hidden` : ``;
-  }
-
-  // The scroll listener
-  function scrollListener() {
-    let topOfScreamDiv = divOfScream.getBoundingClientRect().top - navbarHeight;
-    if (topOfScreamDiv < navbarHeight) {
-      document.removeEventListener(`scroll`, scrollListener);
-      scream.play().then(() => {
-        // Start animation
-        startAudioAnimation();
-        // Wait for the audio to finish
-        scream.addEventListener(`ended`, () => {
-          // Set the current time to zero
-          scream.currentTime = 0;
+    // The scroll listener
+    function scrollListener() {
+      let topOfScreamDiv = divOfScream.getBoundingClientRect().top -
+          navbarHeight;
+      if (topOfScreamDiv < navbarHeight) {
+        document.removeEventListener(`scroll`, scrollListener);
+        scream.play().then(() => {
+          // Start animation
+          startAudioAnimation();
+          // Wait for the audio to finish
+          scream.addEventListener(`ended`, () => {
+            // Set the current time to zero
+            scream.currentTime = 0;
+          });
+        }).catch(error => {
+          console.log(error);
         });
-      }).catch(error => {
-        console.log(error);
-      });
-    }
-  }
-
-  // Animations for the audio
-  function startAudioAnimation() {
-    let timeCount = 0;
-
-    function drawFeet() {
-      let footRight = createAFoot(`right`);
-      let footLeft = createAFoot(`left`);
-      divOfScream.appendChild(footRight);
-      divOfScream.appendChild(footLeft);
-
-      let randomTop = Math.random() * (vhMinusNavbarHeight - footDiagonal -
-          footGraphicsSafetyMarginInPixel);
-      let randomLeft = Math.random() *
-          (vw - footDiagonal - footGraphicsSafetyMarginInPixel);
-      let randomRotationDeviation = Math.random() * footRotationDeviation *
-          (Math.random() < 0.5 ? -1 : 1);
-      let randomRotationOfRight = Math.random() * 360;
-      let randomRotationOfLeft = randomRotationOfRight +
-          randomRotationDeviation;
-
-      // Draw the right foot
-      footRight.style.marginTop = `${randomTop}px`;
-      footRight.style.marginLeft = `${randomLeft}px`;
-      footRight.style.transform = `rotate(${randomRotationOfRight}deg)`;
-
-      // Draw the left one a bit later
-      setTimeout(() => {
-        footLeft.style.marginTop = `${randomTop}px`;
-        footLeft.style.marginLeft = `${randomLeft}px`;
-        footLeft.style.transform = `rotate(${randomRotationOfLeft}deg)`;
-      }, leftFootLagTime);
-
-      function createAFoot(typeOfFoot) {
-        let foot = document.createElement(`img`);
-        foot.src = imageSrc + footImagePrefix + typeOfFoot + svgExtension;
-        foot.width = footWidth;
-        foot.style.position = `absolute`;
-        foot.style.marginTop = `-${footWidth}px`;
-        foot.style.marginLeft = `-${footWidth}px`;
-        return foot;
       }
     }
 
-    function drawLyrics(src, ...pos) {
-      let lyricsAsSvg = new Image();
-      lyricsAsSvg.src = src;
-      lyricsAsSvg.width = lyricsWidth;
-      lyricsAsSvg.style.position = `absolute`;
-      lyricsAsSvg.style.opacity = `0`;
-      lyricsAsSvg.style.transition = `opacity ${transitionTimeOfLyricsOpacity}ms`;
-      divOfScream.appendChild(lyricsAsSvg);
+    // Animations for the audio
+    function startAudioAnimation() {
+      let timeCount = 0;
 
-      lyricsAsSvg.onload = function() {
-        setHorizontalPos();
-        setVerticalPos();
-        lyricsAsSvg.style.opacity = `1`;
-      };
+      function drawFeet() {
+        let footRight = createAFoot(`right`);
+        let footLeft = createAFoot(`left`);
+        divOfScream.appendChild(footRight);
+        divOfScream.appendChild(footLeft);
 
-      function setHorizontalPos() {
-        if (pos[0] === undefined) { // When not given, `pos[0]` is `undefined`
-          lyricsAsSvg.style.marginLeft = `0`;
-        } else if (pos[0] > 0) {
-          lyricsAsSvg.style.left = `${pos[0]}vw`;
-        } else {
-          lyricsAsSvg.style.right = `${-pos[0]}vw`;
+        let randomTop = Math.random() * (vhMinusNavbarHeight - footDiagonal -
+            footGraphicsSafetyMarginInPixel);
+        let randomLeft = Math.random() *
+            (vw - footDiagonal - footGraphicsSafetyMarginInPixel);
+        let randomRotationDeviation = Math.random() * footRotationDeviation *
+            (Math.random() < 0.5 ? -1 : 1);
+        let randomRotationOfRight = Math.random() * 360;
+        let randomRotationOfLeft = randomRotationOfRight +
+            randomRotationDeviation;
+
+        // Draw the right foot
+        footRight.style.marginTop = `${randomTop}px`;
+        footRight.style.marginLeft = `${randomLeft}px`;
+        footRight.style.transform = `rotate(${randomRotationOfRight}deg)`;
+
+        // Draw the left one a bit later
+        setTimeout(() => {
+          footLeft.style.marginTop = `${randomTop}px`;
+          footLeft.style.marginLeft = `${randomLeft}px`;
+          footLeft.style.transform = `rotate(${randomRotationOfLeft}deg)`;
+        }, leftFootLagTime);
+
+        function createAFoot(typeOfFoot) {
+          let foot = document.createElement(`img`);
+          foot.src = imageSrc + footImagePrefix + typeOfFoot + svgExtension;
+          foot.width = footWidth;
+          foot.style.position = `absolute`;
+          foot.style.marginTop = `-${footWidth}px`;
+          foot.style.marginLeft = `-${footWidth}px`;
+          return foot;
         }
       }
 
-      function setVerticalPos() {
-        if (pos[1] === undefined) { // When not given, `pos[1]` is `undefined`
-          lyricsAsSvg.style.marginTop = `0`;
-        } else if (pos[1] > 0) {
-          lyricsAsSvg.style.marginTop = `${pos[1]}vh`;
-        } else {
-          let lyricsHeight = lyricsAsSvg.naturalHeight /
-              lyricsAsSvg.naturalWidth * lyricsAsSvg.width;
-          let marginTop = (divOfScream.offsetHeight - lyricsHeight) / vh *
-              100 + pos[1];
-          lyricsAsSvg.style.marginTop = `${marginTop}vh`;
+      function drawLyrics(src, ...pos) {
+        let lyricsAsSvg = new Image();
+        lyricsAsSvg.src = src;
+        lyricsAsSvg.width = lyricsWidth;
+        lyricsAsSvg.style.position = `absolute`;
+        lyricsAsSvg.style.opacity = `0`;
+        lyricsAsSvg.style.transition = `opacity ${transitionTimeOfLyricsOpacity}ms`;
+        divOfScream.appendChild(lyricsAsSvg);
+
+        lyricsAsSvg.onload = function() {
+          setHorizontalPos();
+          setVerticalPos();
+          lyricsAsSvg.style.opacity = `1`;
+        };
+
+        function setHorizontalPos() {
+          if (pos[0] === undefined) { // When not given, `pos[0]` is `undefined`
+            lyricsAsSvg.style.marginLeft = `0`;
+          } else if (pos[0] > 0) {
+            lyricsAsSvg.style.left = `${pos[0]}vw`;
+          } else {
+            lyricsAsSvg.style.right = `${-pos[0]}vw`;
+          }
+        }
+
+        function setVerticalPos() {
+          if (pos[1] === undefined) { // When not given, `pos[1]` is `undefined`
+            lyricsAsSvg.style.marginTop = `0`;
+          } else if (pos[1] > 0) {
+            lyricsAsSvg.style.marginTop = `${pos[1]}vh`;
+          } else {
+            let lyricsHeight = lyricsAsSvg.naturalHeight /
+                lyricsAsSvg.naturalWidth * lyricsAsSvg.width;
+            let marginTop = (divOfScream.offsetHeight - lyricsHeight) / vh *
+                100 + pos[1];
+            lyricsAsSvg.style.marginTop = `${marginTop}vh`;
+          }
         }
       }
+
+      let intervalOfFootSet = setInterval(() => {
+
+        timeCount += 1000;
+
+        if (timeCount === startOfLyrics1Line1) {
+          let pathOfImage = imageSrc + lyricsImagePrefix +
+              suffixOfLyrics1Line1 +
+              svgExtension;
+          drawLyrics(pathOfImage);
+        }
+
+        if (timeCount === startOfLyrics2Line1) {
+          let pathOfImage = imageSrc + lyricsImagePrefix +
+              suffixOfLyrics2Line1 +
+              svgExtension;
+          drawLyrics(pathOfImage, -12, -10);
+        }
+
+        if (timeCount === startOfLyrics2Line2) {
+          let pathOfImage = imageSrc + lyricsImagePrefix +
+              suffixOfLyrics2Line2 +
+              svgExtension;
+          drawLyrics(pathOfImage, -2, -5);
+        }
+
+        if (timeCount === startOfScreamPeak) {
+          // Clear the interval
+          clearInterval(intervalOfFootSet);
+          // Make the next section visible
+          divOfPostScream.classList.remove(`d-none`);
+          linkOfPostScream.click();
+          // And give the main div its margin again!
+          divMain.classList.add(`mb-4`);
+        }
+
+        drawFeet();
+
+      }, 1000);
+
     }
-
-    let intervalOfFootSet = setInterval(() => {
-
-      timeCount += 1000;
-
-      if (timeCount === startOfLyrics1Line1) {
-        let pathOfImage = imageSrc + lyricsImagePrefix + suffixOfLyrics1Line1 +
-            svgExtension;
-        drawLyrics(pathOfImage);
-      }
-
-      if (timeCount === startOfLyrics2Line1) {
-        let pathOfImage = imageSrc + lyricsImagePrefix + suffixOfLyrics2Line1 +
-            svgExtension;
-        drawLyrics(pathOfImage, -12, -10);
-      }
-
-      if (timeCount === startOfLyrics2Line2) {
-        let pathOfImage = imageSrc + lyricsImagePrefix + suffixOfLyrics2Line2 +
-            svgExtension;
-        drawLyrics(pathOfImage, -2, -5);
-      }
-
-      if (timeCount === startOfScreamPeak) {
-        // Clear the interval
-        clearInterval(intervalOfFootSet);
-        // Make the next section visible
-        divOfPostScream.classList.remove(`d-none`);
-        linkOfPostScream.click();
-        // And give the main div its margin again!
-        divMain.classList.add(`mb-4`);
-      }
-
-      drawFeet();
-
-    }, 1000);
-
-  }
+  };
 }
