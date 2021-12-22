@@ -24,6 +24,7 @@ function startStory5() {
   let linkOfPostScream = document.getElementById(`5-jtps`); // Link to the post-scream section
 
   // Create the space for scream
+  // TODO: Perhaps extending the div to the next section will feel better!
   divOfScream.style.minHeight = `${vhMinusNavbarHeight}px`;
 
   // Trigger the modal
@@ -52,7 +53,7 @@ function startStory5() {
   function scrollListener() {
     let topOfScreamDiv = divOfScream.getBoundingClientRect().top -
         navbar.offsetHeight;
-    if (topOfScreamDiv < 0) {
+    if (topOfScreamDiv < 0) { // FixMe: This may not reach 0 in some devices. Perhaps Checking bottom would work properly.
       document.removeEventListener(`scroll`, scrollListener);
       scream.play().then(() => {
         startAudioAnimation();
@@ -79,6 +80,7 @@ function startStory5() {
 
     let timeCount = 0;
 
+    // TODO: Move this function inside drawFeet()
     function createAFoot(typeOfFoot) {
       let foot = document.createElement(`img`);
       foot.src = `images/5-foot-` + typeOfFoot + `.svg`;
@@ -118,11 +120,23 @@ function startStory5() {
       }, leftFootLagTime);
     }
 
+    function writeLyrics(text) {
+      let lyricsDiv = document.createElement(`div`);
+      lyricsDiv.style.position = `absolute`;
+      lyricsDiv.innerHTML = text;
+      divOfScream.appendChild(lyricsDiv);
+    }
+
     let intervalOfFootSet = setInterval(() => {
 
-      timeCount += 1; // In seconds!
+      timeCount += 1000;
 
-      if (timeCount > 200) {
+      if (timeCount === 5000) {
+        // Write `I've been mad for fucking years`
+        writeLyrics(`I've been mad for fucking years`);
+      }
+
+      if (timeCount > 60e3) {
         clearInterval(intervalOfFootSet);
         // Make the next section visible
         divOfPostScream.classList.remove(`d-none`);
