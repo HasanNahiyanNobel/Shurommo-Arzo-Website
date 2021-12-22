@@ -61,7 +61,7 @@ function startStory5() {
   // When the audio has been loaded, do the rest
   scream.oncanplay = function() {
     // Remove the spinner again!
-    spinner.classList.remove(`d-none`);
+    spinner.classList.add(`d-none`);
 
     // Trigger the modal which requests reader to use headphones
     document.getElementById(`omt`).click();
