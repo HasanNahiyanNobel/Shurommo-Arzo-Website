@@ -81,6 +81,7 @@ function startStory5() {
     let footWidthSquare = Math.pow(footWidth, 2);
     let footDiagonal = Math.sqrt(2 * footWidthSquare);
     let footGraphicsSafetyMarginInPixel = vw / 400;
+    let lyricsGraphicsSafetyMarginInVw = 2;
 
     let leftFootLagTime = 350;
     let footDisappearanceTime = 1000;
@@ -128,28 +129,39 @@ function startStory5() {
     }
 
     function drawLyrics(src, ...pos) {
-      let posX = 0;
-      let posY = 0;
-
-      if (pos.length === 1) {
-        posX = pos[0];
-      } else if (pos.length >= 2) {
-        posX = pos[0];
-        posY = pos[1];
-      }
-
       let lyricsWidth = footWidth * 5;
       if (lyricsWidth > vw) {
         lyricsWidth = vw * .8;
       }
 
-      let lyrics = document.createElement(`img`);
-      lyrics.style.position = `absolute`;
-      lyrics.style.marginLeft = `${posX}px`;
-      lyrics.style.marginTop = `${posY}px`;
-      lyrics.src = src;
-      lyrics.width = lyricsWidth;
-      divOfScream.appendChild(lyrics);
+      let lyricsAsSvg = document.createElement(`img`);
+      lyricsAsSvg.src = src;
+      lyricsAsSvg.width = lyricsWidth;
+      lyricsAsSvg.style.position = `absolute`;
+      setHorizontalPos();
+      setVerticalPos();
+
+      divOfScream.appendChild(lyricsAsSvg);
+
+      function setHorizontalPos() {
+        if (pos[0] === undefined) { // When not given, `pos[0]` is `undefined`
+          lyricsAsSvg.style.marginLeft = `${lyricsGraphicsSafetyMarginInVw}vw`;
+        } else if (pos[0] === -1) {
+          lyricsAsSvg.style.right = `${lyricsGraphicsSafetyMarginInVw}vw`;
+        } else {
+          lyricsAsSvg.style.marginLeft = `${pos[0]}px`;
+        }
+      }
+
+      function setVerticalPos() {
+        if (pos[1] === undefined) { // When not given, `pos[1]` is `undefined`
+          lyricsAsSvg.style.marginTop = `${lyricsGraphicsSafetyMarginInVw}vw`;
+        } else if (pos[1] === -1) {
+          lyricsAsSvg.style.bottom = `${lyricsGraphicsSafetyMarginInVw}vw`;
+        } else {
+          lyricsAsSvg.style.marginTop = `${pos[1]}px`;
+        }
+      }
     }
 
     let intervalOfFootSet = setInterval(() => {
@@ -160,8 +172,8 @@ function startStory5() {
         drawLyrics(imageSrc + lyricsImagePrefix + 1 + svgExtension);
       }
 
-      if (timeCount === 10e3) { // TODO: Make this 34e3, perhaps
-        drawLyrics(imageSrc + lyricsImagePrefix + 2 + svgExtension, 500, 350);
+      if (timeCount === 2e3) { // TODO: Make this 34e3, perhaps
+        drawLyrics(imageSrc + lyricsImagePrefix + 2 + svgExtension, -1, -1);
       }
 
       if (timeCount > 60e3) {
