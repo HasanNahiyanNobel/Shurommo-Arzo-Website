@@ -70,7 +70,7 @@ function startStory5() {
 
   // Animations for the audio
   function startAudioAnimation() {
-    let footWidth = 80;
+    let footWidth = 80; // TODO: A number of dimensions are derived from this value, so think about it in detail
     let footWidthSquare = Math.pow(footWidth, 2);
     let footDiagonal = Math.sqrt(2 * footWidthSquare);
     let footGraphicsSafetyMarginInPixel = vw / 400;
@@ -120,20 +120,26 @@ function startStory5() {
       }, leftFootLagTime);
     }
 
-    function writeLyrics(text) {
-      let lyricsDiv = document.createElement(`div`);
-      lyricsDiv.style.position = `absolute`;
-      lyricsDiv.innerHTML = text;
-      divOfScream.appendChild(lyricsDiv);
+    function drawLyrics(src) {
+      let lyricsWidth = footWidth * 5;
+      if (lyricsWidth > vw) {
+        lyricsWidth = vw * .8;
+      }
+
+      let lyrics = document.createElement(`img`);
+      lyrics.style.position = `absolute`;
+      lyrics.src = src;
+      lyrics.width = lyricsWidth;
+      divOfScream.appendChild(lyrics);
     }
 
     let intervalOfFootSet = setInterval(() => {
 
       timeCount += 1000;
 
-      if (timeCount === 5000) {
+      if (timeCount === 26e3) {
         // Write `I've been mad for fucking years`
-        writeLyrics(`I've been mad for fucking years`);
+        drawLyrics(`images/5-text-1.svg`); // TODO: Separate this
       }
 
       if (timeCount > 60e3) {
@@ -145,7 +151,7 @@ function startStory5() {
 
       drawFeet(); // TODO: Perhaps do this twice or more as the time increases
 
-    }, 100);
+    }, 1000);
 
   }
 }
