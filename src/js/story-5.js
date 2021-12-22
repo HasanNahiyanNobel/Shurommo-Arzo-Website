@@ -82,8 +82,7 @@ function startStory5() {
     let footDiagonal = Math.sqrt(2 * footWidthSquare);
     let footGraphicsSafetyMarginInPixel = vw / 400;
 
-    let leftFootLagTime = 350;
-    let footDisappearanceTime = 1000;
+    let leftFootLagTime = 340;
 
     let timeCount = 0;
 
@@ -139,7 +138,7 @@ function startStory5() {
       lyricsAsSvg.width = lyricsWidth;
       lyricsAsSvg.style.position = `absolute`;
       lyricsAsSvg.style.opacity = `0`;
-      lyricsAsSvg.style.transition = `opacity 1000ms`;
+      lyricsAsSvg.style.transition = `opacity 2000ms`;
       divOfScream.appendChild(lyricsAsSvg);
 
       lyricsAsSvg.onload = function() {
@@ -192,7 +191,7 @@ function startStory5() {
         drawLyrics(pathOfImage, -2, -5);
       }
 
-      if (timeCount > 60e3) {
+      if (timeCount === 63e3) {
         clearInterval(intervalOfFootSet);
         // Make the next section visible
         divOfPostScream.classList.remove(`d-none`);
