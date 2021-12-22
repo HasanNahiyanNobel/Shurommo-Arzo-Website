@@ -76,7 +76,7 @@
             <parameter index="0" name="volume" parameterValue="1"/>
             <parameter index="1" name="static gain" parameterValue="1"/>
           </component>
-          <component componentGuid="4ecfaff5-eb10-466d-bbba-6e284d2bee7e" componentID="Audition.Mute" id="clipMute" name="Mute" powered="true">
+          <component componentGuid="e1da9ce2-651f-43a6-92b5-13054b974298" componentID="Audition.Mute" id="clipMute" name="Mute" powered="true">
             <parameter index="0" parameterValue="0"/>
             <parameter index="1" name="mute" parameterValue="0"/>
           </component>
@@ -165,7 +165,7 @@
             <parameter index="0" name="volume" parameterValue="1"/>
             <parameter index="1" name="static gain" parameterValue="1"/>
           </component>
-          <component componentGuid="d3deb831-def7-41f9-9607-f920adafdd88" componentID="Audition.Mute" id="clipMute" name="Mute" powered="true">
+          <component componentGuid="cd799db5-6cac-42e0-b02e-c991a99cea1e" componentID="Audition.Mute" id="clipMute" name="Mute" powered="true">
             <parameter index="0" parameterValue="0"/>
             <parameter index="1" name="mute" parameterValue="0"/>
           </component>
@@ -186,7 +186,7 @@
             <parameter index="0" name="volume" parameterValue="1"/>
             <parameter index="1" name="static gain" parameterValue="1"/>
           </component>
-          <component componentGuid="f634c580-b027-4c7b-a0fc-a499f188155a" componentID="Audition.Mute" id="clipMute" name="Mute" powered="true">
+          <component componentGuid="56a2dbe7-e030-42f8-8159-bed22bda942e" componentID="Audition.Mute" id="clipMute" name="Mute" powered="true">
             <parameter index="0" parameterValue="0"/>
             <parameter index="1" name="mute" parameterValue="0"/>
           </component>
@@ -275,7 +275,7 @@
             <parameter index="0" name="volume" parameterValue="1"/>
             <parameter index="1" name="static gain" parameterValue="1"/>
           </component>
-          <component componentGuid="5af8635a-e6ec-45b1-b219-134f64f65c18" componentID="Audition.Mute" id="clipMute" name="Mute" powered="true">
+          <component componentGuid="c116fe28-14ff-4b90-826c-02ee0c2fc8ea" componentID="Audition.Mute" id="clipMute" name="Mute" powered="true">
             <parameter index="0" parameterValue="0"/>
             <parameter index="1" name="mute" parameterValue="0"/>
           </component>
@@ -297,7 +297,7 @@
             <parameter index="0" name="volume" parameterValue="1"/>
             <parameter index="1" name="static gain" parameterValue="1"/>
           </component>
-          <component componentGuid="ff7f0e72-454d-4b0e-ae8a-5e129a71e5ee" componentID="Audition.Mute" id="clipMute" name="Mute" powered="true">
+          <component componentGuid="572f6ac5-ffbf-4521-ac06-d396e325f20f" componentID="Audition.Mute" id="clipMute" name="Mute" powered="true">
             <parameter index="0" parameterValue="0"/>
             <parameter index="1" name="mute" parameterValue="0"/>
           </component>
@@ -318,7 +318,7 @@
             <parameter index="0" name="volume" parameterValue="1"/>
             <parameter index="1" name="static gain" parameterValue="1"/>
           </component>
-          <component componentGuid="480d8ae4-95d2-4a0b-a52a-2ae3bb44800d" componentID="Audition.Mute" id="clipMute" name="Mute" powered="true">
+          <component componentGuid="e6e10ddf-1fbd-4943-9d76-c94d2b80b568" componentID="Audition.Mute" id="clipMute" name="Mute" powered="true">
             <parameter index="0" parameterValue="0"/>
             <parameter index="1" name="mute" parameterValue="0"/>
           </component>
@@ -407,7 +407,7 @@
             <parameter index="0" name="volume" parameterValue="1"/>
             <parameter index="1" name="static gain" parameterValue="1"/>
           </component>
-          <component componentGuid="62a48402-ffe0-4672-986b-63548c50210e" componentID="Audition.Mute" id="clipMute" name="Mute" powered="true">
+          <component componentGuid="67b1baec-11de-4813-88a3-d5510bc65745" componentID="Audition.Mute" id="clipMute" name="Mute" powered="true">
             <parameter index="0" parameterValue="0"/>
             <parameter index="1" name="mute" parameterValue="0"/>
           </component>
@@ -642,14 +642,15 @@
             xmlns:xmp="http://ns.adobe.com/xap/1.0/"
             xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/"
             xmlns:stEvt="http://ns.adobe.com/xap/1.0/sType/ResourceEvent#"
+            xmlns:stRef="http://ns.adobe.com/xap/1.0/sType/ResourceRef#"
             xmlns:dc="http://purl.org/dc/elements/1.1/"
             xmlns:xmpDM="http://ns.adobe.com/xmp/1.0/DynamicMedia/">
          <xmp:CreatorTool>Adobe Audition 14.2 (Windows)</xmp:CreatorTool>
          <xmp:CreateDate>2021-12-21T03:01:23+06:00</xmp:CreateDate>
-         <xmp:MetadataDate>2021-12-22T23:45:28+06:00</xmp:MetadataDate>
-         <xmp:ModifyDate>2021-12-22T23:45:28+06:00</xmp:ModifyDate>
-         <xmpMM:InstanceID>xmp.iid:f4b04cb0-db08-7c49-a436-5e8e6e6c9f1d</xmpMM:InstanceID>
-         <xmpMM:DocumentID>xmp.did:00bea9e2-cd7d-fa42-961a-e71b973ba390</xmpMM:DocumentID>
+         <xmp:MetadataDate>2021-12-22T23:45:13+06:00</xmp:MetadataDate>
+         <xmp:ModifyDate>2021-12-22T23:45:13+06:00</xmp:ModifyDate>
+         <xmpMM:InstanceID>xmp.iid:eaca56c8-24d5-3e4c-858e-5fd69a7ecc47</xmpMM:InstanceID>
+         <xmpMM:DocumentID>xmp.did:eaca56c8-24d5-3e4c-858e-5fd69a7ecc47</xmpMM:DocumentID>
          <xmpMM:OriginalDocumentID>xmp.did:00bea9e2-cd7d-fa42-961a-e71b973ba390</xmpMM:OriginalDocumentID>
          <xmpMM:History>
             <rdf:Seq>
@@ -774,20 +775,25 @@
                </rdf:li>
                <rdf:li rdf:parseType="Resource">
                   <stEvt:action>saved</stEvt:action>
-                  <stEvt:instanceID>xmp.iid:1deac991-12da-9a42-b8eb-a6c340eb3615</stEvt:instanceID>
-                  <stEvt:when>2021-12-22T23:45:28+06:00</stEvt:when>
+                  <stEvt:instanceID>xmp.iid:da40b94b-b1e6-cf47-a375-35e83e016d0c</stEvt:instanceID>
+                  <stEvt:when>2021-12-22T23:45:13+06:00</stEvt:when>
                   <stEvt:softwareAgent>Adobe Audition 14.2 (Windows)</stEvt:softwareAgent>
                   <stEvt:changed>/metadata</stEvt:changed>
                </rdf:li>
                <rdf:li rdf:parseType="Resource">
                   <stEvt:action>saved</stEvt:action>
-                  <stEvt:instanceID>xmp.iid:f4b04cb0-db08-7c49-a436-5e8e6e6c9f1d</stEvt:instanceID>
-                  <stEvt:when>2021-12-22T23:45:28+06:00</stEvt:when>
+                  <stEvt:instanceID>xmp.iid:eaca56c8-24d5-3e4c-858e-5fd69a7ecc47</stEvt:instanceID>
+                  <stEvt:when>2021-12-22T23:45:13+06:00</stEvt:when>
                   <stEvt:softwareAgent>Adobe Audition 14.2 (Windows)</stEvt:softwareAgent>
                   <stEvt:changed>/</stEvt:changed>
                </rdf:li>
             </rdf:Seq>
          </xmpMM:History>
+         <xmpMM:DerivedFrom rdf:parseType="Resource">
+            <stRef:instanceID>xmp.iid:da40b94b-b1e6-cf47-a375-35e83e016d0c</stRef:instanceID>
+            <stRef:documentID>xmp.did:00bea9e2-cd7d-fa42-961a-e71b973ba390</stRef:documentID>
+            <stRef:originalDocumentID>xmp.did:00bea9e2-cd7d-fa42-961a-e71b973ba390</stRef:originalDocumentID>
+         </xmpMM:DerivedFrom>
          <dc:format>application/xml</dc:format>
          <xmpDM:Tracks>
             <rdf:Bag>
@@ -910,11 +916,11 @@
   </session>
 
   <files>
-    <file absolutePath="D:\Projects\Shurommo-Arzo-Website\src\audios\story-5\Imported Files\01 - Speak to Me.flac" id="0" importerPrivateSettings="ByteOrdering:0:0;Channels:0:2;EncodingType:0:2;FormatType:0:1507328;SampleRate:0:44100;StartOffset:0:0;VBRQuality:0:100;Album:1:The Dark Side of the Moon;Artist:1:Pink Floyd;Comment:1: EAC - FLAC - 8 - oan;Data:1:1973;Genre:1:Progressive rock;Title:1:Speak to Me;TrackNumber:1:01;" mediaHandler="AmioLSF" relativePath="Imported Files/01 - Speak to Me.flac"/>
-    <file absolutePath="D:\Projects\Shurommo-Arzo-Website\src\audios\story-5\Imported Files\02 - Breathe.flac" id="1" importerPrivateSettings="ByteOrdering:0:0;Channels:0:2;EncodingType:0:2;FormatType:0:1507328;SampleRate:0:44100;StartOffset:0:0;VBRQuality:0:100;Album:1:The Dark Side of the Moon;Artist:1:Pink Floyd;Comment:1: EAC - FLAC - 8 - oan;Data:1:1973;Genre:1:Progressive rock;Title:1:Breathe;TrackNumber:1:2;" mediaHandler="AmioLSF" relativePath="Imported Files/02 - Breathe.flac"/>
-    <file absolutePath="D:\Projects\Shurommo-Arzo-Website\src\audios\story-5\Bounced Files\02 - Breathe_1.wav" id="2" mediaHandler="AmioWav" relativePath="Bounced Files/02 - Breathe_1.wav"/>
-    <file absolutePath="D:\Projects\Shurommo-Arzo-Website\src\audios\story-5\Merged Files\02 - Breathe_merged_3.wav" id="3" importerPrivateSettings="Compression:0:0;LargeFileSupport:0:0;SampleType:0:40;" mediaHandler="AmioWav" relativePath="Merged Files/02 - Breathe_merged_3.wav"/>
-    <file absolutePath="D:\Projects\Shurommo-Arzo-Website\src\audios\story-5\Merged Files\02 - Breathe_1_merged_3.wav" id="4" importerPrivateSettings="Compression:0:0;LargeFileSupport:0:0;SampleType:0:40;" mediaHandler="AmioWav" relativePath="Merged Files/02 - Breathe_1_merged_3.wav"/>
+    <file absolutePath="D:\Projects\Shurommo-Arzo-Website\src\audios\story-5\Imported Files\01 - Speak to Me.flac" id="0" importerPrivateSettings="ByteOrdering:0:0;Channels:0:2;EncodingType:0:2;FormatType:0:1507328;SampleRate:0:44100;StartOffset:0:0;VBRQuality:0:100;Album:1:The Dark Side of the Moon;Artist:1:Pink Floyd;Comment:1: EAC - FLAC - 8 - oan;Data:1:1973;Genre:1:Progressive rock;Title:1:Speak to Me;TrackNumber:1:01;" mediaHandler="AmioLSF" recoveryID="e5de9edc-d0fa-4e90-8d58-2132d62e2678" relativePath="../Imported Files/01 - Speak to Me.flac"/>
+    <file absolutePath="D:\Projects\Shurommo-Arzo-Website\src\audios\story-5\Imported Files\02 - Breathe.flac" id="1" importerPrivateSettings="ByteOrdering:0:0;Channels:0:2;EncodingType:0:2;FormatType:0:1507328;SampleRate:0:44100;StartOffset:0:0;VBRQuality:0:100;Album:1:The Dark Side of the Moon;Artist:1:Pink Floyd;Comment:1: EAC - FLAC - 8 - oan;Data:1:1973;Genre:1:Progressive rock;Title:1:Breathe;TrackNumber:1:2;" mediaHandler="AmioLSF" recoveryID="f2062a72-70b0-4975-ac27-b023e5b2c72a" relativePath="../Imported Files/02 - Breathe.flac"/>
+    <file absolutePath="D:\Projects\Shurommo-Arzo-Website\src\audios\story-5\Bounced Files\02 - Breathe_1.wav" id="2" mediaHandler="AmioWav" recoveryID="2852b5e3-0dfe-4375-bee4-daca751d2cbb" relativePath="../Bounced Files/02 - Breathe_1.wav"/>
+    <file absolutePath="D:\Projects\Shurommo-Arzo-Website\src\audios\story-5\Merged Files\02 - Breathe_merged_3.wav" id="3" importerPrivateSettings="Compression:0:0;LargeFileSupport:0:0;SampleType:0:40;" mediaHandler="AmioWav" recoveryID="3bfb00d9-c91e-428c-87db-986669c7fad4" relativePath="../Merged Files/02 - Breathe_merged_3.wav"/>
+    <file absolutePath="D:\Projects\Shurommo-Arzo-Website\src\audios\story-5\Merged Files\02 - Breathe_1_merged_3.wav" id="4" importerPrivateSettings="Compression:0:0;LargeFileSupport:0:0;SampleType:0:40;" mediaHandler="AmioWav" recoveryID="51773e1c-cddd-4a14-833a-0cc1f709a8b9" relativePath="../Merged Files/02 - Breathe_1_merged_3.wav"/>
   </files>
 
   <audioDevice inputID="9F0EF431-238B-4A37-BA57-9B4348669678" outputID="BE82A7E1-7D8B-4537-A97B-8DA2074EB857">

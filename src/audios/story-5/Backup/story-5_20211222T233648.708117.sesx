@@ -71,12 +71,12 @@
           </component>
         </trackAudioParameters>
         <editParameter parameterIndex="0" slotIndex="4294967280"/>
-        <audioClip clipAutoCrossfade="true" crossFadeHeadClipID="-1" crossFadeTailClipID="-1" endPoint="2582336" fileID="0" hue="-1" id="0" lockedInTime="false" looped="false" name="01 - Speak to Me" offline="false" select="true" sourceInPoint="431752" sourceOutPoint="3014088" startPoint="0" zOrder="0">
+        <audioClip clipAutoCrossfade="true" crossFadeHeadClipID="-1" crossFadeTailClipID="-1" endPoint="2582336" fileID="0" hue="-1" id="0" lockedInTime="false" looped="false" name="01 - Speak to Me" offline="false" select="false" sourceInPoint="431752" sourceOutPoint="3014088" startPoint="0" zOrder="0">
           <component componentGuid="78a81216-b5fa-445e-b48f-760f65827b98" componentID="Audition.Fader" id="clipGain" name="volume" powered="true">
             <parameter index="0" name="volume" parameterValue="1"/>
             <parameter index="1" name="static gain" parameterValue="1"/>
           </component>
-          <component componentGuid="4ecfaff5-eb10-466d-bbba-6e284d2bee7e" componentID="Audition.Mute" id="clipMute" name="Mute" powered="true">
+          <component componentGuid="aad8f4c4-4d3d-4293-843b-dbbb341ba481" componentID="Audition.Mute" id="clipMute" name="Mute" powered="true">
             <parameter index="0" parameterValue="0"/>
             <parameter index="1" name="mute" parameterValue="0"/>
           </component>
@@ -160,12 +160,12 @@
           </component>
         </trackAudioParameters>
         <editParameter parameterIndex="0" slotIndex="4294967280"/>
-        <audioClip clipAutoCrossfade="true" crossFadeHeadClipID="-1" crossFadeTailClipID="-1" endPoint="2834550" fileID="3" hue="-1" id="0" lockedInTime="false" looped="false" name="02 - Breathe" offline="false" select="true" sourceInPoint="0" sourceOutPoint="252214" startPoint="2582336" zOrder="0">
+        <audioClip clipAutoCrossfade="true" crossFadeHeadClipID="-1" crossFadeTailClipID="-1" endPoint="2834550" fileID="4" hue="-1" id="0" lockedInTime="false" looped="false" name="02 - Breathe" offline="false" select="false" sourceInPoint="0" sourceOutPoint="252214" startPoint="2582336" zOrder="0">
           <component componentGuid="1bcee673-1ed6-4578-abdc-282cdbcce47d" componentID="Audition.Fader" id="clipGain" name="volume" powered="true">
             <parameter index="0" name="volume" parameterValue="1"/>
             <parameter index="1" name="static gain" parameterValue="1"/>
           </component>
-          <component componentGuid="d3deb831-def7-41f9-9607-f920adafdd88" componentID="Audition.Mute" id="clipMute" name="Mute" powered="true">
+          <component componentGuid="32f2c3eb-bb50-4083-9979-28e80eabfd1e" componentID="Audition.Mute" id="clipMute" name="Mute" powered="true">
             <parameter index="0" parameterValue="0"/>
             <parameter index="1" name="mute" parameterValue="0"/>
           </component>
@@ -181,12 +181,12 @@
             <channel index="1" sourceIndex="1"/>
           </channelMap>
         </audioClip>
-        <audioClip clipAutoCrossfade="true" crossFadeHeadClipID="-1" crossFadeTailClipID="-1" endPoint="3588790" fileID="4" hue="-1" id="1" lockedInTime="false" looped="false" name="02 - Breathe_1" offline="false" select="true" sourceInPoint="0" sourceOutPoint="754240" startPoint="2834550" zOrder="4">
+        <audioClip clipAutoCrossfade="true" crossFadeHeadClipID="-1" crossFadeTailClipID="-1" endPoint="3588790" fileID="5" hue="-1" id="1" lockedInTime="false" looped="false" name="02 - Breathe_1" offline="false" select="true" sourceInPoint="0" sourceOutPoint="754240" startPoint="2834550" zOrder="4">
           <component componentGuid="0d9a40c9-bf73-47b9-88f8-31487dc367f0" componentID="Audition.Fader" id="clipGain" name="volume" powered="true">
             <parameter index="0" name="volume" parameterValue="1"/>
             <parameter index="1" name="static gain" parameterValue="1"/>
           </component>
-          <component componentGuid="f634c580-b027-4c7b-a0fc-a499f188155a" componentID="Audition.Mute" id="clipMute" name="Mute" powered="true">
+          <component componentGuid="cfa90cff-3d41-4fb3-aa31-dde605275bf0" componentID="Audition.Mute" id="clipMute" name="Mute" powered="true">
             <parameter index="0" parameterValue="0"/>
             <parameter index="1" name="mute" parameterValue="0"/>
           </component>
@@ -194,9 +194,30 @@
             <parameter index="0" name="Pan" parameterValue="0"/>
           </component>
           <fadeIn crossFadeLinkType="linkedSymmetric" endPoint="0" shape="19" startPoint="0" type="log"/>
-          <fadeOut crossFadeLinkType="linkedSymmetric" endPoint="754240" shape="-70" startPoint="1" type="log"/>
+          <fadeOut crossFadeLinkType="linkedSymmetric" endPoint="754240" shape="-79" startPoint="1" type="log"/>
           <editParameter parameterIndex="0" slotIndex="4294967280"/>
           <editParameter parameterIndex="0" slotIndex="4294967281"/>
+          <channelMap>
+            <channel index="0" sourceIndex="0"/>
+            <channel index="1" sourceIndex="1"/>
+          </channelMap>
+        </audioClip>
+        <audioClip clipAutoCrossfade="true" crossFadeHeadClipID="-1" crossFadeTailClipID="-1" endPoint="4816330" fileID="3" hue="-1" id="2" lockedInTime="false" looped="false" name="02 - Breathe_1" offline="false" select="false" sourceInPoint="0" sourceOutPoint="188560" startPoint="4627770" zOrder="1">
+          <component componentGuid="1abb5ada-7797-4792-ae2d-debce0c85329" componentID="Audition.Fader" id="clipGain" name="volume" powered="true">
+            <parameter index="0" name="volume" parameterValue="1"/>
+            <parameter index="1" name="static gain" parameterValue="1"/>
+          </component>
+          <component componentGuid="ee56bf35-31d1-4e93-a90a-8e0403796242" componentID="Audition.Mute" id="clipMute" name="Mute" powered="true">
+            <parameter index="0" parameterValue="0"/>
+            <parameter index="1" name="mute" parameterValue="0"/>
+          </component>
+          <component componentGuid="dc11e72e-4c4d-46ae-b4c5-6dd60b968744" componentID="Audition.StereoPanner" id="clipPan" name="StereoPanner" powered="true">
+            <parameter index="0" name="Pan" parameterValue="0"/>
+          </component>
+          <fadeIn crossFadeLinkType="linkedSymmetric" endPoint="0" shape="19" startPoint="0" type="log"/>
+          <fadeOut crossFadeLinkType="linkedSymmetric" endPoint="188560" shape="10" startPoint="188560" type="log"/>
+          <editParameter parameterIndex="0" slotIndex="4294967281"/>
+          <editParameter parameterIndex="0" slotIndex="4294967280"/>
           <channelMap>
             <channel index="0" sourceIndex="0"/>
             <channel index="1" sourceIndex="1"/>
@@ -275,7 +296,7 @@
             <parameter index="0" name="volume" parameterValue="1"/>
             <parameter index="1" name="static gain" parameterValue="1"/>
           </component>
-          <component componentGuid="5af8635a-e6ec-45b1-b219-134f64f65c18" componentID="Audition.Mute" id="clipMute" name="Mute" powered="true">
+          <component componentGuid="784dcfc3-f8f2-4a59-96a7-66ed0040e978" componentID="Audition.Mute" id="clipMute" name="Mute" powered="true">
             <parameter index="0" parameterValue="0"/>
             <parameter index="1" name="mute" parameterValue="0"/>
           </component>
@@ -297,7 +318,7 @@
             <parameter index="0" name="volume" parameterValue="1"/>
             <parameter index="1" name="static gain" parameterValue="1"/>
           </component>
-          <component componentGuid="ff7f0e72-454d-4b0e-ae8a-5e129a71e5ee" componentID="Audition.Mute" id="clipMute" name="Mute" powered="true">
+          <component componentGuid="37ee0974-4a0c-425e-ba9a-667421c308d3" componentID="Audition.Mute" id="clipMute" name="Mute" powered="true">
             <parameter index="0" parameterValue="0"/>
             <parameter index="1" name="mute" parameterValue="0"/>
           </component>
@@ -318,7 +339,7 @@
             <parameter index="0" name="volume" parameterValue="1"/>
             <parameter index="1" name="static gain" parameterValue="1"/>
           </component>
-          <component componentGuid="480d8ae4-95d2-4a0b-a52a-2ae3bb44800d" componentID="Audition.Mute" id="clipMute" name="Mute" powered="true">
+          <component componentGuid="c9910014-8dde-4bd2-83c0-30136ae5d966" componentID="Audition.Mute" id="clipMute" name="Mute" powered="true">
             <parameter index="0" parameterValue="0"/>
             <parameter index="1" name="mute" parameterValue="0"/>
           </component>
@@ -407,7 +428,7 @@
             <parameter index="0" name="volume" parameterValue="1"/>
             <parameter index="1" name="static gain" parameterValue="1"/>
           </component>
-          <component componentGuid="62a48402-ffe0-4672-986b-63548c50210e" componentID="Audition.Mute" id="clipMute" name="Mute" powered="true">
+          <component componentGuid="655225f9-5e7a-47f6-b867-7cb2c41ba748" componentID="Audition.Mute" id="clipMute" name="Mute" powered="true">
             <parameter index="0" parameterValue="0"/>
             <parameter index="1" name="mute" parameterValue="0"/>
           </component>
@@ -629,9 +650,9 @@
         <editParameter parameterIndex="0" slotIndex="4294967280"/>
       </masterTrack>
     </tracks>
-    <sessionState ctiPosition="10016086" smpteStart="0">
-      <selectionState selectionDuration="0" selectionStart="10016086"/>
-      <viewState horizontalViewDuration="11264275" horizontalViewStart="0" trackControlsWidth="224" verticalScrollOffset="-50"/>
+    <sessionState ctiPosition="2741587" smpteStart="0">
+      <selectionState selectionDuration="0" selectionStart="2741587"/>
+      <viewState horizontalViewDuration="1150509" horizontalViewStart="2645720" trackControlsWidth="224" verticalScrollOffset="-53"/>
       <timeFormatState beatsPerBar="4" beatsPerMinute="120" customFrameRate="12" linkToDefaultTimeSettings="true" noteLength="4" subdivisions="16" timeCodeDropFrame="false" timeCodeFrameRate="30" timeCodeNTSC="false" timeFormat="timeFormatDecimal"/>
       <mixingOptionState defaultPanModeLogarithmic="false" panPower="-3" playOverlappingClips="false"/>
     </sessionState>
@@ -642,14 +663,15 @@
             xmlns:xmp="http://ns.adobe.com/xap/1.0/"
             xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/"
             xmlns:stEvt="http://ns.adobe.com/xap/1.0/sType/ResourceEvent#"
+            xmlns:stRef="http://ns.adobe.com/xap/1.0/sType/ResourceRef#"
             xmlns:dc="http://purl.org/dc/elements/1.1/"
             xmlns:xmpDM="http://ns.adobe.com/xmp/1.0/DynamicMedia/">
          <xmp:CreatorTool>Adobe Audition 14.2 (Windows)</xmp:CreatorTool>
          <xmp:CreateDate>2021-12-21T03:01:23+06:00</xmp:CreateDate>
-         <xmp:MetadataDate>2021-12-22T23:45:28+06:00</xmp:MetadataDate>
-         <xmp:ModifyDate>2021-12-22T23:45:28+06:00</xmp:ModifyDate>
-         <xmpMM:InstanceID>xmp.iid:f4b04cb0-db08-7c49-a436-5e8e6e6c9f1d</xmpMM:InstanceID>
-         <xmpMM:DocumentID>xmp.did:00bea9e2-cd7d-fa42-961a-e71b973ba390</xmpMM:DocumentID>
+         <xmp:MetadataDate>2021-12-22T23:36:48+06:00</xmp:MetadataDate>
+         <xmp:ModifyDate>2021-12-22T23:36:48+06:00</xmp:ModifyDate>
+         <xmpMM:InstanceID>xmp.iid:305a10da-898d-8841-9553-37a7f7d1f075</xmpMM:InstanceID>
+         <xmpMM:DocumentID>xmp.did:305a10da-898d-8841-9553-37a7f7d1f075</xmpMM:DocumentID>
          <xmpMM:OriginalDocumentID>xmp.did:00bea9e2-cd7d-fa42-961a-e71b973ba390</xmpMM:OriginalDocumentID>
          <xmpMM:History>
             <rdf:Seq>
@@ -760,34 +782,25 @@
                </rdf:li>
                <rdf:li rdf:parseType="Resource">
                   <stEvt:action>saved</stEvt:action>
-                  <stEvt:instanceID>xmp.iid:f1aea817-a176-ef47-9b69-e49fa00ee4e3</stEvt:instanceID>
-                  <stEvt:when>2021-12-22T23:39:46+06:00</stEvt:when>
+                  <stEvt:instanceID>xmp.iid:e56321c6-4b17-3844-bc16-d374258fa4b0</stEvt:instanceID>
+                  <stEvt:when>2021-12-22T23:36:48+06:00</stEvt:when>
                   <stEvt:softwareAgent>Adobe Audition 14.2 (Windows)</stEvt:softwareAgent>
                   <stEvt:changed>/metadata</stEvt:changed>
                </rdf:li>
                <rdf:li rdf:parseType="Resource">
                   <stEvt:action>saved</stEvt:action>
-                  <stEvt:instanceID>xmp.iid:235fb5f1-65d0-a84e-a5b4-b05cba77517b</stEvt:instanceID>
-                  <stEvt:when>2021-12-22T23:39:46+06:00</stEvt:when>
-                  <stEvt:softwareAgent>Adobe Audition 14.2 (Windows)</stEvt:softwareAgent>
-                  <stEvt:changed>/</stEvt:changed>
-               </rdf:li>
-               <rdf:li rdf:parseType="Resource">
-                  <stEvt:action>saved</stEvt:action>
-                  <stEvt:instanceID>xmp.iid:1deac991-12da-9a42-b8eb-a6c340eb3615</stEvt:instanceID>
-                  <stEvt:when>2021-12-22T23:45:28+06:00</stEvt:when>
-                  <stEvt:softwareAgent>Adobe Audition 14.2 (Windows)</stEvt:softwareAgent>
-                  <stEvt:changed>/metadata</stEvt:changed>
-               </rdf:li>
-               <rdf:li rdf:parseType="Resource">
-                  <stEvt:action>saved</stEvt:action>
-                  <stEvt:instanceID>xmp.iid:f4b04cb0-db08-7c49-a436-5e8e6e6c9f1d</stEvt:instanceID>
-                  <stEvt:when>2021-12-22T23:45:28+06:00</stEvt:when>
+                  <stEvt:instanceID>xmp.iid:305a10da-898d-8841-9553-37a7f7d1f075</stEvt:instanceID>
+                  <stEvt:when>2021-12-22T23:36:48+06:00</stEvt:when>
                   <stEvt:softwareAgent>Adobe Audition 14.2 (Windows)</stEvt:softwareAgent>
                   <stEvt:changed>/</stEvt:changed>
                </rdf:li>
             </rdf:Seq>
          </xmpMM:History>
+         <xmpMM:DerivedFrom rdf:parseType="Resource">
+            <stRef:instanceID>xmp.iid:e56321c6-4b17-3844-bc16-d374258fa4b0</stRef:instanceID>
+            <stRef:documentID>xmp.did:00bea9e2-cd7d-fa42-961a-e71b973ba390</stRef:documentID>
+            <stRef:originalDocumentID>xmp.did:00bea9e2-cd7d-fa42-961a-e71b973ba390</stRef:originalDocumentID>
+         </xmpMM:DerivedFrom>
          <dc:format>application/xml</dc:format>
          <xmpDM:Tracks>
             <rdf:Bag>
@@ -910,11 +923,12 @@
   </session>
 
   <files>
-    <file absolutePath="D:\Projects\Shurommo-Arzo-Website\src\audios\story-5\Imported Files\01 - Speak to Me.flac" id="0" importerPrivateSettings="ByteOrdering:0:0;Channels:0:2;EncodingType:0:2;FormatType:0:1507328;SampleRate:0:44100;StartOffset:0:0;VBRQuality:0:100;Album:1:The Dark Side of the Moon;Artist:1:Pink Floyd;Comment:1: EAC - FLAC - 8 - oan;Data:1:1973;Genre:1:Progressive rock;Title:1:Speak to Me;TrackNumber:1:01;" mediaHandler="AmioLSF" relativePath="Imported Files/01 - Speak to Me.flac"/>
-    <file absolutePath="D:\Projects\Shurommo-Arzo-Website\src\audios\story-5\Imported Files\02 - Breathe.flac" id="1" importerPrivateSettings="ByteOrdering:0:0;Channels:0:2;EncodingType:0:2;FormatType:0:1507328;SampleRate:0:44100;StartOffset:0:0;VBRQuality:0:100;Album:1:The Dark Side of the Moon;Artist:1:Pink Floyd;Comment:1: EAC - FLAC - 8 - oan;Data:1:1973;Genre:1:Progressive rock;Title:1:Breathe;TrackNumber:1:2;" mediaHandler="AmioLSF" relativePath="Imported Files/02 - Breathe.flac"/>
-    <file absolutePath="D:\Projects\Shurommo-Arzo-Website\src\audios\story-5\Bounced Files\02 - Breathe_1.wav" id="2" mediaHandler="AmioWav" relativePath="Bounced Files/02 - Breathe_1.wav"/>
-    <file absolutePath="D:\Projects\Shurommo-Arzo-Website\src\audios\story-5\Merged Files\02 - Breathe_merged_3.wav" id="3" importerPrivateSettings="Compression:0:0;LargeFileSupport:0:0;SampleType:0:40;" mediaHandler="AmioWav" relativePath="Merged Files/02 - Breathe_merged_3.wav"/>
-    <file absolutePath="D:\Projects\Shurommo-Arzo-Website\src\audios\story-5\Merged Files\02 - Breathe_1_merged_3.wav" id="4" importerPrivateSettings="Compression:0:0;LargeFileSupport:0:0;SampleType:0:40;" mediaHandler="AmioWav" relativePath="Merged Files/02 - Breathe_1_merged_3.wav"/>
+    <file absolutePath="D:\Projects\Shurommo-Arzo-Website\src\audios\story-5\Imported Files\01 - Speak to Me.flac" id="0" importerPrivateSettings="ByteOrdering:0:0;Channels:0:2;EncodingType:0:2;FormatType:0:1507328;SampleRate:0:44100;StartOffset:0:0;VBRQuality:0:100;Album:1:The Dark Side of the Moon;Artist:1:Pink Floyd;Comment:1: EAC - FLAC - 8 - oan;Data:1:1973;Genre:1:Progressive rock;Title:1:Speak to Me;TrackNumber:1:01;" mediaHandler="AmioLSF" recoveryID="e5de9edc-d0fa-4e90-8d58-2132d62e2678" relativePath="../Imported Files/01 - Speak to Me.flac"/>
+    <file absolutePath="D:\Projects\Shurommo-Arzo-Website\src\audios\story-5\Imported Files\02 - Breathe.flac" id="1" importerPrivateSettings="ByteOrdering:0:0;Channels:0:2;EncodingType:0:2;FormatType:0:1507328;SampleRate:0:44100;StartOffset:0:0;VBRQuality:0:100;Album:1:The Dark Side of the Moon;Artist:1:Pink Floyd;Comment:1: EAC - FLAC - 8 - oan;Data:1:1973;Genre:1:Progressive rock;Title:1:Breathe;TrackNumber:1:2;" mediaHandler="AmioLSF" recoveryID="f2062a72-70b0-4975-ac27-b023e5b2c72a" relativePath="../Imported Files/02 - Breathe.flac"/>
+    <file absolutePath="D:\Projects\Shurommo-Arzo-Website\src\audios\story-5\Bounced Files\02 - Breathe_1.wav" id="2" mediaHandler="AmioWav" recoveryID="2852b5e3-0dfe-4375-bee4-daca751d2cbb" relativePath="../Bounced Files/02 - Breathe_1.wav"/>
+    <file absolutePath="D:\Projects\Shurommo-Arzo-Website\src\audios\story-5\Merged Files\02 - Breathe_1_merged_2.wav" id="3" importerPrivateSettings="Compression:0:0;LargeFileSupport:0:0;SampleType:0:40;" mediaHandler="AmioWav" recoveryID="c3fd59a5-1368-4598-b7c4-94fe1c02bb8c" relativePath="../Merged Files/02 - Breathe_1_merged_2.wav"/>
+    <file absolutePath="D:\Projects\Shurommo-Arzo-Website\src\audios\story-5\Merged Files\02 - Breathe_merged_3.wav" id="4" importerPrivateSettings="Compression:0:0;LargeFileSupport:0:0;SampleType:0:40;" mediaHandler="AmioWav" recoveryID="3bfb00d9-c91e-428c-87db-986669c7fad4" relativePath="../Merged Files/02 - Breathe_merged_3.wav"/>
+    <file absolutePath="D:\Projects\Shurommo-Arzo-Website\src\audios\story-5\Merged Files\02 - Breathe_1_merged_3.wav" id="5" importerPrivateSettings="Compression:0:0;LargeFileSupport:0:0;SampleType:0:40;" mediaHandler="AmioWav" recoveryID="51773e1c-cddd-4a14-833a-0cc1f709a8b9" relativePath="../Merged Files/02 - Breathe_1_merged_3.wav"/>
   </files>
 
   <audioDevice inputID="9F0EF431-238B-4A37-BA57-9B4348669678" outputID="BE82A7E1-7D8B-4537-A97B-8DA2074EB857">
