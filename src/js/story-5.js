@@ -6,12 +6,12 @@ function startStory5() {
   let svgExtension = `.svg`;
 
   // Get viewport height and width
-  let navbar = document.getElementById(`mn`);
+  let navbarHeight = document.getElementById(`mn`).offsetHeight;
   let vw = Math.max(document.documentElement.clientWidth || 0,
       window.innerWidth || 0); // Taken from: https://stackoverflow.com/a/8876069
   let vh = Math.max(document.documentElement.clientHeight || 0,
       window.innerHeight || 0); // Also from: https://stackoverflow.com/a/8876069
-  let vhMinusNavbarHeight = vh - navbar.offsetHeight;
+  let vhMinusNavbarHeight = vh - navbarHeight;
 
   // Define pseudo-constants
   let audioSrc = `audios/`;
@@ -80,9 +80,8 @@ function startStory5() {
 
   // The scroll listener
   function scrollListener() {
-    let topOfScreamDiv = divOfScream.getBoundingClientRect().top -
-        navbar.offsetHeight;
-    if (topOfScreamDiv < 0) { // FixMe: This may not reach 0 in some devices. Perhaps Checking bottom would work properly.
+    let topOfScreamDiv = divOfScream.getBoundingClientRect().top - navbarHeight;
+    if (topOfScreamDiv < navbarHeight) {
       document.removeEventListener(`scroll`, scrollListener);
       scream.play().then(() => {
         // Start animation
