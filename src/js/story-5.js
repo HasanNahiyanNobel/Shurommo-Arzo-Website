@@ -248,8 +248,8 @@ function startStory5() {
           clearInterval(intervalOfFootSet);
           // Make the next section visible
           divOfPostScream.classList.remove(`d-none`);
-          // Draw some more feet (equal to the number of feet drawn upto now), to have a few feet below the animation canvas
-          for (let i = 0; i < timeCount / 1000; i++) drawFeet();
+          // Draw some more feet (half of the number of feet drawn upto now), to have a few feet below the animation canvas
+          for (let i = 0; i < (timeCount / 2) / 1000; i++) drawFeet();
           // Jump to the next section
           linkOfPostScream.click();
           // And give the main div its margin again!
