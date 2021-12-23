@@ -55,8 +55,15 @@ function startStory5() {
   let audioSource = audioSrc + `story-5` + mp3Extension;
   let scream = new Audio(audioSource);
 
-  // Show the spinner until the audio has been loaded
-  spinner.classList.remove(`d-none`);
+  // Show the spinner until the audio has been loaded.
+  // However, the central JS for this website removes the spinner **after** the
+  // execution of this script, so the following interval is needed.
+  let forceSpinnerForAudio = setInterval(() => {
+    if (spinner.classList.contains(`d-none`)) {
+      spinner.classList.remove(`d-none`);
+      clearInterval(forceSpinnerForAudio);
+    }
+  }, 100);
 
   // When the audio has been loaded, do the rest
   let screamLoadedInterval = setInterval(() => {
@@ -65,7 +72,7 @@ function startStory5() {
       clearInterval(screamLoadedInterval);
       postScreamLoadRoutine();
     }
-  }, 1500);
+  }, 2500);
 
   function postScreamLoadRoutine() {
     // Remove the spinner again!
