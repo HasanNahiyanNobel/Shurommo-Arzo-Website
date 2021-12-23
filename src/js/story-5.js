@@ -161,6 +161,7 @@ function startStory5() {
       }
 
       function drawLyrics(src, ...pos) {
+        // TODO: Add documentation for this function
         let lyricsAsSvg = new Image();
         lyricsAsSvg.src = src;
         lyricsAsSvg.width = lyricsWidth;
@@ -178,7 +179,7 @@ function startStory5() {
         function setHorizontalPos() {
           if (pos[0] === undefined) { // When not given, `pos[0]` is `undefined`
             lyricsAsSvg.style.marginLeft = `0`;
-          } else if (pos[0] > 0) {
+          } else if (pos[0] >= 0) {
             lyricsAsSvg.style.left = `${pos[0]}vw`;
           } else {
             lyricsAsSvg.style.right = `${-pos[0]}vw`;
@@ -188,7 +189,7 @@ function startStory5() {
         function setVerticalPos() {
           if (pos[1] === undefined) { // When not given, `pos[1]` is `undefined`
             lyricsAsSvg.style.marginTop = `0`;
-          } else if (pos[1] > 0) {
+          } else if (pos[1] >= 0) {
             lyricsAsSvg.style.marginTop = `${pos[1]}vh`;
           } else {
             let lyricsHeight = lyricsAsSvg.naturalHeight /
@@ -208,7 +209,7 @@ function startStory5() {
           let pathOfImage = imageSrc + lyricsImagePrefix +
               suffixOfLyrics1Line1 +
               svgExtension;
-          drawLyrics(pathOfImage);
+          drawLyrics(pathOfImage, 0, 10);
         }
 
         if (timeCount === startOfLyrics2Line1) {
