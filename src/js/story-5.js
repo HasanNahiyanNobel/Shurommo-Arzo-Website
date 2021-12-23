@@ -61,7 +61,6 @@ function startStory5() {
   let forceSpinnerForAudio = setInterval(() => {
     if (spinner.classList.contains(`d-none`)) {
       spinner.classList.remove(`d-none`);
-      clearInterval(forceSpinnerForAudio);
     }
   }, 100);
 
@@ -73,6 +72,7 @@ function startStory5() {
     scream.removeEventListener(`canplaythrough`, postScreamLoadRoutine);
 
     // Remove the spinner again!
+    clearInterval(forceSpinnerForAudio); // Clear the scheduled interval
     spinner.classList.add(`d-none`);
 
     // Trigger the modal which requests reader to use headphones
