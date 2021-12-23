@@ -65,16 +65,13 @@ function startStory5() {
     }
   }, 100);
 
-  // When the audio has been loaded, do the rest
-  let screamLoadedInterval = setInterval(() => {
-    console.log(scream.readyState);
-    if (scream.readyState) {
-      clearInterval(screamLoadedInterval);
-      postScreamLoadRoutine();
-    }
-  }, 2500);
+  // When the audio has been loaded upto a substantial amount, do the rest
+  scream.addEventListener(`canplaythrough`, postScreamLoadRoutine);
 
   function postScreamLoadRoutine() {
+    // Remove the event listener for scream loading
+    scream.removeEventListener(`canplaythrough`, postScreamLoadRoutine);
+
     // Remove the spinner again!
     spinner.classList.add(`d-none`);
 
@@ -85,8 +82,7 @@ function startStory5() {
     divFirst.classList.remove(`d-none`);
     divOfScream.classList.remove(`d-none`);
 
-    // Create the space for scream
-    // TODO: Perhaps extending the div to the next section will feel better!
+    // Create the space for scream. TODO: Perhaps extending the div to the next section will feel better!
     divOfScream.style.minHeight = `${vh}px`;
     divMain.classList.remove(`mb-4`); // To ensure that div of scream has no margin at the bottom when animating
 
@@ -114,13 +110,7 @@ function startStory5() {
       if (topOfScreamDiv < navbarHeight) {
         document.removeEventListener(`scroll`, scrollListener);
         scream.play().then(() => {
-          // Start animation
           startAudioAnimation();
-          // Wait for the audio to finish
-          scream.addEventListener(`ended`, () => {
-            // Set the current time to zero
-            scream.currentTime = 0;
-          });
         }).catch(error => {
           console.log(error);
         });
