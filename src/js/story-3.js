@@ -2,6 +2,7 @@ startStory3();
 
 function startStory3() {
   // Define the variables
+  // noinspection DuplicatedCode
   let line0 = [
     `চে`,
     `ত`,
@@ -184,6 +185,7 @@ function startStory3() {
     `য়`];
   let lines = [line0, line1, line2, line3];
 
+  // noinspection DuplicatedCode
   let fontSizes = [
     1,
     1.5,
