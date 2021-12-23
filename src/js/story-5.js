@@ -127,7 +127,7 @@ function startStory5() {
         divOfScream.appendChild(footRight);
         divOfScream.appendChild(footLeft);
 
-        let randomTop = Math.random() * (vhMinusNavbarHeight - footDiagonal -
+        let randomTop = Math.random() * (vh - footDiagonal -
             footGraphicsSafetyMarginInPixel);
         let randomLeft = Math.random() *
             (vw - footDiagonal - footGraphicsSafetyMarginInPixel);
@@ -238,7 +238,7 @@ function startStory5() {
 
         drawFeet();
 
-      }, 1000);
+      }, 100);
 
     }
   }
