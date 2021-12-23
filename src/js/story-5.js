@@ -127,8 +127,7 @@ function startStory5() {
         divOfScream.appendChild(footRight);
         divOfScream.appendChild(footLeft);
 
-        let randomTop = Math.random() * (vh - footDiagonal -
-            footGraphicsSafetyMarginInPixel);
+        let randomTop = Math.random() * document.body.scrollHeight;
         let randomLeft = Math.random() *
             (vw - footDiagonal - footGraphicsSafetyMarginInPixel);
         let randomRotationDeviation = Math.random() * footRotationDeviation *
@@ -138,13 +137,13 @@ function startStory5() {
             randomRotationDeviation;
 
         // Draw the right foot
-        footRight.style.marginTop = `${randomTop}px`;
+        footRight.style.top = `${randomTop}px`;
         footRight.style.marginLeft = `${randomLeft}px`;
         footRight.style.transform = `rotate(${randomRotationOfRight}deg)`;
 
         // Draw the left one a bit later
         setTimeout(() => {
-          footLeft.style.marginTop = `${randomTop}px`;
+          footLeft.style.top = `${randomTop}px`;
           footLeft.style.marginLeft = `${randomLeft}px`;
           footLeft.style.transform = `rotate(${randomRotationOfLeft}deg)`;
         }, leftFootLagTime);
