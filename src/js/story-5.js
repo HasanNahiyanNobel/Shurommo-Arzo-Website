@@ -14,7 +14,7 @@ function startStory5() {
   let vhMinusNavbarHeight = vh - navbarHeight;
 
   // Define pseudo-constants
-  let audioSrc = `audios/`;
+  let screamSrc = `audios/`;
   let imageSrc = `images/`;
   let footImagePrefix = `5-foot-`;
   let lyricsImagePrefix = `5-text-`;
@@ -51,11 +51,11 @@ function startStory5() {
   let divOfPostScream = document.getElementById(`5-ps`); // The div after the scream
   let linkOfPostScream = document.getElementById(`5-jtps`); // Link to the post-scream section
 
-  // Process the audio
-  let audioSource = audioSrc + `story-5` + mp3Extension;
-  let scream = new Audio(audioSource);
+  // Process the scream
+  let screamPath = screamSrc + `story-5` + mp3Extension;
+  let scream = new Audio(screamPath);
 
-  // Show the spinner until the audio has been loaded.
+  // Show the spinner until the scream has been loaded.
   // However, the central JS for this website removes the spinner **after** the
   // execution of this script, so the following interval is needed.
   let forceSpinnerForAudio = setInterval(() => {
@@ -65,7 +65,7 @@ function startStory5() {
     }
   }, 100);
 
-  // When the audio has been loaded upto a substantial amount, do the rest
+  // When the scream has been loaded upto a substantial amount, do the rest
   scream.addEventListener(`canplaythrough`, postScreamLoadRoutine);
 
   function postScreamLoadRoutine() {
@@ -86,7 +86,7 @@ function startStory5() {
     divOfScream.style.minHeight = `${vh}px`;
     divMain.classList.remove(`mb-4`); // To ensure that div of scream has no margin at the bottom when animating
 
-    // Listen to the scroll, and when the div of scream reaches close to the top, play audio
+    // Listen to the scroll, and when the div of scream reaches close to the top, play scream
     document.addEventListener(`scroll`, scrollListener);
 
     // Start the continuous tube-light effect for `এই ছিলো, এই নাই`
@@ -110,15 +110,15 @@ function startStory5() {
       if (topOfScreamDiv < navbarHeight) {
         document.removeEventListener(`scroll`, scrollListener);
         scream.play().then(() => {
-          startAudioAnimation();
+          startScreamAnimation();
         }).catch(error => {
           console.log(error);
         });
       }
     }
 
-    // Animations for the audio
-    function startAudioAnimation() {
+    // Animations for the scream
+    function startScreamAnimation() {
       let timeCount = 0;
 
       function drawFeet() {
