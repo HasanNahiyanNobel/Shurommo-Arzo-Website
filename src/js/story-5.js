@@ -155,6 +155,8 @@ function startStory5() {
           foot.style.position = `absolute`;
           foot.style.marginTop = `-${footWidth}px`;
           foot.style.marginLeft = `-${footWidth}px`;
+          foot.style.pointerEvents = `none`;
+          foot.classList.add(`noselect`);
           return foot;
         }
       }
@@ -185,6 +187,8 @@ function startStory5() {
         lyricsAsSvg.style.position = `absolute`;
         lyricsAsSvg.style.opacity = `0`;
         lyricsAsSvg.style.transition = `opacity ${transitionTimeOfLyricsOpacity}ms`;
+        lyricsAsSvg.style.pointerEvents = `none`;
+        lyricsAsSvg.classList.add(`noselect`);
         divOfScream.appendChild(lyricsAsSvg);
 
         lyricsAsSvg.onload = function() {
