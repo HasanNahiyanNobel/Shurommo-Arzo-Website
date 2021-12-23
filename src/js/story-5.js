@@ -82,7 +82,7 @@ function startStory5() {
     divFirst.classList.remove(`d-none`);
     divOfScream.classList.remove(`d-none`);
 
-    // Create the space for scream. TODO: Perhaps extending the div to the next section will feel better!
+    // Create the space for scream
     divOfScream.style.minHeight = `${vh}px`;
     divMain.classList.remove(`mb-4`); // To ensure that div of scream has no margin at the bottom when animating
 
