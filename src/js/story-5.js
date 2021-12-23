@@ -2,6 +2,7 @@ startStory5();
 
 function startStory5() {
   // Define extensions as variable
+  // noinspection DuplicatedCode
   let mp3Extension = `.mp3`;
   let svgExtension = `.svg`;
 
@@ -11,7 +12,6 @@ function startStory5() {
       window.innerWidth || 0); // Taken from: https://stackoverflow.com/a/8876069
   let vh = Math.max(document.documentElement.clientHeight || 0,
       window.innerHeight || 0); // Also from: https://stackoverflow.com/a/8876069
-  let vhMinusNavbarHeight = vh - navbarHeight;
 
   // Define pseudo-constants
   let screamSrc = `audios/`;
@@ -160,7 +160,25 @@ function startStory5() {
       }
 
       function drawLyrics(src, ...pos) {
-        // TODO: Add documentation for this function
+        /**
+         * Given an image src (path), appends it to the top-left corner of `divOfScream`.
+         * Optionally, we can specify the positioning of the image.
+         *
+         * If only pos[0] is given, it is parsed as horizontal positioning like this:
+         * <ul>
+         *   <li> Non-negative argument is parsed as distance from left, measured in vw.
+         *   <li> Negative argument is parsed as distance from right, measured in vw.
+         * </ul>
+         *
+         * If pos[1] is also given, it is parsed as vertical positioning like this:
+         *
+         * <ul>
+         *   <li> Non-negative argument is parsed as margin from top, measured in vh.
+         *   <li> Negative argument is parsed as margin from bottom, measured in vh.
+         * </ul>
+         *
+         * @type {HTMLImageElement}
+         */
         let lyricsAsSvg = new Image();
         lyricsAsSvg.src = src;
         lyricsAsSvg.width = lyricsWidth;
