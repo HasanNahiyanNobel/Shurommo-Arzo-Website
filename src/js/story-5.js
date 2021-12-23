@@ -7,7 +7,6 @@ function startStory5() {
   let svgExtension = `.svg`;
 
   // Get viewport height and width
-  let navbarHeight = document.getElementById(`mn`).offsetHeight;
   let vw = Math.max(document.documentElement.clientWidth || 0,
       window.innerWidth || 0); // Taken from: https://stackoverflow.com/a/8876069
   let vh = Math.max(document.documentElement.clientHeight || 0,
@@ -105,9 +104,9 @@ function startStory5() {
 
     // The scroll listener
     function scrollListener() {
-      let topOfScreamDiv = divOfScream.getBoundingClientRect().top -
-          navbarHeight;
-      if (topOfScreamDiv < navbarHeight) {
+      let hasBottomOfPageReached = (window.innerHeight + window.scrollY) >=
+          document.body.offsetHeight; // Taken from: https://stackoverflow.com/a/9439807
+      if (hasBottomOfPageReached) {
         document.removeEventListener(`scroll`, scrollListener);
         scream.play().then(() => {
           startScreamAnimation();
