@@ -42,6 +42,7 @@ function startStory5() {
   let suffixOfLyrics2Line2 = `2-2`;
 
   // Get the document elements
+  let navbar = document.getElementById(`mn`); // Main navbar
   let spinner = document.getElementById(`ms`); // Main spinner from the base template
   let divMain = document.getElementById(`md`); // Main div from the base template
   let divFirst = document.getElementById(`5-prs`); // The pre-scream div
@@ -105,7 +106,7 @@ function startStory5() {
     // The scroll listener
     function scrollListener() {
       let hasBottomOfPageReached = (window.innerHeight + window.scrollY) >=
-          document.body.offsetHeight; // Taken from: https://stackoverflow.com/a/9439807
+          document.body.offsetHeight - navbar.offsetHeight * 2; // Taken from: https://stackoverflow.com/a/9439807, and negated twice of navbar height for safety
       if (hasBottomOfPageReached) {
         document.removeEventListener(`scroll`, scrollListener);
         scream.play().then(() => {
