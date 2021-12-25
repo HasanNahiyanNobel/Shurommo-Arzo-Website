@@ -56,8 +56,13 @@
 
 
 /******************************************************************************
- * Selections
+ * Visibility and selections
  *****************************************************************************/
+
+/* To initialize the divs which are supposed to be shown when JS is enabled */
+.js-disabled {
+  display: none;
+}
 
 /* For the selection colour of Firefox. */
 ::-moz-selection {
