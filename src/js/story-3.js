@@ -81,7 +81,10 @@ function startStory3() {
   let vw = Math.max(document.documentElement.clientWidth || 0,
       window.innerWidth || 0); // Taken from: https://stackoverflow.com/a/8876069
 
-// Function to create the initial layout
+  // Disable scroll anchoring
+  document.body.style.overflowAnchor = `none`;
+
+  // Function to create the initial layout
   function createInitialLayout() {
     lines.forEach((line, indexOfLine) => {
       let row = document.createElement(`div`);
@@ -110,16 +113,16 @@ function startStory3() {
   }
 
   function setTheTopOfPostWave() {
+    // FixMe: Fix the left position of this. Perhaps Stop positioning it via JS totally.
     postWave.style.position = `absolute`;
     postWave.style.top = `${
         waveOfTextTop + lines.length * largestFontSize * vw / 100
     }px`;
   }
 
-// Add the wave effect with regular time interval
+  // Add the wave effect with regular time interval
   let phase = 0;
   setInterval(() => {
-    // TODO: Figure out why this makes the window shake.
     lines.forEach((line, indexOfLine) => {
       line.forEach((char, indexOfChar) => {
         let currentChars = document.getElementById(
