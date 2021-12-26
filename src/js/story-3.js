@@ -237,7 +237,8 @@ function startStory3() {
     1.2,
   ];
   let fontSizesLength = fontSizes.length;
-  let fontSizeFactor = 0.8;
+  let fontSizeFactor = 1;
+  let largestFontSize = Math.max(...fontSizes);
 
   let transitionTimeMs = 625;
 
@@ -246,14 +247,23 @@ function startStory3() {
 // Create the initial layout
   lines.forEach((line, indexOfLine) => {
     let row = document.createElement(`div`);
-    row.className = `row`;
     row.id = `3-row-${indexOfLine}`;
+    row.className = `row`;
+    row.style.overflow = `hidden`;
+    row.style.float = `left`;
+    row.style.boxSizing = `border-box`;
+    row.style.padding = `0`;
+    row.style.height = `${largestFontSize}vw`;
     waveText.append(row);
 
     line.forEach((char, indexOfChar) => {
       let textCol = document.createElement(`div`);
       textCol.id = `3-${indexOfLine}-${indexOfChar}`;
-      textCol.className = `col44 s1`;
+      textCol.className = `col`;
+      textCol.style.width = `${100 / fontSizesLength}%`;
+      textCol.style.left = `auto`;
+      textCol.style.right = `auto`;
+      textCol.style.marginLeft = `auto`;
       textCol.style.fontSize = fontSizes[fontSizesLength - indexOfChar] *
           fontSizeFactor + `vw`;
       textCol.style.transition = `font-size ${transitionTimeMs}ms linear`;
