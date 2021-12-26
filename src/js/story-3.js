@@ -47,7 +47,8 @@ function startStory3() {
     `অ`,
     `বা`,
     `ধ্য`,
-    `তা`];
+    `তা`,
+  ];
   let line1 = [
     `চে`,
     `ত`,
@@ -92,7 +93,8 @@ function startStory3() {
     `অ`,
     `বা`,
     `ধ্য`,
-    `তা`];
+    `তা`,
+  ];
   let line2 = [
     `চে`,
     `ত`,
@@ -137,7 +139,8 @@ function startStory3() {
     `অ`,
     `বা`,
     `ধ্য`,
-    `তা`];
+    `তা`,
+  ];
   let line3 = [
     `আ`,
     `সে`,
@@ -182,7 +185,8 @@ function startStory3() {
     `আ`,
     `সে`,
     `যা`,
-    `য়`];
+    `য়`,
+  ];
   let lines = [line0, line1, line2, line3];
 
   // noinspection DuplicatedCode
@@ -230,7 +234,8 @@ function startStory3() {
     1.8,
     2,
     1.5,
-    1.2];
+    1.2,
+  ];
   let fontSizesLength = fontSizes.length;
   let fontSizeFactor = 0.8;
 
