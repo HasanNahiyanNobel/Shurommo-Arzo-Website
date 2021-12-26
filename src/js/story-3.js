@@ -84,7 +84,7 @@ function startStory3() {
       col.style.width = `${largestFontSize}vw`;
       col.style.padding = `0`;
       col.style.fontSize = fontSizes[
-          (fontSizesLength - 1) - indexOfChar
+      (fontSizesLength - 1) - indexOfChar
           ] + `vw`;
       col.style.transition = `font-size ${transitionTimeMs}ms linear`;
       col.style.overflow = `hidden`; // As we have more than one character together, overflow will occur in some cases, which we want to hide
@@ -95,7 +95,10 @@ function startStory3() {
 
   // Start the interval of wave-effect
   let phase = 0;
-  setInterval(() => {
+  progressTheWave(); // The initial trigger before the interval starts
+  setInterval(progressTheWave, transitionTimeMs); // And the interval!
+
+  function progressTheWave() {
     lines.forEach((line, indexOfLine) => {
       line.forEach((char, indexOfChar) => {
         let currentChars = document.getElementById(
@@ -107,5 +110,5 @@ function startStory3() {
       });
     });
     phase++;
-  }, transitionTimeMs);
+  }
 }
