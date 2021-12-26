@@ -70,37 +70,42 @@ function startStory3() {
    */
   let getWaveTextTopInterval = setInterval(() => {
     waveOfTextTop = waveOfText.getBoundingClientRect().top;
-    if (waveOfTextTop > 0) clearInterval(getWaveTextTopInterval);
+    if (waveOfTextTop > 0) {
+      clearInterval(getWaveTextTopInterval);
+      createInitialLayout();
+    }
   }, 100);
 
   let vw = Math.max(document.documentElement.clientWidth || 0,
       window.innerWidth || 0); // Taken from: https://stackoverflow.com/a/8876069
 
-// Create the initial layout
-  lines.forEach((line, indexOfLine) => {
-    let row = document.createElement(`div`);
-    row.id = `3-row-${indexOfLine}`;
-    row.style.overflow = `hidden`; // Though the row is not supposed to overflow, I'm hiding overflow just in case any compatibility issue arises
-    // row.style.padding = `0`;
-    row.style.height = `${largestFontSize}vw`;
-    waveOfText.append(row);
+// Function to create the initial layout
+  function createInitialLayout() {
+    lines.forEach((line, indexOfLine) => {
+      let row = document.createElement(`div`);
+      row.id = `3-row-${indexOfLine}`;
+      row.style.overflow = `hidden`; // Though the row is not supposed to overflow, I'm hiding overflow just in case any compatibility issue arises
+      waveOfText.append(row);
 
-    line.forEach((char, indexOfChar) => {
-      let col = document.createElement(`div`);
-      col.id = `3-${indexOfLine}-${indexOfChar}`;
-      col.className = `text-center`;
-      col.style.position = `absolute`;
-      col.style.top = `${waveOfTextTop}px`;
-      col.style.left = `${99 / fontSizesLength * indexOfChar}vw`;
-      col.style.width = `${99 / fontSizesLength}vw`; // Using 100 instead of 99 somehow causes an overflow, couldn't figure out why
-      col.style.padding = `0`;
-      col.style.fontSize = fontSizes[fontSizesLength - indexOfChar] *
-          fontSizeFactor + `vw`;
-      col.style.transition = `font-size ${transitionTimeMs}ms linear`;
-      col.innerHTML += char;
-      row.appendChild(col);
+      line.forEach((char, indexOfChar) => {
+        let col = document.createElement(`div`);
+        col.id = `3-${indexOfLine}-${indexOfChar}`;
+        col.className = `text-center`;
+        col.style.position = `absolute`;
+        col.style.top = `${
+            waveOfTextTop + indexOfLine * largestFontSize * vw / 100
+        }px`;
+        col.style.left = `${(vw * .99) / fontSizesLength * indexOfChar}px`; // Using the full width of vw somehow causes an overflow, so I multiplied it by a factor
+        col.style.width = `${vw / fontSizesLength}px`;
+        col.style.padding = `0`;
+        col.style.fontSize = fontSizes[fontSizesLength - indexOfChar] *
+            fontSizeFactor + `vw`;
+        col.style.transition = `font-size ${transitionTimeMs}ms linear`;
+        col.innerHTML += char;
+        row.appendChild(col);
+      });
     });
-  });
+  }
 
 // Add the wave effect with regular time interval
   let phase = 0;
@@ -109,9 +114,11 @@ function startStory3() {
     lines.forEach((line, indexOfLine) => {
       line.forEach((char, indexOfChar) => {
         let currentChars = document.getElementById(
-            `3-${indexOfLine}-${indexOfChar}`); // A plural "chars", as the kars and juktobornos are animated with the main borno (character).
-        currentChars.style.fontSize = fontSizes[(fontSizesLength - indexOfChar +
-            phase) % fontSizesLength] * fontSizeFactor + `vw`; // Traversing in reverse order, to make the wave move in the reading direction.
+            `3-${indexOfLine}-${indexOfChar}`,
+        ); // A plural "chars", as the kars and juktobornos are animated with the main borno (character).
+        currentChars.style.fontSize = fontSizes[
+        (fontSizesLength - indexOfChar + phase) % fontSizesLength
+            ] * fontSizeFactor + `vw`; // Traversing in reverse order, to make the wave move in the reading direction.
       });
     });
     phase++;
