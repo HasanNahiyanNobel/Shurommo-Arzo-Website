@@ -56,7 +56,7 @@ function startStory3() {
   let lines = [line0, line1, line2, line3];
   let fontSizesLength = fontSizes.length;
   let largestFontSize = Math.max(...fontSizes);
-  let fontSizeFactor = 0.8;
+  let fontSizeFactor = 0.75;
   let transitionTimeMs = 625;
 
   // Get document elements
@@ -73,19 +73,19 @@ function startStory3() {
   // Set the initial layout
   lines.forEach((line, indexOfLine) => {
     let row = document.createElement(`div`);
-    row.id = `3-row-${indexOfLine}`;
     row.className = `row`;
     row.style.height = `${largestFontSize}vw`;
-    row.style.overflow = `hidden`; // Though the row is not supposed to overflow, I'm hiding overflow just in case any compatibility issue arises
     waveOfText.append(row);
 
     line.forEach((char, indexOfChar) => {
       let col = document.createElement(`div`);
       col.id = `3-${indexOfLine}-${indexOfChar}`;
       col.className = `col text-center`;
+      col.style.width = `${largestFontSize}vw`;
       col.style.padding = `0`;
       col.style.fontSize = fontSizes[fontSizesLength - indexOfChar] + `vw`;
       col.style.transition = `font-size ${transitionTimeMs}ms linear`;
+      col.style.overflow = `hidden`; // As we have more than one character together, overflow will occur in some cases, which we want to hide
       col.innerHTML += char;
       row.appendChild(col);
     });
