@@ -74,6 +74,8 @@ function startStory3() {
   lines.forEach((line, indexOfLine) => {
     let row = document.createElement(`div`);
     row.className = `row`;
+    row.style.marginLeft = `auto`;
+    row.style.marginRight = `auto`;
     row.style.height = `${largestFontSize}vw`;
     waveOfText.append(row);
 
