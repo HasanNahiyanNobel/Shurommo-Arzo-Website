@@ -55,72 +55,43 @@ function startStory3() {
 
   let lines = [line0, line1, line2, line3];
   let fontSizesLength = fontSizes.length;
-  let fontSizeFactor = 0.8;
   let largestFontSize = Math.max(...fontSizes);
-
+  let fontSizeFactor = 0.8;
   let transitionTimeMs = 625;
 
-  let postWave = document.getElementById(`3-psw`);
+  // Get document elements
   let waveOfText = document.getElementById(`3-wot`);
-  let waveOfTextTop;
-  /**
-   * For some reason which I could not figure out yet, the div of wave loads
-   * a little later, and until that time, it has a top of 0. This is why we
-   * need this interval.
-   * @type {NodeJS.Timeout}
-   */
-  let getWaveTextTopInterval = setInterval(() => {
-    waveOfTextTop = waveOfText.getBoundingClientRect().top;
-    if (waveOfTextTop > 0) {
-      clearInterval(getWaveTextTopInterval);
-      createInitialLayout();
-      setTheTopOfPostWave();
-    }
-  }, 100);
-
-  let vw = Math.max(document.documentElement.clientWidth || 0,
-      window.innerWidth || 0); // Taken from: https://stackoverflow.com/a/8876069
 
   // Disable scroll anchoring
   document.body.style.overflowAnchor = `none`;
 
-  // Function to create the initial layout
-  function createInitialLayout() {
-    lines.forEach((line, indexOfLine) => {
-      let row = document.createElement(`div`);
-      row.id = `3-row-${indexOfLine}`;
-      row.style.overflow = `hidden`; // Though the row is not supposed to overflow, I'm hiding overflow just in case any compatibility issue arises
-      waveOfText.append(row);
+  // Transform the font-sizes multiplied by fontSizeFactor
+  fontSizes = fontSizes.map(
+      item => Math.round(item * fontSizeFactor * 100) / 100,
+  );
 
-      line.forEach((char, indexOfChar) => {
-        let col = document.createElement(`div`);
-        col.id = `3-${indexOfLine}-${indexOfChar}`;
-        col.className = `text-center`;
-        col.style.position = `absolute`;
-        col.style.top = `${
-            waveOfTextTop + indexOfLine * largestFontSize * vw / 100
-        }px`;
-        col.style.left = `${(vw * .99) / fontSizesLength * indexOfChar}px`; // Using the full width of vw somehow causes an overflow, so I multiplied it by a factor
-        col.style.width = `${vw / fontSizesLength}px`;
-        col.style.padding = `0`;
-        col.style.fontSize = fontSizes[fontSizesLength - indexOfChar] *
-            fontSizeFactor + `vw`;
-        col.style.transition = `font-size ${transitionTimeMs}ms linear`;
-        col.innerHTML += char;
-        row.appendChild(col);
-      });
+  // Set the initial layout
+  lines.forEach((line, indexOfLine) => {
+    let row = document.createElement(`div`);
+    row.id = `3-row-${indexOfLine}`;
+    row.className = `row`;
+    row.style.height = `${largestFontSize}vw`;
+    row.style.overflow = `hidden`; // Though the row is not supposed to overflow, I'm hiding overflow just in case any compatibility issue arises
+    waveOfText.append(row);
+
+    line.forEach((char, indexOfChar) => {
+      let col = document.createElement(`div`);
+      col.id = `3-${indexOfLine}-${indexOfChar}`;
+      col.className = `col text-center`;
+      col.style.padding = `0`;
+      col.style.fontSize = fontSizes[fontSizesLength - indexOfChar] + `vw`;
+      col.style.transition = `font-size ${transitionTimeMs}ms linear`;
+      col.innerHTML += char;
+      row.appendChild(col);
     });
-  }
+  });
 
-  function setTheTopOfPostWave() {
-    // FixMe: Fix the left position of this. Perhaps Stop positioning it via JS totally.
-    postWave.style.position = `absolute`;
-    postWave.style.top = `${
-        waveOfTextTop + lines.length * largestFontSize * vw / 100
-    }px`;
-  }
-
-  // Add the wave effect with regular time interval
+  // Start the interval of wave-effect
   let phase = 0;
   setInterval(() => {
     lines.forEach((line, indexOfLine) => {
@@ -130,10 +101,9 @@ function startStory3() {
         ); // A plural "chars", as the kars and juktobornos are animated with the main borno (character).
         currentChars.style.fontSize = fontSizes[
         (fontSizesLength - indexOfChar + phase) % fontSizesLength
-            ] * fontSizeFactor + `vw`; // Traversing in reverse order, to make the wave move in the reading direction.
+            ] + `vw`; // Traversing in reverse order, to make the wave move in the reading direction.
       });
     });
     phase++;
   }, transitionTimeMs);
-
 }
