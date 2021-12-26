@@ -60,6 +60,7 @@ function startStory3() {
 
   let transitionTimeMs = 625;
 
+  let postWave = document.getElementById(`3-psw`);
   let waveOfText = document.getElementById(`3-wot`);
   let waveOfTextTop;
   /**
@@ -73,6 +74,7 @@ function startStory3() {
     if (waveOfTextTop > 0) {
       clearInterval(getWaveTextTopInterval);
       createInitialLayout();
+      setTheTopOfPostWave();
     }
   }, 100);
 
@@ -105,6 +107,13 @@ function startStory3() {
         row.appendChild(col);
       });
     });
+  }
+
+  function setTheTopOfPostWave() {
+    postWave.style.position = `absolute`;
+    postWave.style.top = `${
+        waveOfTextTop + lines.length * largestFontSize * vw / 100
+    }px`;
   }
 
 // Add the wave effect with regular time interval
