@@ -83,7 +83,9 @@ function startStory3() {
       col.className = `col text-center`;
       col.style.width = `${largestFontSize}vw`;
       col.style.padding = `0`;
-      col.style.fontSize = fontSizes[fontSizesLength - indexOfChar] + `vw`;
+      col.style.fontSize = fontSizes[
+          (fontSizesLength - 1) - indexOfChar
+          ] + `vw`;
       col.style.transition = `font-size ${transitionTimeMs}ms linear`;
       col.style.overflow = `hidden`; // As we have more than one character together, overflow will occur in some cases, which we want to hide
       col.innerHTML += char;
@@ -100,7 +102,7 @@ function startStory3() {
             `3-${indexOfLine}-${indexOfChar}`,
         ); // A plural "chars", as the kars and juktobornos are animated with the main borno (character).
         currentChars.style.fontSize = fontSizes[
-        (fontSizesLength - indexOfChar + phase) % fontSizesLength
+        ((fontSizesLength - 1) - indexOfChar + phase) % fontSizesLength
             ] + `vw`; // Traversing in reverse order, to make the wave move in the reading direction.
       });
     });
