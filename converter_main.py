@@ -1,6 +1,6 @@
 """
 This converter generates static html files from a base template and source files (a bit like Django!).
-Copyright © 2021 by Hasan Nahiyan Nobel and Oteeddho.
+Copyright © 2021-22 by Hasan Nahiyan Nobel and Oteeddho.
 """
 
 # Imports
