@@ -7,6 +7,7 @@ Copyright © 2021-22 by Hasan Nahiyan Nobel and Oteeddho.
 SOURCE_DIR = 'src'
 OUTPUT_DIR = 'public'
 BASE_FILE = SOURCE_DIR + '\\_base.html'
+GOOGLE_OWNERSHIP_VERIFICATION_FILE = 'googleeed65ae6e233e9f6.html'
 
 DATA_BLOCK_MARKER = '{% block data %}'
 TITLE_BLOCK_MARKER = '{% block title %}{% endblock %}'
