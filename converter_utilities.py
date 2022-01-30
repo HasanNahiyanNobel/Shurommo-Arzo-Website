@@ -1,12 +1,13 @@
 """
 This script contains some constants and functions used by the other scripts.
-Copyright © 2021 by Hasan Nahiyan Nobel and Oteeddho.
+Copyright © 2021-22 by Hasan Nahiyan Nobel and Oteeddho.
 """
 
 # Constants
 SOURCE_DIR = 'src'
 OUTPUT_DIR = 'public'
 BASE_FILE = SOURCE_DIR + '\\_base.html'
+GOOGLE_OWNERSHIP_VERIFICATION_FILE = 'googleeed65ae6e233e9f6.html'
 
 DATA_BLOCK_MARKER = '{% block data %}'
 TITLE_BLOCK_MARKER = '{% block title %}{% endblock %}'
@@ -15,7 +16,7 @@ CONTENT_BLOCK_MARKER = '{% block content %}{% endblock %}'
 START_OF_CONTENT_BLOCK_MARKER = '{% block content %}'
 END_OF_BLOCK_MARKER = '{% endblock %}'
 
-COPYRIGHT_LINE = '<!--\n---- এখানে কী চাই? 🤨\n---- এই ফাইলটা পাইথন ফ্রেমওয়ার্ক দিয়ে নির্মিত, এবং এইচটিএমএল মিনিফায়ার (এনপিএম) দিয়ে ক্ষুদ্রীকৃত।\n---- অধিকার ২০২১, সুরম্য আর্য।\n--->'
+COPYRIGHT_LINE = '<!--\n---- এখানে কী চাই? 🤨\n---- এই ফাইলটা পাইথন ফ্রেমওয়ার্ক দিয়ে নির্মিত, এবং এইচটিএমএল মিনিফায়ার (এনপিএম) দিয়ে ক্ষুদ্রীকৃত।\n---- অধিকার ২০২১-২২, সুরম্য আর্য।\n--->'
 
 
 # Functions

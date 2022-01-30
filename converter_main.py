@@ -1,6 +1,6 @@
 """
 This converter generates static html files from a base template and source files (a bit like Django!).
-Copyright © 2021 by Hasan Nahiyan Nobel and Oteeddho.
+Copyright © 2021-22 by Hasan Nahiyan Nobel and Oteeddho.
 """
 
 # Imports
@@ -77,7 +77,9 @@ output_files = [
 
 # Remove the output files which have been deleted from source files
 for output_file in output_files:
-    if not source_files.__contains__(output_file):
+    if not (source_files.__contains__(output_file)) and not (
+            output_file == GOOGLE_OWNERSHIP_VERIFICATION_FILE
+    ):  # Exclude the Google ownership verification file from deletion
         os.remove(OUTPUT_DIR + '\\' +
                   output_file)  # Remove the file from directory
         output_files.remove(output_file)  # Also remove the file from list
