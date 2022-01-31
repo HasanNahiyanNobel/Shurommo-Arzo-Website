@@ -1,6 +1,11 @@
 startStory6();
 
 function startStory6() {
+  // Trigger the modal of info
+  setTimeout(() => {
+    document.getElementById(`6-mt`).click();
+  }, 150);
+
   // Get document elements
   let lastPara = document.getElementById(`6-l`);
   let mainPara = document.getElementById(`6-m`);
