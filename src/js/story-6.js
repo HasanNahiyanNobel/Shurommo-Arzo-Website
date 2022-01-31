@@ -2,7 +2,6 @@ startStory6();
 
 function startStory6() {
   // Get document elements
-  let firstParas = document.getElementById(`6-f`);
   let lastPara = document.getElementById(`6-l`);
   let mainPara = document.getElementById(`6-m`);
 
@@ -15,10 +14,11 @@ function startStory6() {
   let minFontWeight = 200;
 
   // Calculate the decrement of font weight
-  let fontWeightDecrement = (maxFontWeight - minFontWeight) /
-      (mainParaLength - 1);
+  let fontWeightDecrement = (maxFontWeight - minFontWeight) / mainParaLength;
 
   // Add weights to the words of the main paragraph
+  // As a note, the minimum weight it gets is one step away from the
+  // minimum font weight. That minimum weight is given to the last paragraph.
   mainParaAsArray = mainParaAsArray.map((item, index) => {
     let fontWeight = maxFontWeight - fontWeightDecrement * index;
     return `<span style="font-variation-settings: 'wght' ${fontWeight}">` +
@@ -27,9 +27,6 @@ function startStory6() {
 
   // Set the weight-added array as the inner HTML of the main paragraph
   mainPara.innerHTML = mainParaAsArray.join(` `);
-
-  // Add weight to the first paragraph
-  firstParas.style.fontVariationSettings = `'wght' ${maxFontWeight}`;
 
   // Add weight to the last paragraph
   lastPara.style.fontVariationSettings = `'wght' ${minFontWeight}`;
