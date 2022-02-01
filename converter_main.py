@@ -13,6 +13,8 @@ import glob
 # Variables
 pre_title = []
 title = []
+pre_description = []
+description = []
 pre_content = []
 content = []
 post_content = []
@@ -28,6 +30,11 @@ with open(BASE_FILE, encoding='utf-8') as f:
         if line.strip() == TITLE_BLOCK_MARKER:
             break
         pre_title.append(line)
+
+    for line in f:
+        if line.strip() == DESCRIPTION_BLOCK_MARKER:
+            break
+        pre_description.append(line)
 
     for line in f:
         if line.strip() == CONTENT_BLOCK_MARKER:
@@ -54,7 +61,32 @@ for source_file in source_files:
                 if not title:
                     title = ['<title>সুরম্য আর্য</title>']
                 else:
-                    title = ['<title>', title, ' – সুরম্য আর্য</title>']
+                    title = [
+                        '<title>',
+                        title,
+                        ' – সুরম্য আর্য</title>',
+                        '<meta property="og:title" content="',
+                        title,
+                        '">',
+                        '<meta name="twitter:title" content="',
+                        title,
+                        '">',
+                    ]
+            if current_line == START_OF_DESCRIPTION_BLOCK_MARKER:
+                description = read_block(f)[0].strip()
+                if not description:
+                    description = 'সুরম্য আর্য'
+                description = [
+                    '<meta name="description" content="',
+                    description,
+                    '...">',
+                    '<meta property="og:description" content="',
+                    description,
+                    '...">',
+                    '<meta name="twitter:description" content="',
+                    description,
+                    '...">',
+                ]
             if current_line == START_OF_CONTENT_BLOCK_MARKER:
                 content = read_block(f)
 
@@ -63,7 +95,8 @@ for source_file in source_files:
     with open(
             output_path, 'w+', encoding='utf-8'
     ) as f:  # The 'w+' option creates the file if it does not exist already
-        f.writelines(pre_title + title + pre_content + content + post_content)
+        f.writelines(pre_title + title + pre_description + description +
+                     pre_content + content + post_content)
 
     # Clean the arrays
     fluid_content = []
