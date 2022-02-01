@@ -54,7 +54,17 @@ for source_file in source_files:
                 if not title:
                     title = ['<title>সুরম্য আর্য</title>']
                 else:
-                    title = ['<title>', title, ' – সুরম্য আর্য</title>']
+                    title = [
+                        '<title>',
+                        title,
+                        ' – সুরম্য আর্য</title>',
+                        '<meta property="og:title" content="',
+                        title,
+                        '">',
+                        '<meta name="twitter:title" content="',
+                        title,
+                        '">',
+                    ]
             if current_line == START_OF_CONTENT_BLOCK_MARKER:
                 content = read_block(f)
 
