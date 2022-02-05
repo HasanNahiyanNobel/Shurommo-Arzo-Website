@@ -9,6 +9,7 @@ function startStory6() {
   // Get document elements
   let lastPara = document.getElementById(`6-l`);
   let mainPara = document.getElementById(`6-m`);
+  let lastWords = document.getElementById(`6-mki`);
 
   // Process the main para
   let mainParaAsArray = mainPara.innerText.split(` `);
@@ -35,4 +36,27 @@ function startStory6() {
 
   // Add weight to the last paragraph
   lastPara.style.fontVariationSettings = `'wght' ${lastFontWeight}`;
+
+  // Strike-through random words (mrrito or iddho) of the last para
+  let lastWordsAsArray = lastWords.innerHTML.split(`, `);
+  let mrrito = lastWordsAsArray[0];
+  let kingba = lastWordsAsArray[1];
+  let iddho = lastWordsAsArray[2];
+  let comma = `,`;
+  let noBreakSpace = `&NoBreak;&nbsp;&NoBreak;`;
+  let strikeThroughStart = `<span class="text-decoration-line-through">`;
+  let strikeThroughEnd = `</span>`;
+  let isIddho = Math.random() < 0.5; // Ideally this should be less than 0.5, not otherwise! This stackoverflow answer gives us the reason: https://stackoverflow.com/a/36756480
+
+  lastWords.innerHTML =
+      (isIddho ? strikeThroughStart : ``) +
+      mrrito + comma +
+      noBreakSpace +
+      (!isIddho ? strikeThroughStart : ``) +
+      kingba +
+      (isIddho ? strikeThroughEnd : ``) +
+      comma +
+      noBreakSpace +
+      iddho +
+      (!isIddho ? strikeThroughEnd : ``);
 }
