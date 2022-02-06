@@ -99,7 +99,7 @@ for source_file in source_files:
                     '...">',
                 ]
             if current_line == START_OF_CONTENT_BLOCK_MARKER:
-                content = read_block(f)
+                content = read_block(f, True)
 
     # Write the contents in respective output files
     output_path = OUTPUT_DIR + '\\' + source_file
