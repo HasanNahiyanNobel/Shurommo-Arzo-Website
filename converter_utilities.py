@@ -36,18 +36,20 @@ def prepend_line(filepath, line_to_prepend):
         a_file.write(line_to_prepend.rstrip('\r\n') + '\n' + content)
 
 
-def read_block(file):
+def read_block(file, is_body=False):
     """
     Read lines from a file until the end of block marker is read. Additionally, adds a &NoBreak; before every em dash.
 
     :param file: The file from which the lines are being read.
+    :param is_body: If the block being read goes inside the <body> tag, this boolean value is True.
     :return: The read lines as an array.
     """
     block = []
     for line in file:
         if line.strip() == END_OF_BLOCK_MARKER:
             break
-        line = line.replace('—', '&NoBreak;—')
+        if is_body is True:
+            line = line.replace('—', '&NoBreak;—')
         block.append(line)
     return block
 
