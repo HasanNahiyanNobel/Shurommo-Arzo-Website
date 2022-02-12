@@ -19,6 +19,8 @@ function startStory7() {
   let probabilityOfColourChange = 0.75;
   let firstWordOfHiddenParagraph = `আলো`;
   let secondWordOfHiddenParagraph = `ভেবে`;
+  let firstPartOfHiddenParagraph = `আলো ভেবে চোখ চেয়ে থেকেছি আঁধারে`;
+  let lastPartOfHiddenParagraph = `অন্ধ কবি আমি এক`;
   let audioSrc = `audios/`;
 
   // Get document elements
@@ -69,13 +71,26 @@ function startStory7() {
 
     if (selectedString !== `` && selectedString !== ` `) { // A visible character's been selected
       // Check whether this is the hidden paragraph
+      console.log(selectedString);
       if (paraArray[0] === firstWordOfHiddenParagraph &&
           paraArray[1] === secondWordOfHiddenParagraph) {
         // Reader found the hidden paragraph!
-        playTomake();
-        fixColours();
+        postDiscoverRoutine();
+      }
+
+      // Check whether this contains the hidden paragraph
+      if (selectedString.includes(firstPartOfHiddenParagraph) ||
+          selectedString.includes(lastPartOfHiddenParagraph)) {
+        // Reader found the hidden paragraph!
+        postDiscoverRoutine();
       }
     }
+  }
+
+  // After the hidden-paragraph is discovered, this routine is followed
+  function postDiscoverRoutine() {
+    playTomake();
+    fixColours();
   }
 
   // Hit the song `Tomake`
