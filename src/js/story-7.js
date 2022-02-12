@@ -66,6 +66,7 @@ function startStory7() {
   function processSelection() {
     let selectedString = window.getSelection().toString();
     let anchorNode = window.getSelection().anchorNode;
+    // TODO: Solve the error thrown by the following line
     let paragraph = anchorNode[`wholeText`]; // Get the paragraph from the object
     let paraArray = paragraph.split(` `); // Split to an array
 
