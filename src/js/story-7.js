@@ -131,9 +131,10 @@ function startStory7() {
     navbar.classList.remove(`bg-dark`);
     // And change the colours
     musicInfo.classList.add(`text-dark`);
-    hiddenSpan.style.color = bgColourFinal;
-    body.style.backgroundColor = bgColourFinal;
     navbar.style.backgroundColor = navColourFinal;
+    hiddenSpan.style.color = bgColourFinal;
+    body.style.backgroundColor = `rgb(0, 0, 0, 0)`;
+    body.style.backgroundImage = `url(${imagesSrc}7-bg-terminal${imageExtension})`;
   }
 
   // Make music info selectable
