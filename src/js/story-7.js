@@ -8,7 +8,9 @@ function startStory7() {
   }, 150);
 
   // Define pseudo-constants
+  let imageExtension = `.png`;
   let mp3Extension = `.mp3`;
+  let bgImageSize = `192px`;
   let bgColourLight = `#ffffff`;
   let bgColourDark = `#e8e0d2`;
   let bgColourFinal = `#fff9c4`; // Same as Shahorik
@@ -21,6 +23,7 @@ function startStory7() {
   let secondWordOfHiddenParagraph = `ভেবে`;
   let firstPartOfHiddenParagraph = `আলো ভেবে চোখ চেয়ে`;
   let lastPartOfHiddenParagraph = `অন্ধ কবি আমি এক`;
+  let imagesSrc = `images/`;
   let audioSrc = `audios/`;
 
   // Get document elements
@@ -40,6 +43,11 @@ function startStory7() {
   body.style.transition = `background-color ${transitionTime} ${transitionSpeedCurve}`;
   navbar.style.transition = `background-color ${transitionTime} ${transitionSpeedCurve}`;
 
+  // Set the background image
+  body.style.backgroundImage = `url(${imagesSrc}7-bg${imageExtension})`;
+  body.style.backgroundBlendMode = `screen`;
+  body.style.backgroundSize = `${bgImageSize} ${bgImageSize}`;
+
   // Change the colours
   let changeColourInterval = setInterval(() => {
     if (Math.random() < probabilityOfColourChange) {
@@ -52,11 +60,11 @@ function startStory7() {
     if (isBGColoured) {
       musicInfo.style.color = bgColourLight;
       hiddenSpan.style.color = bgColourLight;
-      body.style.backgroundColor = bgColourLight;
+      body.style.backgroundColor = `rgb(255, 255, 255, 1)`;
     } else {
       musicInfo.style.color = bgColourDark;
       hiddenSpan.style.color = bgColourDark;
-      body.style.backgroundColor = bgColourDark;
+      body.style.backgroundColor = `rgb(255, 255, 255, 0)`;
     }
     isBGColoured = !isBGColoured;
   }
