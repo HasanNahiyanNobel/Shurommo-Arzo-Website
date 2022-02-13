@@ -4,7 +4,7 @@ function startStory7() {
 
   // Trigger the modal of info
   setTimeout(() => {
-    // document.getElementById(`7-mt`).click(); // TODO: Uncomment this
+    document.getElementById(`7-mt`).click();
   }, 150);
 
   // Define pseudo-constants
