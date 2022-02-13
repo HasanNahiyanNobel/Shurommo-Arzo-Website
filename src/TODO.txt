@@ -1,4 +1,3 @@
 This is a To-do list for general purposes.
 
-TODO: Chop the music of story 7 off, perhaps
 TODO: Replace the modal of story-5 from base template to the page of the story
