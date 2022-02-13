@@ -70,32 +70,38 @@ function startStory7() {
   window.addEventListener(`touchend`, processSelection);
 
   function processSelection() {
-    let selectedString = window.getSelection().toString();
-    let anchorNode = window.getSelection().anchorNode;
-    // TODO: Solve the error thrown by the following line
-    let paragraph = anchorNode[`wholeText`]; // Get the paragraph from the object
-    let paraArray = paragraph.split(` `); // Split to an array
+    let selection = window.getSelection();
+    let selectedString = selection.toString();
 
-    if (selectedString !== `` && selectedString !== ` `) { // A visible character's been selected
-      // Check whether this is the hidden paragraph
-      console.log(selectedString);
-      if (paraArray[0] === firstWordOfHiddenParagraph &&
-          paraArray[1] === secondWordOfHiddenParagraph) {
-        // Reader found the hidden paragraph!
-        postDiscoverRoutine();
-      }
+    if (selectedString !== ``) {
 
-      // Check whether this contains the hidden paragraph
-      if (selectedString.includes(firstPartOfHiddenParagraph) ||
-          selectedString.includes(lastPartOfHiddenParagraph)) {
-        // Reader found the hidden paragraph!
-        postDiscoverRoutine();
+      let anchorNode = selection.anchorNode;
+      let paragraph = anchorNode[`wholeText`]; // Get the paragraph from the object
+      let paraArray = paragraph.split(` `); // Split to an array
+
+      if (selectedString !== ` `) { // A visible character's been selected
+        // Check whether this is the hidden paragraph
+        if (paraArray[0] === firstWordOfHiddenParagraph &&
+            paraArray[1] === secondWordOfHiddenParagraph) {
+          // Reader found the hidden paragraph!
+          postDiscoverRoutine();
+        }
+        // Check whether this contains the hidden paragraph
+        else if (selectedString.includes(firstPartOfHiddenParagraph) ||
+            selectedString.includes(lastPartOfHiddenParagraph)) {
+          // Reader found the hidden paragraph!
+          postDiscoverRoutine();
+        }
       }
     }
   }
 
   // After the hidden-paragraph is discovered, this routine is followed
   function postDiscoverRoutine() {
+    // Remove the event listeners
+    window.removeEventListener(`click`, processSelection);
+    window.removeEventListener(`touchend`, processSelection);
+    // Do the rest
     playTomake();
     fixColours();
     makeMusicInfoSelectable();
