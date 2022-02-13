@@ -65,8 +65,9 @@ function startStory7() {
   let audioTomakePath = audioSrc + `story-7` + mp3Extension;
   let audioTomake = new Audio(audioTomakePath);
 
-  // Listen for text selection!
+  // Listen to text selection!
   window.addEventListener(`click`, processSelection);
+  window.addEventListener(`touchend`, processSelection);
 
   function processSelection() {
     let selectedString = window.getSelection().toString();
