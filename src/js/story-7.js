@@ -4,7 +4,7 @@ function startStory7() {
 
   // Trigger the modal of info
   setTimeout(() => {
-    document.getElementById(`7-mt`).click();
+    // document.getElementById(`7-mt`).click(); // TODO: Uncomment this
   }, 150);
 
   // Define pseudo-constants
@@ -19,7 +19,7 @@ function startStory7() {
   let probabilityOfColourChange = 0.75;
   let firstWordOfHiddenParagraph = `আলো`;
   let secondWordOfHiddenParagraph = `ভেবে`;
-  let firstPartOfHiddenParagraph = `আলো ভেবে চোখ চেয়ে থেকেছি আঁধারে`;
+  let firstPartOfHiddenParagraph = `আলো ভেবে চোখ চেয়ে`;
   let lastPartOfHiddenParagraph = `অন্ধ কবি আমি এক`;
   let audioSrc = `audios/`;
 
@@ -27,12 +27,15 @@ function startStory7() {
   let body = document.body;
   let navbar = document.getElementById(`mn`);
   let hiddenSpan = document.getElementById(`8-ht`);
+  let musicInfo = document.getElementById(`8-hmi`);
 
   // Ensure that the background and hidden text has the same colours
+  musicInfo.style.color = bgColourLight;
   hiddenSpan.style.color = bgColourLight;
   body.style.backgroundColor = bgColourLight;
 
   // Add transitions
+  musicInfo.style.transition = `color ${transitionTime} ${transitionSpeedCurve}`;
   hiddenSpan.style.transition = `color ${transitionTime} ${transitionSpeedCurve}`;
   body.style.transition = `background-color ${transitionTime} ${transitionSpeedCurve}`;
   navbar.style.transition = `background-color ${transitionTime} ${transitionSpeedCurve}`;
@@ -47,9 +50,11 @@ function startStory7() {
   // Function to switch the colours
   function switchColours() {
     if (isBGColoured) {
+      musicInfo.style.color = bgColourLight;
       hiddenSpan.style.color = bgColourLight;
       body.style.backgroundColor = bgColourLight;
     } else {
+      musicInfo.style.color = bgColourDark;
       hiddenSpan.style.color = bgColourDark;
       body.style.backgroundColor = bgColourDark;
     }
@@ -92,6 +97,7 @@ function startStory7() {
   function postDiscoverRoutine() {
     playTomake();
     fixColours();
+    makeMusicInfoSelectable();
   }
 
   // Hit the song `Tomake`
@@ -109,9 +115,15 @@ function startStory7() {
     // Remove bg-dark class from navbar
     navbar.classList.remove(`bg-dark`);
     // And change the colours
+    musicInfo.classList.add(`text-dark`);
     hiddenSpan.style.color = bgColourFinal;
     body.style.backgroundColor = bgColourFinal;
     navbar.style.backgroundColor = navColourFinal;
+  }
+
+  // Make music info selectable
+  function makeMusicInfoSelectable() {
+    musicInfo.classList.remove(`noselect`);
   }
 
 }
