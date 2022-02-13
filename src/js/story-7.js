@@ -76,6 +76,7 @@ function startStory7() {
   // Listen to text selection!
   window.addEventListener(`click`, processSelection);
   window.addEventListener(`touchend`, processSelection);
+  window.addEventListener(`keydown`, processKeyPress);
 
   function processSelection() {
     let selection = window.getSelection();
@@ -91,16 +92,24 @@ function startStory7() {
         // Check whether this is the hidden paragraph
         if (paraArray[0] === firstWordOfHiddenParagraph &&
             paraArray[1] === secondWordOfHiddenParagraph) {
-          // Reader found the hidden paragraph!
+          // Reader found the hidden paragraph selecting from itself
           postDiscoverRoutine();
         }
         // Check whether this contains the hidden paragraph
         else if (selectedString.includes(firstPartOfHiddenParagraph) ||
             selectedString.includes(lastPartOfHiddenParagraph)) {
-          // Reader found the hidden paragraph!
+          // Reader found the hidden paragraph selecting from the visible ones
           postDiscoverRoutine();
         }
       }
+    }
+  }
+
+  // Just in case someone tries ctrl+A
+  function processKeyPress(e) {
+    if (e.code === `KeyA` && e.ctrlKey) {
+      // Reader found the hidden paragraph by pressing ctrl+A
+      postDiscoverRoutine();
     }
   }
 
