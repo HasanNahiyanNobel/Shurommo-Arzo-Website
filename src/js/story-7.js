@@ -16,7 +16,7 @@ function startStory7() {
   let bgColourFinal = `#fff9c4`; // Same as Shahorik
   let navColourFinal = `#fbc02d`; // Same as Shahorik
   let isBGColoured = false;
-  let transitionTime = `1500ms`;
+  let transitionTimeInMS = 1500;
   let transitionSpeedCurve = `linear`; // `ease` by default
   let probabilityOfColourChange = 0.75;
   let firstWordOfHiddenParagraph = `আলো`;
@@ -38,10 +38,10 @@ function startStory7() {
   body.style.backgroundColor = bgColourLight;
 
   // Add transitions
-  musicInfo.style.transition = `color ${transitionTime} ${transitionSpeedCurve}`;
-  hiddenSpan.style.transition = `color ${transitionTime} ${transitionSpeedCurve}`;
-  body.style.transition = `background-color ${transitionTime} ${transitionSpeedCurve}`;
-  navbar.style.transition = `background-color ${transitionTime} ${transitionSpeedCurve}`;
+  musicInfo.style.transition = `color ${transitionTimeInMS}ms ${transitionSpeedCurve}`;
+  hiddenSpan.style.transition = `color ${transitionTimeInMS}ms ${transitionSpeedCurve}`;
+  body.style.transition = `background-color ${transitionTimeInMS}ms ${transitionSpeedCurve}`;
+  navbar.style.transition = `background-color ${transitionTimeInMS}ms ${transitionSpeedCurve}`;
 
   // Set the background image
   body.style.backgroundImage = `url(${imagesSrc}7-bg${imageExtension})`;
@@ -136,14 +136,19 @@ function startStory7() {
   function fixColours() {
     // Clear the interval first
     clearInterval(changeColourInterval);
-    // Remove bg-dark class from navbar
-    navbar.classList.remove(`bg-dark`);
-    // And change the colours
-    musicInfo.classList.add(`text-dark`);
-    navbar.style.backgroundColor = navColourFinal;
-    hiddenSpan.style.color = bgColourFinal;
-    body.style.backgroundColor = `rgb(0, 0, 0, 0)`;
-    body.style.backgroundImage = `url(${imagesSrc}7-bg-terminal${imageExtension})`;
+    // Make the bg white again
+    if (isBGColoured) switchColours();
+    // Wait for the transition, then change the colours
+    setTimeout(() => {
+      // Remove bg-dark class from navbar
+      navbar.classList.remove(`bg-dark`);
+      // And change the colours
+      musicInfo.classList.add(`text-dark`);
+      navbar.style.backgroundColor = navColourFinal;
+      hiddenSpan.style.color = bgColourFinal;
+      body.style.backgroundColor = `rgb(0, 0, 0, 0)`;
+      body.style.backgroundImage = `url(${imagesSrc}7-bg-terminal${imageExtension})`;
+    }, transitionTimeInMS);
   }
 
   // Make music info selectable
