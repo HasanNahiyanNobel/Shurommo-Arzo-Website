@@ -59,7 +59,7 @@ for source_file in source_files:
             if current_line == START_OF_TITLE_BLOCK_MARKER:
                 title = read_block(f)[0].strip()
                 if not title:
-                    title = 'সুরম্য আর্য'
+                    title = WEBSITE_TITLE_DEFAULT
                     title = [
                         '<title>',
                         title,
@@ -75,7 +75,9 @@ for source_file in source_files:
                     title = [
                         '<title>',
                         title,
-                        ' – সুরম্য আর্য</title>',
+                        ' – ',
+                        WEBSITE_TITLE_DEFAULT,
+                        '</title>',
                         '<meta property="og:title" content="',
                         title,
                         '">',
@@ -86,7 +88,7 @@ for source_file in source_files:
             if current_line == START_OF_DESCRIPTION_BLOCK_MARKER:
                 description = read_block(f)[0].strip()
                 if not description:
-                    description = 'সুরম্য আর্য'
+                    description = WEBSITE_DESCRIPTION_DEFAULT
                 description = [
                     '<meta name="description" content="',
                     description,
