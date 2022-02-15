@@ -1,6 +1,6 @@
 """
 This converter generates static html files from a base template and source files (a bit like Django!).
-Copyright © 2021-22 by Hasan Nahiyan Nobel and Oteeddho.
+Copyright © 2021-22 by Hasan Nahiyan Nobel.
 """
 
 # Imports
@@ -59,7 +59,7 @@ for source_file in source_files:
             if current_line == START_OF_TITLE_BLOCK_MARKER:
                 title = read_block(f)[0].strip()
                 if not title:
-                    title = WEBSITE_TITLE_DEFAULT
+                    title = TITLE_DEFAULT
                     title = [
                         '<title>',
                         title,
@@ -76,7 +76,7 @@ for source_file in source_files:
                         '<title>',
                         title,
                         ' – ',
-                        WEBSITE_TITLE_DEFAULT,
+                        TITLE_DEFAULT,
                         '</title>',
                         '<meta property="og:title" content="',
                         title,
@@ -88,7 +88,7 @@ for source_file in source_files:
             if current_line == START_OF_DESCRIPTION_BLOCK_MARKER:
                 description = read_block(f)[0].strip()
                 if not description:
-                    description = WEBSITE_DESCRIPTION_DEFAULT
+                    description = DESCRIPTION_DEFAULT
                 description = [
                     '<meta name="description" content="',
                     description,

@@ -1,6 +1,6 @@
 """
 This script contains some constants and functions used by the other scripts.
-Copyright © 2021-22 by Hasan Nahiyan Nobel and Oteeddho.
+Copyright © 2021-22 by Hasan Nahiyan Nobel.
 """
 
 # Constants
@@ -14,12 +14,20 @@ TITLE_BLOCK_MARKER = '{% block title %}{% endblock %}'
 START_OF_TITLE_BLOCK_MARKER = '{% block title %}'
 DESCRIPTION_BLOCK_MARKER = '{% block description %}{% endblock %}'
 START_OF_DESCRIPTION_BLOCK_MARKER = '{% block description %}'
+META_BLOCK_MARKER = '{% block meta %}{% endblock %}'
+START_OF_META_BLOCK_MARKER = '{% block meta %}'
 CONTENT_BLOCK_MARKER = '{% block content %}{% endblock %}'
 START_OF_CONTENT_BLOCK_MARKER = '{% block content %}'
 END_OF_BLOCK_MARKER = '{% endblock %}'
 
-WEBSITE_TITLE_DEFAULT = 'সুরম্য আর্য'
-WEBSITE_DESCRIPTION_DEFAULT = 'সুরম্য আর্য'
+TITLE_DEFAULT = 'সুরম্য আর্য'
+DESCRIPTION_DEFAULT = 'সুরম্য আর্য'
+IMAGE_DEFAULT = 'https://shurommo-arzo.web.app/images/cover_web_preview.png'
+AUTHOR_DEFAULT = 'সুরম্য আর্য'
+OG_TYPE_DEFAULT = 'website'
+URL_DEFAULT = 'https://shurommo-arzo.web.app'
+TWITTER_DOMAIN_DEFAULT = 'shurommo-arzo.web.app'
+TWITTER_CARD_DEFAULT = 'summary_large_image'
 
 COPYRIGHT_LINE = '<!--\n---- এখানে কী চাই? 🤨\n---- এই ফাইলটা পাইথন ফ্রেমওয়ার্ক দিয়ে নির্মিত, এবং এইচটিএমএল মিনিফায়ার (এনপিএম) দিয়ে ক্ষুদ্রীকৃত।\n---- অধিকার ২০২১-২২, সুরম্য আর্য।\n--->'
 
