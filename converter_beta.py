@@ -48,12 +48,10 @@ with open(BASE_FILE, encoding='utf-8') as f:
         post_content.append(line)
 
 # Make a list of the source files. Concept from: https://stackoverflow.com/a/3207973.
-# source_files = [
-#     f for f in listdir(SOURCE_DIR) if isfile(join(SOURCE_DIR, f)) and
-#     f[0] != '_' and os.path.splitext(f)[1] == '.html'
-# ]  # Files starting with an underscore are template files, so they are not included in this list. Also, we are processing only html files.
-
-source_files = ['1-shahorik.html']  # TODO: Remove this debug line
+source_files = [
+    f for f in listdir(SOURCE_DIR) if isfile(join(SOURCE_DIR, f)) and
+    f[0] != '_' and os.path.splitext(f)[1] == '.html'
+]  # Files starting with an underscore are template files, so they are not included in this list. Also, we are processing only html files.
 
 for source_file in source_files:
     # Read the source file
@@ -75,14 +73,14 @@ for source_file in source_files:
                 meta_twitter_domain = set_twitter_domain(meta_tags)
                 meta_twitter_card = set_twitter_cards(meta_tags)
 
-                print(''.join(meta_title))
-                print(''.join(meta_description))
-                print(''.join(meta_image))
-                print(''.join(meta_author))
-                print(''.join(meta_og_type))
-                print(''.join(meta_url))
-                print(''.join(meta_twitter_domain))
-                print(''.join(meta_twitter_card))
+                # print(''.join(meta_title))
+                # print(''.join(meta_description))
+                # print(''.join(meta_image))
+                # print(''.join(meta_author))
+                # print(''.join(meta_og_type))
+                # print(''.join(meta_url))
+                # print(''.join(meta_twitter_domain))
+                # print(''.join(meta_twitter_card))
 
                 meta_tags = meta_title
                 meta_tags += meta_description
@@ -107,3 +105,28 @@ for source_file in source_files:
     # Clean the arrays
     fluid_content = []
     content = []
+
+# Make a list of the output files
+output_files = [
+    f for f in listdir(OUTPUT_DIR)
+    if isfile(join(OUTPUT_DIR, f)) and os.path.splitext(f)[1] == '.html'
+]  # Output directory may contain files other than html—so this extra check is included in if-condition.
+
+# Remove the output files which have been deleted from source files
+for output_file in output_files:
+    if not (source_files.__contains__(output_file)) and not (
+            output_file == GOOGLE_OWNERSHIP_VERIFICATION_FILE
+    ):  # Exclude the Google ownership verification file from deletion
+        os.remove(OUTPUT_DIR + '\\' +
+                  output_file)  # Remove the file from directory
+        output_files.remove(output_file)  # Also remove the file from list
+        print('Deleted: ' + output_file)
+
+# Minify the script using html-minifier (https://www.npmjs.com/package/html-minifier)
+os.system(
+    'html-minifier --collapse-whitespace --minify-js true --no-html5 --remove-comments --remove-empty-attributes --remove-optional-tags --remove-redundant-attributes --input-dir public --output-dir public --file-ext html'
+)
+
+# Add copyright lines to the minified files
+for output_file in output_files:
+    prepend_line(OUTPUT_DIR + '\\' + output_file, COPYRIGHT_LINE)
