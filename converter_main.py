@@ -9,15 +9,23 @@ from os.path import isfile, join
 from converter_utilities import *
 import os.path
 import glob
+import json
 
 # Variables
-pre_title = []
-title = []
-pre_description = []
-description = []
+pre_meta_tags = []
+meta_tags = []
 pre_content = []
 content = []
 post_content = []
+
+meta_title = ''
+meta_description = ''
+meta_image = ''
+meta_author = ''
+meta_og_type = ''
+meta_url = ''
+meta_twitter_domain = ''
+meta_twitter_card = ''
 
 # Format every .py file using yapf Google style
 py_files = glob.glob('*.py')
@@ -27,14 +35,9 @@ for py_file in py_files:
 # Read pre- and post-contents from base file
 with open(BASE_FILE, encoding='utf-8') as f:
     for line in f:
-        if line.strip() == TITLE_BLOCK_MARKER:
+        if line.strip() == META_BLOCK_MARKER:
             break
-        pre_title.append(line)
-
-    for line in f:
-        if line.strip() == DESCRIPTION_BLOCK_MARKER:
-            break
-        pre_description.append(line)
+        pre_meta_tags.append(line)
 
     for line in f:
         if line.strip() == CONTENT_BLOCK_MARKER:
@@ -56,50 +59,29 @@ for source_file in source_files:
     with open(source_path, encoding='utf-8') as f:
         for line in f:
             current_line = line.strip()
-            if current_line == START_OF_TITLE_BLOCK_MARKER:
-                title = read_block(f)[0].strip()
-                if not title:
-                    title = TITLE_DEFAULT
-                    title = [
-                        '<title>',
-                        title,
-                        '</title>',
-                        '<meta property="og:title" content="',
-                        title,
-                        '">',
-                        '<meta name="twitter:title" content="',
-                        title,
-                        '">',
-                    ]
-                else:
-                    title = [
-                        '<title>',
-                        title,
-                        ' – ',
-                        TITLE_DEFAULT,
-                        '</title>',
-                        '<meta property="og:title" content="',
-                        title,
-                        '">',
-                        '<meta name="twitter:title" content="',
-                        title,
-                        '">',
-                    ]
-            if current_line == START_OF_DESCRIPTION_BLOCK_MARKER:
-                description = read_block(f)[0].strip()
-                if not description:
-                    description = DESCRIPTION_DEFAULT
-                description = [
-                    '<meta name="description" content="',
-                    description,
-                    '...">',
-                    '<meta property="og:description" content="',
-                    description,
-                    '...">',
-                    '<meta name="twitter:description" content="',
-                    description,
-                    '...">',
-                ]
+            if current_line == START_OF_META_BLOCK_MARKER:
+                meta_tags = read_block(f)
+                meta_tags = ''.join(meta_tags)
+                meta_tags = json.loads(meta_tags)
+
+                meta_title = set_title(meta_tags)
+                meta_description = set_description(meta_tags)
+                meta_image = set_image(meta_tags)
+                meta_author = set_author(meta_tags)
+                meta_og_type = set_og_type(meta_tags)
+                meta_url = set_url(meta_tags)
+                meta_twitter_domain = set_twitter_domain(meta_tags)
+                meta_twitter_card = set_twitter_cards(meta_tags)
+
+                meta_tags = meta_title
+                meta_tags += meta_description
+                meta_tags += meta_image
+                meta_tags += meta_author
+                meta_tags += meta_og_type
+                meta_tags += meta_url
+                meta_tags += meta_twitter_domain
+                meta_tags += meta_twitter_card
+
             if current_line == START_OF_CONTENT_BLOCK_MARKER:
                 content = read_block(f, True)
 
@@ -108,8 +90,8 @@ for source_file in source_files:
     with open(
             output_path, 'w+', encoding='utf-8'
     ) as f:  # The 'w+' option creates the file if it does not exist already
-        f.writelines(pre_title + title + pre_description + description +
-                     pre_content + content + post_content)
+        f.writelines(pre_meta_tags + meta_tags + pre_content + content +
+                     post_content)
 
     # Clean the arrays
     fluid_content = []
