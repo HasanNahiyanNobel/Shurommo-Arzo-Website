@@ -1,6 +1,6 @@
 """
 This script contains some constants and functions used by the other scripts.
-Copyright © 2021-22 by Hasan Nahiyan Nobel and Oteeddho.
+Copyright © 2021-22 by Hasan Nahiyan Nobel.
 """
 
 # Constants
@@ -10,13 +10,20 @@ BASE_FILE = SOURCE_DIR + '\\_base.html'
 GOOGLE_OWNERSHIP_VERIFICATION_FILE = 'googleeed65ae6e233e9f6.html'
 
 DATA_BLOCK_MARKER = '{% block data %}'
-TITLE_BLOCK_MARKER = '{% block title %}{% endblock %}'
-START_OF_TITLE_BLOCK_MARKER = '{% block title %}'
-DESCRIPTION_BLOCK_MARKER = '{% block description %}{% endblock %}'
-START_OF_DESCRIPTION_BLOCK_MARKER = '{% block description %}'
+META_BLOCK_MARKER = '{% block meta %}{% endblock %}'
+START_OF_META_BLOCK_MARKER = '{% block meta %}'
 CONTENT_BLOCK_MARKER = '{% block content %}{% endblock %}'
 START_OF_CONTENT_BLOCK_MARKER = '{% block content %}'
 END_OF_BLOCK_MARKER = '{% endblock %}'
+
+TITLE_DEFAULT = 'সুরম্য আর্য'
+DESCRIPTION_DEFAULT = 'সুরম্য আর্য'
+IMAGE_DEFAULT = 'https://shurommo-arzo.web.app/images/cover_web_preview.png'
+AUTHOR_DEFAULT = 'সুরম্য আর্য'
+OG_TYPE_DEFAULT = 'website'
+URL_DEFAULT = 'https://shurommo-arzo.web.app'
+TWITTER_DOMAIN_DEFAULT = 'shurommo-arzo.web.app'
+TWITTER_CARD_DEFAULT = 'summary_large_image'
 
 COPYRIGHT_LINE = '<!--\n---- এখানে কী চাই? 🤨\n---- এই ফাইলটা পাইথন ফ্রেমওয়ার্ক দিয়ে নির্মিত, এবং এইচটিএমএল মিনিফায়ার (এনপিএম) দিয়ে ক্ষুদ্রীকৃত।\n---- অধিকার ২০২১-২২, সুরম্য আর্য।\n--->'
 
@@ -79,3 +86,95 @@ def english_to_bangla_number(number=None):
         return ''
     except TypeError:
         return ''
+
+
+def set_title(tags):
+    if 'title' in tags:
+        title = tags['title']
+        title_meta = ['<title>', title, ' – ', TITLE_DEFAULT, '</title>']
+    else:
+        title = TITLE_DEFAULT
+        title_meta = ['<title>', title, '</title>']
+    title_meta += [
+        '<meta property="og:title" content="', title, '">',
+        '<meta name="twitter:title" content="', title, '">'
+    ]
+    return title_meta
+
+
+def set_description(tags):
+    if 'description' in tags:
+        description_meta = tags['description']
+    else:
+        description_meta = DESCRIPTION_DEFAULT
+    description_meta = [
+        '<meta name="description" content="', description_meta, '...">',
+        '<meta property="og:description" content="', description_meta, '...">',
+        '<meta name="twitter:description" content="', description_meta, '...">'
+    ]
+    return description_meta
+
+
+def set_image(tags):
+    if 'image' in tags:
+        image_meta = tags['image']
+    else:
+        image_meta = IMAGE_DEFAULT
+    image_meta = [
+        '<meta property="og:image" content="', image_meta, '">',
+        '<meta name="twitter:image" content="', image_meta, '">',
+        '<meta name="image" property="og:image" content="', image_meta, '">'
+    ]  # The last one is for LinkedIn
+    return image_meta
+
+
+def set_author(tags):
+    if 'author' in tags:
+        author_meta = tags['author']
+    else:
+        author_meta = AUTHOR_DEFAULT
+    author_meta = ['<meta name="author" content="', author_meta, '">']
+    return author_meta
+
+
+def set_og_type(tags):
+    if 'og_type' in tags:
+        og_type_meta = tags['og_type']
+    else:
+        og_type_meta = OG_TYPE_DEFAULT
+    og_type_meta = ['<meta property="og:type" content="', og_type_meta, '">']
+    return og_type_meta
+
+
+def set_url(tags):
+    if 'url' in tags:
+        url_meta = tags['url']
+    else:
+        url_meta = URL_DEFAULT
+    url_meta = [
+        '<meta property="og:url" content="', url_meta, '">',
+        '<meta property="twitter:url" content="', url_meta, '">'
+    ]
+    return url_meta
+
+
+def set_twitter_domain(tags):
+    if 'twitter_domain' in tags:
+        twitter_domain_meta = tags['twitter_domain']
+    else:
+        twitter_domain_meta = TWITTER_DOMAIN_DEFAULT
+    twitter_domain_meta = [
+        '<meta property="twitter:domain" content="', twitter_domain_meta, '">'
+    ]
+    return twitter_domain_meta
+
+
+def set_twitter_cards(tags):
+    if 'twitter_card' in tags:
+        twitter_card_meta = tags['twitter_card']
+    else:
+        twitter_card_meta = TWITTER_CARD_DEFAULT
+    twitter_card_meta = [
+        '<meta name="twitter:card" content="', twitter_card_meta, '">'
+    ]
+    return twitter_card_meta
