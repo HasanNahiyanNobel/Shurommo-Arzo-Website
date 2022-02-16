@@ -76,7 +76,7 @@ function startStory5() {
     spinner.classList.add(`d-none`);
 
     // Trigger the modal which requests reader to use headphones
-    document.getElementById(`omt`).click();
+    document.getElementById(`5-mt`).click();
 
     // Show the first section and the canvas div
     divFirst.classList.remove(`d-none`);
