@@ -55,6 +55,7 @@ function startStory3() {
 
   let lines = [line0, line1, line2, line3];
   let fontSizesLength = fontSizes.length;
+  let smallestFontSize = Math.min(...fontSizes);
   let largestFontSize = Math.max(...fontSizes);
   let fontSizeFactor = 0.6;
   let transitionTimeMs = 625;
@@ -87,10 +88,10 @@ function startStory3() {
       col.style.padding = `0`;
       col.style.backfaceVisibility = `hidden`;
       col.style.transform = `translateZ(0)`;
-      col.style.fontSize = fontSizes[
+      /*col.style.fontSize = fontSizes[
       (fontSizesLength - 1) - indexOfChar
-          ] + `vw`;
-      // col.style.fontSize = `${largestFontSize}vw`;
+          ] + `vw`;*/
+      col.style.fontSize = `${smallestFontSize}vw`;
       // col.style.transition = `font-size ${transitionTimeMs}ms linear`;
       col.style.transition = `transform ${transitionTimeMs}ms linear`;
       col.style.overflow = `hidden`; // As we have more than one character together, overflow will occur in some cases, which we want to hide
