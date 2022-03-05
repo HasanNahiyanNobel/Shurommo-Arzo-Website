@@ -115,8 +115,8 @@ for output_file in output_files:
 
 # Minify the script using html-minifier (https://www.npmjs.com/package/html-minifier)
 os.system(
-    'html-minifier --collapse-whitespace --minify-js true --no-html5 --remove-comments --remove-empty-attributes --remove-optional-tags --remove-redundant-attributes --input-dir public --output-dir public --file-ext html'
-)
+    'html-minifier --collapse-whitespace --minify-js true --no-html5 --remove-comments --remove-empty-attributes --remove-optional-tags --remove-redundant-attributes --input-dir '
+    + OUTPUT_DIR + ' --output-dir ' + OUTPUT_DIR + ' --file-ext html')
 
 # Add copyright lines to the minified files
 for output_file in output_files:
