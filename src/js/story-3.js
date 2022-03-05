@@ -1,5 +1,6 @@
 startStory3();
 
+// TODO: Beautify the wave. I DO NOT like the way it works now.
 function startStory3() {
   // Define the variables
   let line0 = [
