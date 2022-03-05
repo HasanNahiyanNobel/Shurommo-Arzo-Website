@@ -56,7 +56,7 @@ function startStory3() {
   let lines = [line0, line1, line2, line3];
   let fontSizesLength = fontSizes.length;
   let largestFontSize = Math.max(...fontSizes);
-  let fontSizeFactor = 0.75;
+  let fontSizeFactor = 0.6;
   let transitionTimeMs = 625;
 
   // Get document elements
@@ -85,10 +85,14 @@ function startStory3() {
       col.className = `col text-center`;
       col.style.width = `${largestFontSize}vw`;
       col.style.padding = `0`;
+      col.style.backfaceVisibility = `hidden`;
+      col.style.transform = `translateZ(0)`;
       col.style.fontSize = fontSizes[
       (fontSizesLength - 1) - indexOfChar
           ] + `vw`;
-      col.style.transition = `font-size ${transitionTimeMs}ms linear`;
+      // col.style.fontSize = `${largestFontSize}vw`;
+      // col.style.transition = `font-size ${transitionTimeMs}ms linear`;
+      col.style.transition = `transform ${transitionTimeMs}ms linear`;
       col.style.overflow = `hidden`; // As we have more than one character together, overflow will occur in some cases, which we want to hide
       col.innerHTML += char;
       row.appendChild(col);
@@ -106,9 +110,13 @@ function startStory3() {
         let currentChars = document.getElementById(
             `3-${indexOfLine}-${indexOfChar}`,
         ); // A plural "chars", as the kars and juktobornos are animated with the main borno (character).
-        currentChars.style.fontSize = fontSizes[
+        /*currentChars.style.fontSize = fontSizes[
         ((fontSizesLength - 1) - indexOfChar + phase) % fontSizesLength
             ] + `vw`; // Traversing in reverse order, to make the wave move in the reading direction.
+      });*/
+        currentChars.style.transform = `scale(${fontSizes[
+        ((fontSizesLength - 1) - indexOfChar + phase) % fontSizesLength
+            ]})`; // Traversing in reverse order, to make the wave move in the reading direction.
       });
     });
     phase++;
