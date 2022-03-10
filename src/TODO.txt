@@ -1,3 +1,4 @@
 This is a To-do list for general purposes.
 
 TODO: Fix og:url for facebook
+TODO: Perhaps remove the `noscript` check totally, and then check whether LinkedIn's post-inspector works correctly 
