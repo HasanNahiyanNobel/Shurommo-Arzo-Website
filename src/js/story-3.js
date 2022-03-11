@@ -1,5 +1,7 @@
 startStory3();
 
+// TODO: Beautify the wave. I DO NOT like the way it works now.
+// TODO: Perhaps I can use font resizing instead, with a modal which lets users know that they need to use Chrome of Edge.
 function startStory3() {
   // Define the variables
   let line0 = [
