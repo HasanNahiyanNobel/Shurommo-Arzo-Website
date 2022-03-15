@@ -41,8 +41,8 @@ function startStory8() {
     let japaneseTextTransitionTimeInMs = 500;
     let frequencyOfOpacityChangeInMs = japaneseTextTransitionTimeInMs;
     let iterationOfOpacityChange = 0;
-    let timeToReachMaxOpacityInMs = 5e3; // TODO: Make this 50e3
-    let timeToFixOpacityInMs = 6e3; // TODO: Make this 60e3
+    let timeToReachMaxOpacityInMs = 50e3;
+    let timeToFixOpacityInMs = 60e3;
     let maxNumberOfOpacityChanges = timeToReachMaxOpacityInMs /
         japaneseTextTransitionTimeInMs;
 
