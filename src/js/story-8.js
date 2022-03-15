@@ -3,7 +3,7 @@ startStory8();
 function startStory8() {
   // Trigger the modal of info
   setTimeout(() => {
-    document.getElementById(`8-mt`).click(); // TODO: Activate this later
+    document.getElementById(`8-mt`).click();
   }, 150);
 
   // Make the bg dark and text light
@@ -52,6 +52,8 @@ function startStory8() {
     let image3 = document.getElementById(`8-i-3`);
     let image4 = document.getElementById(`8-i-4`);
     let images = [image1, image2, image3, image4];
+    let postTextsAndImage = document.getElementsByClassName(`8-pti`);
+    let linkOfPostText = document.getElementById(`8-jtpts`);
 
     // Add transitions
     images.forEach(image => {
@@ -69,6 +71,8 @@ function startStory8() {
         clearInterval(textOpacityChangeInterval);
         // Somehow, one interval is still scheduled. Setting a timeout solves the problem.
         setTimeout(fixOpacity, frequencyOfOpacityChangeInMs);
+        // Make the post-text visible
+        makePostTextsAndImageVisible();
       }
 
       images.forEach(image => {
@@ -87,6 +91,15 @@ function startStory8() {
       images.forEach(image => {
         image.style.opacity = `1`;
       });
+    }
+
+    // Make the post-text visible
+    function makePostTextsAndImageVisible() {
+      for (let item of postTextsAndImage) {
+        item.classList.remove(`d-none`);
+      }
+      // And jump to post-text!
+      linkOfPostText.click();
     }
   }
 
