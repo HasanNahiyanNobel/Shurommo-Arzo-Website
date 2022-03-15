@@ -10,6 +10,11 @@ function startStory8() {
   document.body.classList.add(`bg-dark`);
   document.body.classList.add(`text-light`);
 
+  // Make the main div invisible and add transition
+  let mainDivOfStory8 = document.getElementById(`8-md`);
+  mainDivOfStory8.style.opacity = `0`;
+  mainDivOfStory8.style.transition = `opacity 5s`;
+
   // Get modal buttons
   let yesButton = document.getElementById(`8-y`);
   let noButton = document.getElementById(`8-n`);
@@ -27,6 +32,10 @@ function startStory8() {
   function readerIsCalm() {
     // Clear the event listener of modal buttons
     yesButton.removeEventListener(`click`, readerIsCalm);
+    noButton.removeEventListener(`click`, readerIsFreakingOut);
+
+    // Make the text visible
+    mainDivOfStory8.style.opacity = `1`;
 
     // Define variables
     let japaneseTextTransitionTimeInMs = 500;
