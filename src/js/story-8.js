@@ -23,9 +23,9 @@ function startStory8() {
   yesButton.addEventListener(`click`, readerIsCalm);
   noButton.addEventListener(`click`, readerIsFreakingOut);
 
-  // If the reader is not calm, close the window!
+  // If the reader is not calm, rickroll them!
   function readerIsFreakingOut() {
-    window.close();
+    window.open(`https://www.youtube.com/watch?v=dQw4w9WgXcQ`);
   }
 
   // When reader is calm, start the main tasks
