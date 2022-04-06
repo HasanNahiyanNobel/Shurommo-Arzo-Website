@@ -14,11 +14,11 @@ function startStory9() {
   let numberOfLastParagraphs = lastParagraphs.length;
 
   // Specify largest spacing
-  let largestSpacingInEm = 1.5;
+  let largestSpacingInEm = 0.8;
 
   // Increase spacing in the last paragraphs
   lastParagraphs.forEach((para, index) => {
-    let spacing = largestSpacingInEm / (numberOfLastParagraphs - index + 1);
+    let spacing = largestSpacingInEm / (numberOfLastParagraphs - index);
     para.style.letterSpacing = `${spacing}em`;
     console.log(para); // TODO: Remove this debug print
   });
