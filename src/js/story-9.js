@@ -18,12 +18,16 @@ function startStory9() {
 
   // Increase spacing in the last paragraphs
   lastParagraphs.forEach((para, index) => {
+    let paraHtml = para.innerHTML;
     let spacing = largestSpacingInEm / (numberOfLastParagraphs - index);
     para.style.letterSpacing = `${spacing}em`;
     console.log(para); // TODO: Remove this debug print
-    for (let i = 0; i < para.innerHTML.length; i++) {
+    for (let i = 0; i < paraHtml.length; i++) {
       console.log(para.innerHTML.charAt(i)); // TODO: Remove this debug print
-      console.log(isBanglaAccent(para.innerHTML.charAt(i))); // TODO: Remove this debug print
+      console.log(isBanglaAccent(paraHtml.charAt(i))); // TODO: Remove this debug print
+      if (i + 1 < paraHtml.length && isBanglaAccent(paraHtml.charAt(i + 1))) {
+        // console.log(`${paraHtml.charAt(i)}${paraHtml.charAt(i+1)}`);
+      }
     }
   });
 
