@@ -3,7 +3,7 @@ startStory9();
 function startStory9() {
   // Trigger the modal of info
   setTimeout(() => {
-    // document.getElementById(`9-mt`).click(); // TODO: Enable this modal click
+    document.getElementById(`9-mt`).click();
   }, 150);
 
   // Get document elements
@@ -11,14 +11,15 @@ function startStory9() {
   let starterQuote = document.getElementById(`9-sq`);
   let mainText = document.getElementById(`9-t`);
   let lastDiv = document.getElementById(`9-ld`);
-
-  // Get the last paragraphs
+  let starterLines = Array.from(starterQuote.getElementsByClassName(`9-sql`));
   let lastParagraphs = Array.from(lastDiv.getElementsByTagName(`p`));
+  let numberOfStarterLines = starterLines.length;
   let numberOfLastParagraphs = lastParagraphs.length;
 
   // Specify pseudo-constants
   let largestSpacingInEm = 0.8;
-  let lastQuoteAppearsAfterMS = 5000;
+  let lastQuoteAppearsAfterMS = 10000;
+  let mainTextDelayInMSAfterLastQuote = 2000;
   let colourLight = `#ffffff`;
   let colourDark = `#212529`; // Bootstrap dark colour
   let transitionTimeInMS = 2000;
@@ -27,38 +28,39 @@ function startStory9() {
   // Add event listener for the modal button
   modalButton.addEventListener(`click`, readerIsOkay);
 
-  readerIsOkay(); // TODO: Remove this debug line
+  // Make the starter quote invisible and add transitions
+  starterLines.forEach(line => {
+    line.style.color = colourLight;
+    line.style.transition = `color ${transitionTimeInMS}ms ${transitionSpeedCurve}`;
+  });
+  mainText.style.transition = `color ${transitionTimeInMS}ms ${transitionSpeedCurve}`;
 
+  // When reader presses okay in the modal, show them the story
   function readerIsOkay() {
     // Remove the event listener
     modalButton.removeEventListener(`click`, readerIsOkay);
     // Do the rest stuff
     fadeInStarterQuote();
-    processTheLastParagraph();
+    setTimeout(() => {
+      makeTheMainTextVisible();
+      processTheLastParagraph();
+    }, lastQuoteAppearsAfterMS + mainTextDelayInMSAfterLastQuote);
   }
 
   // Fade in the starter quote
   function fadeInStarterQuote() {
-    let starterLines = starterQuote.getElementsByClassName(`9-sql`);
-    let numberOfStarterLines = starterLines.length;
-    starterLines = Array.from(starterLines);
     starterLines.forEach((line, index) => {
-      line.style.color = colourLight;
-      line.style.transition = `color ${transitionTimeInMS}ms ${transitionSpeedCurve}`;
-      console.log(line);
       let lineWillAppearAfterMS = lastQuoteAppearsAfterMS /
           numberOfStarterLines * (index + 1);
-      console.log(lineWillAppearAfterMS);
       setTimeout(() => {
-        console.log(`Changing colour of line ${index + 1}`);
-        line.classList.remove(`d-none`);
         line.style.color = colourDark;
       }, lineWillAppearAfterMS);
     });
   }
 
+  // Add transition and make the main text visible
   function makeTheMainTextVisible() {
-    mainText.classList.remove(`d-none`);
+    mainText.style.color = colourDark;
   }
 
   // Increase spacing in the last paragraphs, and rotate the characters
