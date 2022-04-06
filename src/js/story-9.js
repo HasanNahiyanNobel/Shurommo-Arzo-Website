@@ -21,5 +21,22 @@ function startStory9() {
     let spacing = largestSpacingInEm / (numberOfLastParagraphs - index);
     para.style.letterSpacing = `${spacing}em`;
     console.log(para); // TODO: Remove this debug print
+    for (let i = 0; i < para.innerHTML.length; i++) {
+      console.log(para.innerHTML.charAt(i)); // TODO: Remove this debug print
+      console.log(isBanglaAccent(para.innerHTML.charAt(i))); // TODO: Remove this debug print
+    }
   });
+
+  function isBanglaAccent(char) {
+    let unicodeNumber = char.charCodeAt(0);
+    if (unicodeNumber > 2433 && unicodeNumber < 2435) {
+      // Char is ঁ, ং, or ঃ
+      return true;
+    }
+    if (unicodeNumber > 2492 && unicodeNumber < 2519) {
+      // Char is between ় and ৗ
+      return true;
+    }
+    return false;
+  }
 }
