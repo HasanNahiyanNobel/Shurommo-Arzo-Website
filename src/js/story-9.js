@@ -29,11 +29,11 @@ function startStory9() {
 
   function isBanglaAccent(char) {
     let unicodeNumber = char.charCodeAt(0);
-    if (unicodeNumber > 2433 && unicodeNumber < 2435) {
+    if (unicodeNumber >= 2433 && unicodeNumber <= 2435) {
       // Char is ঁ, ং, or ঃ
       return true;
     }
-    if (unicodeNumber > 2492 && unicodeNumber < 2519) {
+    if (unicodeNumber >= 2492 && unicodeNumber <= 2519) {
       // Char is between ় and ৗ
       return true;
     }
