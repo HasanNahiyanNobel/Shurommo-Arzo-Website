@@ -21,26 +21,13 @@ function startStory9() {
     let paraHtml = para.innerHTML;
     let spacing = largestSpacingInEm / (numberOfLastParagraphs - index);
     para.style.letterSpacing = `${spacing}em`;
-    console.log(para); // TODO: Remove this debug print
-    for (let i = 0; i < paraHtml.length; i++) {
-      console.log(para.innerHTML.charAt(i)); // TODO: Remove this debug print
-      console.log(isBanglaAccent(paraHtml.charAt(i))); // TODO: Remove this debug print
-      if (i + 1 < paraHtml.length && isBanglaAccent(paraHtml.charAt(i + 1))) {
-        // console.log(`${paraHtml.charAt(i)}${paraHtml.charAt(i+1)}`);
-      }
-    }
-  });
 
-  function isBanglaAccent(char) {
-    let unicodeNumber = char.charCodeAt(0);
-    if (unicodeNumber >= 2433 && unicodeNumber <= 2435) {
-      // Char is ঁ, ং, or ঃ
-      return true;
-    }
-    if (unicodeNumber >= 2492 && unicodeNumber <= 2519) {
-      // Char is between ় and ৗ
-      return true;
-    }
-    return false;
-  }
+    let spans = Array.from(para.getElementsByTagName(`span`));
+    spans.forEach(item => {
+      let randomRotation = Math.random() * 360;
+      item.style.display = `inline-block`;
+      item.style.transform = `rotate(${randomRotation}deg)`;
+    });
+
+  });
 }
