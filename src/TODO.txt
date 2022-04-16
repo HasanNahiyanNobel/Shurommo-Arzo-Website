@@ -1,3 +1,1 @@
 This is a To-do list for general purposes.
-
-TODO: Perhaps remove the `noscript` check totally, and then check whether LinkedIn's post-inspector works correctly

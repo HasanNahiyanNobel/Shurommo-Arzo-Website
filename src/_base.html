@@ -34,19 +34,13 @@
     </div>
   </nav>
 
-  <!-- Block to be shown if JS is disabled -->
-  <div id="mnjd" class="container center-of-page text-center"> <!-- ID `mnjd` is an abbreviation for `main-no-js-div` -->
-    <h1>দুর্বুদ্ধির একশেষ</h1>
-    <p>জাভাস্ক্রিপ্ট ছাড়া এইসব পৃষ্ঠার দর্শন পাওয়া যাবে না—</p>
-  </div>
-
   <!-- Spinner -->
-  <div id="ms" class="js-disabled center-of-page"> <!-- ID `ms` is an abbreviation for `main-spinner` -->
+  <div id="ms" class="center-of-page"> <!-- ID `ms` is an abbreviation for `main-spinner` -->
     <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status"><span class="visually-hidden">Loading...</span></div>
   </div>
 
   <!-- Main block -->
-  <div id="md" class="js-disabled d-none mb-4"> <!-- ID `md` an abbreviation for `main-div` -->
+  <div id="md" class="d-none mb-4"> <!-- ID `md` an abbreviation for `main-div` -->
     {% block content %}{% endblock %}
   </div>
 
