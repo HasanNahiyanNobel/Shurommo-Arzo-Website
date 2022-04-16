@@ -21,7 +21,7 @@ DESCRIPTION_DEFAULT = 'সুরম্য আর্য'
 IMAGE_DEFAULT = 'https://shurommo-arzo.web.app/images/cover_web_preview.png'
 AUTHOR_DEFAULT = 'সুরম্য আর্য'
 OG_TYPE_DEFAULT = 'website'
-URL_DEFAULT = 'https://shurommo-arzo.web.app'
+URL_DEFAULT_PREFIX = 'https://shurommo-arzo.web.app'
 TWITTER_DOMAIN_DEFAULT = 'shurommo-arzo.web.app'
 TWITTER_CARD_DEFAULT = 'summary_large_image'
 
@@ -146,11 +146,11 @@ def set_og_type(tags):
     return og_type_meta
 
 
-def set_url(tags):
+def set_url(tags, source_file):
     if 'url' in tags:
         url_meta = tags['url']
     else:
-        url_meta = URL_DEFAULT
+        url_meta = URL_DEFAULT_PREFIX + "/" + source_file
     url_meta = [
         '<meta property="og:url" content="', url_meta, '">',
         '<meta property="twitter:url" content="', url_meta, '">'

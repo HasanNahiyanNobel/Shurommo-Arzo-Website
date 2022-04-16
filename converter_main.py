@@ -69,7 +69,7 @@ for source_file in source_files:
                 meta_image = set_image(meta_tags)
                 meta_author = set_author(meta_tags)
                 meta_og_type = set_og_type(meta_tags)
-                meta_url = set_url(meta_tags)
+                meta_url = set_url(meta_tags, source_file)
                 meta_twitter_domain = set_twitter_domain(meta_tags)
                 meta_twitter_card = set_twitter_cards(meta_tags)
 
