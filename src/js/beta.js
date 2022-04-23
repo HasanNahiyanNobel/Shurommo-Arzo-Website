@@ -5,24 +5,35 @@ function startBeta() {
   drawAnimatedRectangle();
 
   function drawCircles() {
+    // Get the div of circle
+    // noinspection DuplicatedCode
     let circleDiv = document.getElementById(`beta-circle-div`);
 
-    let width = 64;
+    // Get vh and vw. Taken from: https://stackoverflow.com/a/8876069
+    let vh = Math.max(document.documentElement.clientHeight || 0,
+        window.innerHeight || 0);
+    let vw = Math.max(document.documentElement.clientWidth || 0,
+        window.innerWidth || 0);
+
+    // Define pseudo constants
+    let width = vw / 4;
+    console.log(width);
     let colour1 = `rgba(0, 133, 176, 0.5)`;
     let colour2 = `rgba(176, 0, 0, 0.5)`;
+    let colour3 = `rgba(0, 176, 41, 0.5)`;
 
-    let circle1 = getCircleAsString(width, width, width, colour1);
-    let circle2 = getCircleAsString(width - width / 2, width, width, colour2);
+    let circle1 = getCircleAsString(width, colour1);
+    let circle2 = getCircleAsString(width, colour2);
+    let circle3 = getCircleAsString(width, colour3);
 
     circleDiv.innerHTML += circle1;
     circleDiv.innerHTML += circle2;
+    circleDiv.innerHTML += circle3;
 
-    function getCircleAsString(cx, cy, radius, colour) {
-      return `<svg xmlns="http://www.w3.org/2000/svg" 
-                width="${2 * radius}" height="${2 * radius}"
-                class="bi bi-circle-fill">
-                <circle cx="${cx}" cy="${cy}" r="${radius}" fill="${colour}"/>
-              </svg>`;
+    function getCircleAsString(radiusInVW, colour) {
+      return `<i class="bi bi-circle-fill"
+                style="font-size: ${radiusInVW}vw; color: ${colour};">
+              </i>`;
     }
   }
 
