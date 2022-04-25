@@ -5,28 +5,37 @@ function startBeta() {
   drawAnimatedRectangle();
 
   function drawCircles() {
+    // Define pseudo constants
+    let numberOfCircles = 5;
+
+    // Get document elements
+    let circleDiv = document.getElementById(`beta-circle-div`);
+
     // Calculate vw and vh. Taken from: https://stackoverflow.com/a/8876069
     let vw = Math.max(document.documentElement.clientWidth || 0,
         window.innerWidth || 0);
     let vh = Math.max(document.documentElement.clientHeight || 0,
         window.innerHeight || 0);
 
-    if (vw < vh) {
-      console.log(`Mobile view`);
+    // Calculate width of circle
+    let circleWidth;
+    let isDesktopView = vw > vh;
+    if (isDesktopView) {
+      circleWidth = vh / numberOfCircles;
     } else {
-      console.log(`Desktop view`);
+      circleWidth = vw / numberOfCircles;
     }
 
-    // Get the div of circle
-    let circleDiv = document.getElementById(`beta-circle-div`);
+    // Draw circles
+    for (let i = 0; i < numberOfCircles; i++) {
+      // Create circle as an image element
+      let circle = document.createElement(`img`);
+      circle.src = `images/circles-beta-0${i + 1}.svg`;
+      circle.width = circleWidth;
 
-    // Create image elements
-    let circle = document.createElement(`img`);
-    circle.src = `images/circles-beta-01.svg`;
-    circle.width = vh * .8;
-
-    // Append images to the document
-    circleDiv.append(circle);
+      // Append circle to the document
+      circleDiv.append(circle);
+    }
   }
 
   function drawAnimatedRectangle() {
