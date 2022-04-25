@@ -9,6 +9,7 @@ function startBeta() {
     let numberOfCircles = 5;
 
     // Get document elements
+    let navbar = document.getElementById(`mn`); // Main navbar
     let circleDiv = document.getElementById(`beta-circle-div`);
 
     // Calculate vw and vh. Taken from: https://stackoverflow.com/a/8876069
@@ -26,15 +27,33 @@ function startBeta() {
       circleWidth = vw / numberOfCircles;
     }
 
+    // Calculate pseudo constants
+    let maxMarginLeft = vw - circleWidth - convertRemToPixels(1.5); // Fluid container has 0.75 rem margins in both left and right
+    let maxMarginTop = vh - circleWidth - navbar.offsetHeight -
+        convertRemToPixels(1); // Navbar has 1 rem margin at bottom
+
     // Draw circles
     for (let i = 0; i < numberOfCircles; i++) {
       // Create circle as an image element
       let circle = document.createElement(`img`);
       circle.src = `images/circles-beta-0${i + 1}.svg`;
       circle.width = circleWidth;
+      circle.style.position = `absolute`;
+      circle.style.marginLeft = `${Math.random() * maxMarginLeft}px`;
+      circle.style.marginTop = `${Math.random() * maxMarginTop}px`;
+      circle.style.pointerEvents = `none`;
+      circle.classList.add(`noselect`);
 
       // Append circle to the document
       circleDiv.append(circle);
+    }
+
+    function convertRemToPixels(rem) {
+      /**
+       * Taken from: https://stackoverflow.com/a/42769683
+       */
+      return rem *
+          parseFloat(getComputedStyle(document.documentElement).fontSize);
     }
   }
 
