@@ -5,36 +5,28 @@ function startBeta() {
   drawAnimatedRectangle();
 
   function drawCircles() {
-    // Get the div of circle
-    // noinspection DuplicatedCode
-    let circleDiv = document.getElementById(`beta-circle-div`);
-
-    // Get vh and vw. Taken from: https://stackoverflow.com/a/8876069
-    let vh = Math.max(document.documentElement.clientHeight || 0,
-        window.innerHeight || 0);
+    // Calculate vw and vh. Taken from: https://stackoverflow.com/a/8876069
     let vw = Math.max(document.documentElement.clientWidth || 0,
         window.innerWidth || 0);
+    let vh = Math.max(document.documentElement.clientHeight || 0,
+        window.innerHeight || 0);
 
-    // Define pseudo constants
-    let width = vw / 4;
-    console.log(width);
-    let colour1 = `rgba(0, 133, 176, 0.5)`;
-    let colour2 = `rgba(176, 0, 0, 0.5)`;
-    let colour3 = `rgba(0, 176, 41, 0.5)`;
-
-    let circle1 = getCircleAsString(width, colour1);
-    let circle2 = getCircleAsString(width, colour2);
-    let circle3 = getCircleAsString(width, colour3);
-
-    circleDiv.innerHTML += circle1;
-    circleDiv.innerHTML += circle2;
-    circleDiv.innerHTML += circle3;
-
-    function getCircleAsString(radiusInVW, colour) {
-      return `<i class="bi bi-circle-fill"
-                style="font-size: ${radiusInVW}vw; color: ${colour};">
-              </i>`;
+    if (vw < vh) {
+      console.log(`Mobile view`);
+    } else {
+      console.log(`Desktop view`);
     }
+
+    // Get the div of circle
+    let circleDiv = document.getElementById(`beta-circle-div`);
+
+    // Create image elements
+    let circle = document.createElement(`img`);
+    circle.src = `images/circles-beta-01.svg`;
+    circle.width = vh * .8;
+
+    // Append images to the document
+    circleDiv.append(circle);
   }
 
   function drawAnimatedRectangle() {
