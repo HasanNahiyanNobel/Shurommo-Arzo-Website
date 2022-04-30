@@ -1,11 +1,10 @@
 startStory10();
 
-// TODO: Show the document after the audio has been loaded
 function startStory10() {
   // Trigger the modal of info
   // noinspection DuplicatedCode
   setTimeout(() => {
-    // document.getElementById(`10-mt`).click(); // TODO: Activate this
+    document.getElementById(`10-mt`).click(); // TODO: Activate this
   }, 150);
 
   // Define extensions as variable
@@ -25,7 +24,7 @@ function startStory10() {
   let audioSrc = `audios/`;
   let colourLight = `#ffffff`;
   let colourDark = `#212529`; // Bootstrap dark colour
-  let transitionTimeInMS = 500; // TODO: Make this 2000
+  let transitionTimeInMS = 2000; // TODO: Make this 2000
   let transitionSpeedCurve = `linear`;
   let appearanceTimeOfLine1 = 500;
   let appearanceTimeOfLine2 = appearanceTimeOfLine1 + transitionTimeInMS;
@@ -49,12 +48,12 @@ function startStory10() {
   });
 
   // Process the post solo div
-  postSoloDivs.style.opacity = `1`; // TODO: Make this 0
+  postSoloDivs.style.opacity = `0`; // TODO: Make this 0
   postSoloDivs.style.transition = `opacity ${transitionTimeInMS}ms ${transitionSpeedCurve}`;
 
   // Add event listener for the modal button
   modalButton.addEventListener(`click`, readerIsOkay);
-  modalButton.click(); // TODO: Remove this debug click
+  // modalButton.click(); // TODO: Remove this debug click
 
   // When reader presses okay in the modal, show them the story
   function readerIsOkay() {
@@ -66,6 +65,7 @@ function startStory10() {
   }
 
   function postAudioLoadRoutine() {
+    console.log(`au`);
     // First remove the listener
     solo.removeEventListener(`canplaythrough`, postAudioLoadRoutine);
 
