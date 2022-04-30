@@ -12,7 +12,6 @@ function startStory10() {
       document.getElementsByClassName(`10-gos`));
   let line1 = document.getElementById(`10-l-1`);
   let line2 = document.getElementById(`10-l-2`);
-  let divOfSoloAndGraphics = document.getElementById(`10-sag`);
   let postSoloDivs = document.getElementById(`10-psd`);
   let spinner = document.getElementById(`ms`); // Main spinner from the base template
 
@@ -20,7 +19,7 @@ function startStory10() {
   let audioSrc = `audios/`;
   let colourLight = `#ffffff`;
   let colourDark = `#212529`; // Bootstrap dark colour
-  let transitionTimeInMS = 2000; // TODO: Make this 2000
+  let transitionTimeInMS = 2000;
   let transitionSpeedCurve = `linear`;
   let appearanceTimeOfLine1 = 500;
   let appearanceTimeOfLine2 = appearanceTimeOfLine1 + transitionTimeInMS;
@@ -44,7 +43,7 @@ function startStory10() {
   });
 
   // Process the post solo div
-  postSoloDivs.style.opacity = `0`; // TODO: Make this 0
+  postSoloDivs.style.opacity = `0`;
   postSoloDivs.style.transition = `opacity ${transitionTimeInMS}ms ${transitionSpeedCurve}`;
 
   // Show the spinner until the scream has been loaded.
@@ -68,11 +67,10 @@ function startStory10() {
     spinner.classList.add(`d-none`);
 
     // Trigger the modal of info
-    document.getElementById(`10-mt`).click(); // TODO: Activate this
+    document.getElementById(`10-mt`).click();
 
     // Add event listener for the modal button
     modalButton.addEventListener(`click`, readerIsOkay);
-    // modalButton.click(); // TODO: Remove this debug click
   }
 
   // When reader presses okay in the modal, show them the story
