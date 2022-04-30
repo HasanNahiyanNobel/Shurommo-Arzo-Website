@@ -10,7 +10,6 @@ function startStory10() {
 
   // Define extensions as variable
   let mp3Extension = `.mp3`;
-  let svgExtension = `.svg`;
 
   // Get document elements
   let modalButton = document.getElementById(`10-y`);
@@ -20,10 +19,10 @@ function startStory10() {
   let line1 = document.getElementById(`10-l-1`);
   let line2 = document.getElementById(`10-l-2`);
   let divOfSoloAndGraphics = document.getElementById(`10-sag`);
+  let postSoloDivs = document.getElementById(`10-psd`);
 
   // Specify pseudo-constants
   let audioSrc = `audios/`;
-  let imageSrc = `images/`;
   let colourLight = `#ffffff`;
   let colourDark = `#212529`; // Bootstrap dark colour
   let transitionTimeInMS = 500; // TODO: Make this 2000
@@ -31,6 +30,7 @@ function startStory10() {
   let appearanceTimeOfLine1 = 500;
   let appearanceTimeOfLine2 = appearanceTimeOfLine1 + transitionTimeInMS;
   let startOfSoloAndGraphics = appearanceTimeOfLine2 + transitionTimeInMS;
+  let numberOfStepsInSolo = 24;
 
   // Calculate other derivative variables
   let soloPath = audioSrc + `story-10` + mp3Extension;
@@ -47,6 +47,10 @@ function startStory10() {
     graphic.style.opacity = `0`;
     graphic.style.transition = `opacity ${transitionTimeInMS}ms ${transitionSpeedCurve}`;
   });
+
+  // Process the post solo div
+  postSoloDivs.style.opacity = `0`;
+  postSoloDivs.style.transition = `opacity ${transitionTimeInMS}ms ${transitionSpeedCurve}`;
 
   // Add event listener for the modal button
   modalButton.addEventListener(`click`, readerIsOkay);
@@ -82,17 +86,28 @@ function startStory10() {
   function playSoloAndShowGraphics() {
     // Play audio
     solo.play().then(() => {
-      showGraphics();
+      showGraphicsOfSolo();
     }).catch(error => {
       console.log(error);
     });
   }
 
-  function showGraphics() {
+  function showGraphicsOfSolo() {
+    let stepCount = 0;
     fadeInGraphicsOfSolo.forEach((graphic, index) => {
       setTimeout(() => {
         graphic.style.opacity = `1`;
+        stepCount++;
+        if (stepCount === numberOfStepsInSolo) {
+          setTimeout(() => {
+            showPostSoloDivs();
+          }, transitionTimeInMS);
+        }
       }, (4 * index + 1.2) * 1000); // 1.2 instead of 1—to delay the graphics by a suitable fraction
     });
+  }
+
+  function showPostSoloDivs() {
+    postSoloDivs.style.opacity = `1`;
   }
 }
