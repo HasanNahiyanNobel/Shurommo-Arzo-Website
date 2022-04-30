@@ -6,14 +6,14 @@ function startStory10() {
   let mp3Extension = `.mp3`;
 
   // Get document elements
+  let spinner = document.getElementById(`ms`); // Main spinner from the base template
   let modalButton = document.getElementById(`10-y`);
+  let line1 = document.getElementById(`10-l-1`);
+  let line2 = document.getElementById(`10-l-2`);
   let fadeInLines = Array.from(document.getElementsByClassName(`10-fil`));
   let fadeInGraphicsOfSolo = Array.from(
       document.getElementsByClassName(`10-gos`));
-  let line1 = document.getElementById(`10-l-1`);
-  let line2 = document.getElementById(`10-l-2`);
   let postSoloDivs = document.getElementById(`10-psd`);
-  let spinner = document.getElementById(`ms`); // Main spinner from the base template
 
   // Specify pseudo-constants
   let audioSrc = `audios/`;
