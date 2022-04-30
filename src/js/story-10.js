@@ -1,13 +1,8 @@
 startStory10();
 
 function startStory10() {
-  // Trigger the modal of info
-  // noinspection DuplicatedCode
-  setTimeout(() => {
-    document.getElementById(`10-mt`).click(); // TODO: Activate this
-  }, 150);
-
   // Define extensions as variable
+  // noinspection DuplicatedCode
   let mp3Extension = `.mp3`;
 
   // Get document elements
@@ -19,6 +14,7 @@ function startStory10() {
   let line2 = document.getElementById(`10-l-2`);
   let divOfSoloAndGraphics = document.getElementById(`10-sag`);
   let postSoloDivs = document.getElementById(`10-psd`);
+  let spinner = document.getElementById(`ms`); // Main spinner from the base template
 
   // Specify pseudo-constants
   let audioSrc = `audios/`;
@@ -51,23 +47,38 @@ function startStory10() {
   postSoloDivs.style.opacity = `0`; // TODO: Make this 0
   postSoloDivs.style.transition = `opacity ${transitionTimeInMS}ms ${transitionSpeedCurve}`;
 
-  // Add event listener for the modal button
-  modalButton.addEventListener(`click`, readerIsOkay);
-  // modalButton.click(); // TODO: Remove this debug click
+  // Show the spinner until the scream has been loaded.
+  // However, the central JS for this website removes the spinner **after** the
+  // execution of this script, so the following interval is needed.
+  let forceSpinnerForAudio = setInterval(() => {
+    if (spinner.classList.contains(`d-none`)) {
+      spinner.classList.remove(`d-none`);
+    }
+  }, 100);
+
+  // When the solo has been loaded upto a substantial amount, start showing the story
+  solo.addEventListener(`canplaythrough`, postAudioLoadRoutine);
+
+  function postAudioLoadRoutine() {
+    // First remove the listener
+    solo.removeEventListener(`canplaythrough`, postAudioLoadRoutine);
+
+    // Remove the spinner again!
+    clearInterval(forceSpinnerForAudio); // Clear the scheduled interval
+    spinner.classList.add(`d-none`);
+
+    // Trigger the modal of info
+    document.getElementById(`10-mt`).click(); // TODO: Activate this
+
+    // Add event listener for the modal button
+    modalButton.addEventListener(`click`, readerIsOkay);
+    // modalButton.click(); // TODO: Remove this debug click
+  }
 
   // When reader presses okay in the modal, show them the story
   function readerIsOkay() {
     // Remove the event listener
     modalButton.removeEventListener(`click`, readerIsOkay);
-
-    // When the solo has been loaded upto a substantial amount, start showing the story
-    solo.addEventListener(`canplaythrough`, postAudioLoadRoutine);
-  }
-
-  function postAudioLoadRoutine() {
-    console.log(`au`);
-    // First remove the listener
-    solo.removeEventListener(`canplaythrough`, postAudioLoadRoutine);
 
     // Fade in the first two lines
     setTimeout(() => {
