@@ -49,7 +49,7 @@ function startStory10() {
   });
 
   // Process the post solo div
-  postSoloDivs.style.opacity = `0`;
+  postSoloDivs.style.opacity = `1`; // TODO: Make this 0
   postSoloDivs.style.transition = `opacity ${transitionTimeInMS}ms ${transitionSpeedCurve}`;
 
   // Add event listener for the modal button
