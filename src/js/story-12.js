@@ -54,7 +54,9 @@ function startStory12() {
 
   function postAudioLoadRoutine() {
     // Trigger the modal which requests reader to use headphones
-    document.getElementById(`12-mt`).click();
+    setTimeout(() => {
+      document.getElementById(`12-mt`).click();
+    }, 150);
 
     // Add event listener for the modal button
     modalButton.addEventListener(`click`, readerIsOkay);
