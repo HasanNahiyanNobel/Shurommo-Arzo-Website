@@ -1,16 +1,36 @@
 {% block meta %}
 {
 "title": "সেপ্টেম্বর, ২০২২",
-"description": "",
+"description": "সেপ্টেম্বর, ২০২২-এর কথা আমরা আলাদা করে মনে রাখবো",
 "image": "https://shurommo-arzo.web.app/images/web_preview_12.png"
 }
 {% endblock %}
 
 {% block content %}
+<!-- Onload Modal -->
+<div class="container">
+  <!-- Button to trigger the modal -->
+  <button class="d-none" data-bs-target="#info" data-bs-toggle="modal" id="12-mt" type="button"></button> <!-- `mt` means `modal trigger` -->
+  <!-- Modal to request readers to use a headphone -->
+  <div aria-hidden="true" aria-labelledby="" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="info" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body text-center">
+          <div class="mt-3 mb-3">
+            হেডফোন ব্যবহার করা যেতে পারে।
+          </div>
+          <div>
+            <button id="12-y" type="button" class="btn btn-sm btn-outline-dark" data-bs-dismiss="modal">আচ্ছা</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Main Div -->
 <div>
-
-  <div class="container">
+  <div class="container d-none">
     <div class="row justify-content-center">
       <div class="col col-md-10 col-lg-8 col-xl-7 justify-align">
         <h1 class="text-start">সেপ্টেম্বর, ২০২২</h1>
@@ -53,7 +73,6 @@
       </div>
     </div>
   </div>
-
 </div>
 
 <!-- Additional JS -->
