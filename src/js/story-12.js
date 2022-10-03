@@ -27,6 +27,7 @@ function startStory12() {
   let audio2;
   let colourLight = `#ffffff`;
   let colourDark = `#212529`; // Bootstrap dark colour
+  let colourMuted = `#6c757d`; // Bootstrap muted colour
   let transitionTimeInMSForTitle = 2e3;
   let transitionTimeInMSForPart1Div = 3e3;
   let transitionTimeInMSForPart2Divs = 2e3;
@@ -40,6 +41,14 @@ function startStory12() {
     35.4e3,
     47.2e3,
     50.0e3,
+  ];
+  let part2DivColours = [
+    colourDark,
+    colourDark,
+    colourDark,
+    colourDark,
+    colourDark,
+    colourMuted,
   ];
 
   processDocumentDivs();
@@ -152,7 +161,7 @@ function startStory12() {
         // Set timeouts
         partsOfPart2Div.forEach((part, index) => {
           setTimeout(() => {
-            part.style.color = colourDark;
+            part.style.color = part2DivColours[index];
           }, part2DivDisplayTimeouts[index]);
         });
 
