@@ -39,6 +39,7 @@ function startStory12() {
     23.3e3,
     35.4e3,
     47.2e3,
+    50.0e3,
   ];
 
   processDocumentDivs();
