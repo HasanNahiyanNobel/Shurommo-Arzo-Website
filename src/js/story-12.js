@@ -42,18 +42,6 @@ function startStory12() {
     47.2e3,
     50.0e3,
   ];
-  {
-    // TODO: Remove this debug block
-    part1DivDisplayTimeout = 1e3;
-    part2ParagraphDisplayTimeouts = [
-      1.5e3,
-      2e3,
-      2.5e3,
-      3e3,
-      3.5e3,
-      4e3,
-    ];
-  }
   let part2ParagraphColours = [
     // All the colours are dark, except for the last one (music source)
     colourDark,
