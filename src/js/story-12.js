@@ -18,6 +18,7 @@ function startStory12() {
     part1Div,
     part2Div,
   ];
+  let forceSpinnerForAudio;
 
   // Define pseudo-constants
   let audioSrc = `audios/`;
@@ -67,7 +68,7 @@ function startStory12() {
     // Show the spinner until the scream has been loaded.
     // However, the central JS for this website removes the spinner **after** the
     // execution of this script, so the following interval is needed.
-    let forceSpinnerForAudio = setInterval(() => {
+    forceSpinnerForAudio = setInterval(() => {
       if (spinner.classList.contains(`d-none`)) {
         spinner.classList.remove(`d-none`);
       }
@@ -89,12 +90,6 @@ function startStory12() {
         // Remove the spinner again!
         clearInterval(forceSpinnerForAudio); // Clear the scheduled interval
         spinner.classList.add(`d-none`);
-        {
-          // Sometimes the spinner is still visible. Adding this classes as a quick fix
-          // TODO: Find out the root of this problem and debug this.
-          spinner.classList.add(`d-none`);
-          spinner.classList.add(`d-none`);
-        }
       }
     }
 
@@ -117,6 +112,12 @@ function startStory12() {
 
     // Play the first audio
     audio1.play().then(() => {
+      {
+        // FixMe: Sometimes the spinner is not removed properly. This delayed timeout ensures the removal, but we need to solve this bug.
+        clearInterval(forceSpinnerForAudio); // Clear the scheduled interval
+        spinner.classList.add(`d-none`);
+      }
+
       // Remove d-none
       title.classList.remove(`d-none`);
       part1Div.classList.remove(`d-none`);
