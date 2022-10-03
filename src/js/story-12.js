@@ -14,6 +14,9 @@ function startStory12() {
   let part1Div = document.getElementById(`12-p-1`);
   let part2Div = document.getElementById(`12-p-2`);
   let part2Paragraphs = Array.from(document.getElementsByClassName(`12-p-2-p`));
+  let randomMarginLeftParagraphs = Array.from(
+      document.getElementsByClassName(`12-rmlp`),
+  );
 
   // Define pseudo-constants
   let forceSpinnerForAudio;
@@ -24,6 +27,7 @@ function startStory12() {
   let colourLight = `#ffffff`;
   let colourMuted = `#6c757d`; // Bootstrap muted colour
   let colourDark = `#212529`; // Bootstrap dark colour
+  let largestRandomLeftMargin = 30; //The paragraphs having random margins are already inside a div of 7.5% margin. So the if we want the largest margin to be x%, we have to set the variable to x-7.5
   let transitionTimeOfTitle = 2e3; // Time in ms
   let transitionTimeOfPart1Div = 3e3; // Time in ms
   let transitionTimeOfPart2Paragraphs = 2e3; // Time in ms
@@ -61,8 +65,8 @@ function startStory12() {
   ];
 
   colourDocumentDivsAndAddTransitions();
+  addRandomMarginsToTheDesignatedParagraphs();
   loadAudios();
-  giveRandomMarginToTheSelectedParagraphs();
 
   function colourDocumentDivsAndAddTransitions() {
     // Initiate the colours with white
@@ -73,6 +77,13 @@ function startStory12() {
     part1Div.style.transition = `color ${transitionTimeOfPart1Div}ms ${transitionSpeedCurve}`;
     part2Paragraphs.forEach(para => {
       para.style.transition = `color ${transitionTimeOfPart2Paragraphs}ms ${transitionSpeedCurve}`;
+    });
+  }
+
+  function addRandomMarginsToTheDesignatedParagraphs() {
+    randomMarginLeftParagraphs.forEach(para => {
+      let randomLeftMargin = Math.random() * largestRandomLeftMargin;
+      para.style.marginLeft = `${randomLeftMargin}%`;
     });
   }
 
@@ -176,21 +187,5 @@ function startStory12() {
         console.log(error);
       });
     }
-  }
-
-  function giveRandomMarginToTheSelectedParagraphs() {
-    let randomMarginLeftParagraphs = Array.from(
-        document.getElementsByClassName(`12-rmlp`));
-    /**
-     * The paragraphs having random margins are already inside a div of 7.5% margin.
-     * So the if we want the largest margin to be x%, we have to set the variable
-     * to x-7.5.
-     */
-    let largestRandomMargin = 30;
-
-    randomMarginLeftParagraphs.forEach(para => {
-      let randomLeftMargin = Math.random() * largestRandomMargin;
-      para.style.marginLeft = `${randomLeftMargin}%`;
-    });
   }
 }
