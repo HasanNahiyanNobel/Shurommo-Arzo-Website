@@ -7,34 +7,30 @@ function startStory12() {
 
   // Get the document elements
   let navbar = document.getElementById(`mn`); // Main navbar
-  let spinner = document.getElementById(`ms`); // Main spinner from the base template
+  let spinner = document.getElementById(`ms`); // Main spinner
+  let mainDiv = document.getElementById(`12-md`); // Inner main div of story 12
   let modalButton = document.getElementById(`12-y`);
   let title = document.getElementsByTagName(`h1`)[0];
   let part1Div = document.getElementById(`12-p-1`);
   let part2Div = document.getElementById(`12-p-2`);
-  let partsOfPart2Div = Array.from(document.getElementsByClassName(`12-p-2-p`));
-  let documentDivs = [
-    title,
-    part1Div,
-    part2Div,
-  ];
-  let forceSpinnerForAudio;
+  let part2Paragraphs = Array.from(document.getElementsByClassName(`12-p-2-p`));
 
   // Define pseudo-constants
-  let audioSrc = `audios/`;
-  let audioPrefix = `story-12-`;
+  let forceSpinnerForAudio;
   let audio1;
   let audio2;
+  let audioSrc = `audios/`;
+  let audioPrefix = `story-12-`;
   let colourLight = `#ffffff`;
-  let colourDark = `#212529`; // Bootstrap dark colour
   let colourMuted = `#6c757d`; // Bootstrap muted colour
-  let transitionTimeInMSForTitle = 2e3;
-  let transitionTimeInMSForPart1Div = 3e3;
-  let transitionTimeInMSForPart2Divs = 2e3;
+  let colourDark = `#212529`; // Bootstrap dark colour
+  let transitionTimeOfTitle = 2e3; // Time in ms
+  let transitionTimeOfPart1Div = 3e3; // Time in ms
+  let transitionTimeOfPart2Paragraphs = 2e3; // Time in ms
   let transitionSpeedCurve = `linear`;
-  let titleDisplayTimeout = 100; // The element is displayed this ms after the audio is played
-  let part1DivDisplayTimeout = 10e3;
-  let part2DivDisplayTimeouts = [
+  let titleDisplayTimeout = 100; // Time in ms
+  let part1DivDisplayTimeout = 10e3; // Time in ms
+  let part2ParagraphDisplayTimeouts = [
     5.5e3,
     11e3,
     23.3e3,
@@ -42,7 +38,20 @@ function startStory12() {
     47.2e3,
     50.0e3,
   ];
-  let part2DivColours = [
+  {
+    // TODO: Remove this debug block
+    part1DivDisplayTimeout = 1e3;
+    part2ParagraphDisplayTimeouts = [
+      1.5e3,
+      2e3,
+      2.5e3,
+      3e3,
+      3.5e3,
+      4e3,
+    ];
+  }
+  let part2ParagraphColours = [
+    // All the colours are dark, except for the last one (music source)
     colourDark,
     colourDark,
     colourDark,
@@ -51,22 +60,20 @@ function startStory12() {
     colourMuted,
   ];
 
-  processDocumentDivs();
+  colourDocumentDivsAndAddTransitions();
   loadAudios();
   giveRandomMarginToTheSelectedParagraphs();
 
-  function processDocumentDivs() {
-    documentDivs.forEach(div => {
-      div.style.color = colourLight;
-    });
+  function colourDocumentDivsAndAddTransitions() {
+    // Initiate the colours with white
+    mainDiv.style.color = colourLight;
 
-    partsOfPart2Div.forEach(div => {
-      div.style.color = colourLight;
-      div.style.transition = `color ${transitionTimeInMSForPart2Divs}ms ${transitionSpeedCurve}`;
+    // Add transitions
+    title.style.transition = `color ${transitionTimeOfTitle}ms ${transitionSpeedCurve}`;
+    part1Div.style.transition = `color ${transitionTimeOfPart1Div}ms ${transitionSpeedCurve}`;
+    part2Paragraphs.forEach(para => {
+      para.style.transition = `color ${transitionTimeOfPart2Paragraphs}ms ${transitionSpeedCurve}`;
     });
-
-    title.style.transition = `color ${transitionTimeInMSForTitle}ms ${transitionSpeedCurve}`;
-    part1Div.style.transition = `color ${transitionTimeInMSForPart1Div}ms ${transitionSpeedCurve}`;
   }
 
   function loadAudios() {
@@ -159,10 +166,10 @@ function startStory12() {
       document.removeEventListener(`scroll`, scrollListener);
       audio2.play().then(() => {
         // Set timeouts
-        partsOfPart2Div.forEach((part, index) => {
+        part2Paragraphs.forEach((part, index) => {
           setTimeout(() => {
-            part.style.color = part2DivColours[index];
-          }, part2DivDisplayTimeouts[index]);
+            part.style.color = part2ParagraphColours[index];
+          }, part2ParagraphDisplayTimeouts[index]);
         });
 
       }).catch(error => {
