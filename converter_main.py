@@ -55,7 +55,7 @@ source_files = [
 
 for source_file in source_files:
     # Read the source file
-    source_path = SOURCE_DIR + '\\' + source_file
+    source_path = SOURCE_DIR + '/' + source_file
     with open(source_path, encoding='utf-8') as f:
         for line in f:
             current_line = line.strip()
@@ -86,7 +86,7 @@ for source_file in source_files:
                 content = read_block(f, True)
 
     # Write the contents in respective output files
-    output_path = OUTPUT_DIR + '\\' + source_file
+    output_path = OUTPUT_DIR + '/' + source_file
     with open(
             output_path, 'w+', encoding='utf-8'
     ) as f:  # The 'w+' option creates the file if it does not exist already
@@ -108,7 +108,7 @@ for output_file in output_files:
     if not (source_files.__contains__(output_file)) and not (
             output_file == GOOGLE_OWNERSHIP_VERIFICATION_FILE
     ):  # Exclude the Google ownership verification file from deletion
-        os.remove(OUTPUT_DIR + '\\' +
+        os.remove(OUTPUT_DIR + '/' +
                   output_file)  # Remove the file from directory
         output_files.remove(output_file)  # Also remove the file from list
         print('Deleted: ' + output_file)
@@ -120,4 +120,4 @@ os.system(
 
 # Add copyright lines to the minified files
 for output_file in output_files:
-    prepend_line(OUTPUT_DIR + '\\' + output_file, COPYRIGHT_LINE)
+    prepend_line(OUTPUT_DIR + '/' + output_file, COPYRIGHT_LINE)
