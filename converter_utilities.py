@@ -1,6 +1,5 @@
 """
-This script contains some constants and functions used by the other scripts.
-Copyright © 2021-22 by Hasan Nahiyan Nobel.
+This module provides constants and utility functions for use in other scripts.
 """
 
 # Constants
@@ -25,13 +24,20 @@ URL_DEFAULT_PREFIX = 'https://shurommo-arzo.web.app'
 TWITTER_DOMAIN_DEFAULT = 'shurommo-arzo.web.app'
 TWITTER_CARD_DEFAULT = 'summary_large_image'
 
-COPYRIGHT_LINE = '<!--\n---- এখানে কী চাই? 🤨\n---- এই ফাইলটা পাইথন ফ্রেমওয়ার্ক দিয়ে নির্মিত, এবং এইচটিএমএল মিনিফায়ার (এনপিএম) দিয়ে ক্ষুদ্রীকৃত।\n---- অধিকার ২০২১-২২, সুরম্য আর্য।\n--->'
+COPYRIGHT_LINE = (
+    '<!--\n'
+    '---- এখানে কী চাই? 🤨\n'
+    '---- এই ফাইলটা পাইথন ফ্রেমওয়ার্ক দিয়ে নির্মিত, এবং এইচটিএমএল মিনিফায়ার '
+    '(এনপিএম) দিয়ে ক্ষুদ্রীকৃত।\n'
+    '---- গিটহাব রেপো: '
+    'https://github.com/HasanNahiyanNobel/Shurommo-Arzo-Website\n--->')
 
 
 # Functions
 def prepend_line(filepath, line_to_prepend):
     """
-    Prepend lines at the beginning of a file. Concept from https://stackoverflow.com/a/5917395.
+    Prepend lines at the beginning of a file.
+    Concept from https://stackoverflow.com/a/5917395.
 
     :param filepath: Path of the file.
     :param line_to_prepend: The line to prepend.
@@ -45,10 +51,12 @@ def prepend_line(filepath, line_to_prepend):
 
 def read_block(file, is_body=False):
     """
-    Read lines from a file until the end of block marker is read. Additionally, adds a &NoBreak; before every em dash.
+    Read lines from a file until the end of block marker is read. Additionally,
+    adds a ``&NoBreak;`` before every em dash.
 
     :param file: The file from which the lines are being read.
-    :param is_body: If the block being read goes inside the <body> tag, this boolean value is True.
+    :param is_body: If the block being read goes inside the <body> tag, this
+    boolean value is True.
     :return: The read lines as an array.
     """
     block = []
@@ -63,10 +71,12 @@ def read_block(file, is_body=False):
 
 def english_to_bangla_number(number=None):
     """
-    A slowww, but effective function to convert English numbers to Bangla, as a string.
+    A slowww, but effective function to convert English numbers to Bangla, as a
+    string.
 
     :param number: The number to be translated.
-    :return: The translated number in Bangla, as a string. If the input is not parsed as a number, and empty string is returned.
+    :return: The translated number in Bangla, as a string. If the input is not
+    parsed as a number, and empty string is returned.
     """
     if number is None:
         # No argument has been passed, return an empty string.
